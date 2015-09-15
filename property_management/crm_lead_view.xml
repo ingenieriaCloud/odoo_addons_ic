@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="crm_case_form_view_leads_property" model="ir.ui.view">
+            <field name="name">crm.case.form.view.leads.property</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_leads"/>
+            <field name="arch" type="xml">
+                <data>
+	                <field name="user_id" position="before">
+	                	<field name='product' string='Producto'/>
+	                	<field name='product_owner' string='Propietario'/>
+	                </field>
+	               
+                </data>
+            </field>
+        </record>
+        
+        
+        <record id="crm_case_form_view_oppor_property" model="ir.ui.view">
+            <field name="name">crm.case.form.view.oppor.property</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field name="arch" type="xml">
+                <data>
+	                <field name="user_id" position="before">
+	                	<field name='product' string='Producto'/>
+	                	<field name='product_owner' string='Propietario'/>
+	                </field>
+	                
+                </data>
+            </field>
+        </record>
+    </data>
+</openerp>

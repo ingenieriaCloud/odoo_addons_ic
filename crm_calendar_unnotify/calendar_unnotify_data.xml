@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    
+         <!-- Evitar notificaciones -->
+        <record id="calendar.unnotify" model="ir.config_parameter">
+            <field name="key">calendar.block_mail</field>
+            <field name="value">True</field>
+	        <field name="auto_delete" eval="True"/>
+        </record>
+
+
+
+         <record id="view_general_configuration_calendar" model="ir.ui.view">
+            <field name="name">base.config.settings.calendar_unnotify</field>
+            <field name="model">base.config.settings</field>
+            <field name="inherit_id" ref="base_setup.view_general_configuration"/>
+            <field name="arch" type="xml">
+                <group>
+                    <label for="id" string="Calendario/Eventos"/>
+                    <div>
+                        <div name="calendar">
+                            <field name="calendar_unnotify" class="oe_inline"/>
+                            <label for="calendar_unnotify"/>
+                        </div>
+                        <div attrs="{'invisible':[('calendar_unnotify','=',False)]}">
+                            <blockquote>
+                                Al activar esta opción el sistema evitará que se envien correos a los participantes de los eventos.<br/>
+                            </blockquote>
+                        </div>
+                    </div>
+                </group>
+            </field>
+        </record>
+
+    </data>
+</openerp>

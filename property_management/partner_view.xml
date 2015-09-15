@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="action_open_partner_owner_analytic_accounts" model="ir.actions.act_window">
+            <field name="context">{'search_default_product_owner': [active_id], 'default_product_owner': active_id}</field>
+            <field name="name">Contracts/Analytic Accounts</field>
+            <field name="res_model">account.analytic.account</field>
+            <field name="view_id" ref="account.view_account_analytic_account_tree"/>
+            <field name="search_view_id" ref="property_management.view_account_analytic_account_search_product"/>
+         </record>
+
+         <record model="ir.ui.view" id="partner_view_button_contracts_count2">
+            <field name="name">partner.view.button.contracts_count2</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="priority" eval="22"/>
+            <field name="groups_id" eval="[(4, ref('analytic.group_analytic_accounting'))]"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='buttons']" position="inside">
+                    <button class="oe_inline oe_stat_button" type="action" name="%(action_open_partner_owner_analytic_accounts)d"
+                        icon="fa-book">
+                        <field string="Contracts Owner" name="accounts_owner_count" widget="statinfo"/>
+                    </button>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

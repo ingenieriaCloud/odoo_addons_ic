@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <!-- Recibos-related subtypes for messaging / Chatter -->
+        <record id="mt_concepto_change" model="mail.message.subtype">
+            <field name="name">Concepto</field>
+            <field name="res_model">recibos</field>
+            <field name="default" eval="False"/>
+            <field name="description">Concepto Modificado</field>
+        </record>
+        <record id="mt_fecha_change" model="mail.message.subtype">
+            <field name="name">Fecha</field>
+            <field name="res_model">recibos</field>
+            <field name="default" eval="False"/>
+            <field name="description">Fecha Modificada</field>
+        </record>
+        <record id="mt_importe_change" model="mail.message.subtype">
+            <field name="name">Import</field>
+            <field name="res_model">recibos</field>
+            <field name="default" eval="False"/>
+            <field name="description">Importe Modificado</field>
+        </record>
+        <record id="mt_cobrado_change" model="mail.message.subtype">
+            <field name="name">Cobrado</field>
+            <field name="res_model">recibos</field>
+            <field name="default" eval="False"/>
+            <field name="description">Importe Cobrado Modificado</field>
+        </record>
+        <record id="mt_pagado_change" model="mail.message.subtype">
+            <field name="name">Pagado</field>
+            <field name="res_model">recibos</field>
+            <field name="default" eval="False"/>
+            <field name="description">Importe Pagado Modificado</field>
+        </record>
+    </data>
+</openerp>

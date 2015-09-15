@@ -1,0 +1,156 @@
+<openerp>
+	<data>
+
+		<!-- Ejemplo de vista formulario -->
+		<record id='view_recibos_form' model='ir.ui.view'>
+			<field name='name'>view.recibos.form</field>
+			<field name='model'>recibos</field>
+			<field name='arch' type='xml'>
+				<form string='Recibos'>
+                    <!--<header>
+                        <button name="create_period" string="Create Monthly Periods" type="object" class="oe_highlight"/>
+                        <button name="create_period3" string="Create 3 Months Periods" type="object" class="oe_highlight"/>
+                    </header>-->
+					<sheet>
+						<!--<div class="oe_right oe_button_box" name="buttons">
+							<button class="oe_inline oe_stat_button" type="object"
+	                           name="schedule_meeting"
+	                           icon="fa-calendar"
+	                           context="{'partner_id': active_id}">
+	                           <field string="Meetings" name="pendiente" widget="statinfo"/>
+	                    	</button>
+						</div>-->
+						<div class="oe_title">
+	                        <label for="concepto" class="oe_edit_only" string="Concepto"/>
+	                        <h1>
+	                            <field name="concepto" string="Concepto"/>
+	                        </h1>
+	                    </div>
+						<group col="4">
+							<group>
+								<field name='fecha'/>
+								<field name='importe' />
+                                <field name='account_id' />
+							</group>
+							<group>
+								<field name='pagado' />
+                                <field name='cobrado'/>
+                                <field name="account_product"/>
+                                <field name="account_product_owner"/>
+                                <field name="account_product_tenant"/>
+							</group>
+						</group>
+						<group>
+							 <field name="pendiente" attrs="{'invisible': [('pendiente', '==', 0)]}" style="color:red"/>
+						</group>
+					</sheet>
+				    <div class="oe_chatter">
+				        <field name="message_follower_ids" widget="mail_followers"/>
+				        <field name="message_ids" widget="mail_thread"/>
+				    </div>
+				</form>
+			</field>
+		</record>
+
+		<!-- Ejemplo de vista arbol -->
+		<record id='view_recibos_tree' model='ir.ui.view'>
+			<field name='name'>view.recibos.tree</field>
+			<field name='model'>recibos</field>
+			<field name='arch' type='xml'>
+				<tree string='Recibos' version='7.0' colors='#FF0000:cobrado==False'>
+					<field name='concepto' />
+					<field name='fecha' />
+					<field name='account_id' />
+                    <field name='account_product' />
+					<field name='importe' />
+					<field name='cobrado' />
+					<field name='pagado' />
+				</tree>
+			</field>
+		</record>
+
+		<!-- Ejemplo de vista busqueda -->
+		<record id='view_recibos_search' model='ir.ui.view'>
+			<field name='name'>view.recibos.search</field>
+			<field name='model'>recibos</field>
+			<field name='arch' type='xml'>
+				<search string='Busqueda de Recibos' version='7.0'>
+					<field name='concepto' />
+					<field name='importe' />
+					
+					<filter string='Pagado' name='pay' domain="[('pagado', '=', True)]" />
+					<filter string='No Pagado' name='unpay' domain="[('pagado', '=', False)]" />
+					
+					<group expand="1" string="Group by">
+						<filter name='group_by_contract' string='Contrato' context="{'group_by':'account_id'}" />
+                        <filter name='group_by_product' string='Product' context="{'group_by':'account_product'}" />
+					</group>
+				</search>
+			</field>
+		</record>
+
+		<!-- Ejemplo de accion de menu -->
+		<record id='action_recibos' model='ir.actions.act_window'>
+			<field name="name">Recibos</field>
+			<field name="res_model">recibos</field>
+			<field name="view_mode">tree,form</field>
+			<field name="view_type">form</field>
+			<field name="search_view_id" ref="view_recibos_search"/>
+		</record>
+		
+		<record id="action_mail_all_feeds" model="ir.actions.client">
+			<field name="name">Mail</field>
+			<field name="tag">mail.all_feeds</field>
+		</record>
+
+        <!-- Ejemplo de creacion de menus -->
+		<menuitem name="Inmobiliaria" id="menu_recibos_main" sequence="25" />
+			<menuitem name="Gestion Inmobiliaria" id="menu_recibos_sub" sequence="1" parent="menu_recibos_main" />
+				<menuitem id="menu_recibos_recibos" sequence="1" parent="menu_recibos_sub" action="action_recibos" />
+                <menuitem id="menu_recibos_viviendas" sequence="2" parent="menu_recibos_sub" action="product.product_template_action" />
+                <!--<menuitem id="menu_recibos_clientes" sequence="3" parent="menu_recibos_sub" action="product.product_template_action" />-->
+
+
+		<!-- Ejemplo de accion de servidor
+        <record id="action_server_mark_as_seen" model="ir.actions.server">
+            <field name="name">Marcar como vistas</field>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="model_media" />
+            <field name="state">code</field>
+            <field name="code">self.mark_as_seen(cr, uid, context.get('active_ids', []), context=context)</field>
+        </record> -->
+
+		<!-- Ejemplo de llamada a accion de servidor 
+        <record model="ir.values" id="action_media_mark_as_seen">
+            <field name="name">Marcar como vistas</field>
+            <field name="action_id" ref="action_server_mark_as_seen" />
+            <field name="value" eval="'ir.actions.server,' + str(ref('action_server_mark_as_seen'))" />
+            <field name="key">action</field>
+            <field name="model_id" ref="model_media" />
+            <field name="model">media</field>
+            <field name="key2">client_action_multi</field>
+        </record>-->
+        
+        <!-- Lineas de media -->
+        <!-- De momento solo nos interesa que tenga vista arbol,
+        porque lo vamos a poner para que se pueda editar directamente -->
+		<!-- Ejemplo de vista arbol 
+		<record id='view_media_line_tree' model='ir.ui.view'>
+			<field name='name'>view.media.line.tree</field>
+			<field name='model'>media.line</field>
+			<field name='arch' type='xml'>
+				<tree string='Media' version='7.0' editable='bottom' colors='#FF0000:view==False'>
+					<field name='season' />
+					<field name='name' />
+					<field name='year' />
+					<field name='vo' />
+					<field name='url' />
+					<field name='score' />
+					<field name='view' />
+				</tree>
+			</field>
+		</record>-->
+
+	</data>
+</openerp>

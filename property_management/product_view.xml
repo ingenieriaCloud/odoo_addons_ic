@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_account_analytic_account_search_product" model="ir.ui.view">
+            <field name="name">product_account.analytic.account.search</field>
+            <field name="model">account.analytic.account</field>
+            <field name="arch" type="xml">
+                <search string="Analytic Account">
+                    <field name="name" filter_domain="['|', ('name','ilike',self), ('code','ilike',self)]" string="Analytic Account"/>
+                    <field name="date"/>
+                    <field name="product"/>
+                    <field name="product_owner"/>
+                    <field name="partner_id" operator="child_of"/>
+                    <field name="manager_id"/>
+                    <field name="parent_id"/>
+                    <field name="user_id"/>
+                    <filter string="Open" domain="[('state','=','open')]" help="Current Accounts"/>
+                    <filter string="Pending" domain="[('state','=','pending')]" help="Pending Accounts"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Associated Partner" domain="[]" context="{'group_by':'partner_id'}"/>
+                        <filter string="Type" domain="[]" context="{'group_by':'type'}"/>
+                        <filter string="Template" domain="[]" context="{'group_by':'template_id'}"/>
+                        <filter string="Parent Account" domain="[]" context="{'group_by':'parent_id'}"/>
+                        <filter string="Status" domain="[]" context="{'group_by':'state'}" groups="base.group_no_one"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_open_product_analytic_accounts" model="ir.actions.act_window">
+            <field name="context">{'search_default_product': [active_id], 'default_product': active_id}</field>
+            <field name="name">Contratos</field>
+            <field name="res_model">account.analytic.account</field>
+            <field name="view_id" ref="account.view_account_analytic_account_tree"/>
+            <field name="search_view_id" ref="view_account_analytic_account_search_product"/>
+        </record>
+
+
+        <record id="product_template_form_view_property" model="ir.ui.view">
+            <field name="name">product.template.form.property</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <data>
+	                <xpath expr="//div[@name='buttons']" position="inside">
+                        <button class="oe_inline oe_stat_button" type="action" name="%(action_open_product_analytic_accounts)d" icon="fa-book">
+                            <field string="Contratos" name="accounts_count" widget="statinfo"/>
+                        </button>
+                    </xpath>
+
+                    <!--<div class="oe_right oe_button_box" name="buttons">
+							<button class="oe_inline oe_stat_button" type="object"
+	                           icon="fa-usd"
+	                           context="{'product_id': active_id}"
+	                           name="action_view_account">
+	                           <field string="Contratos" name="accounts_count" widget="statinfo"/>
+	                    	</button>
+						</div>-->
+	                <field name="type" position="before">
+	                	<field name='owner' string='Propietario'/>
+	                </field>
+                </data>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>
