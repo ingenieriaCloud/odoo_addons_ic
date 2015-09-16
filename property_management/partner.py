@@ -25,7 +25,7 @@ class partner(models.Model):
     
     account_owner_ids = fields.One2many('account.analytic.account', 'product_owner', string='Contratos Propietario')
     accounts_owner_count = fields.Integer(string='Total contratos propietario', store=False, compute='_get_accounts_owner_count')
-    
+    owner = fields.Boolean(string='Propietario', default=False)
     
     @api.one
     @api.depends('account_owner_ids')

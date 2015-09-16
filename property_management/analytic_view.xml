@@ -11,7 +11,7 @@
 	                	<field name='product' string='Producto'/>
 	                </field>
 	                <field name="type" position="before">
-	                	<field name='product_owner' string='Propietario'/>
+	                	<field name='product_owner' string='Propietario' domain="[('owner','=',True)]"/>
 	                </field>
 	                <!--<field name="partner_id" position="attributes">
 	                	<attribute name="string">Inquilino</attribute>

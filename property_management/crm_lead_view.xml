@@ -25,7 +25,7 @@
                 <data>
 	                <field name="user_id" position="before">
 	                	<field name='product' string='Producto'/>
-	                	<field name='product_owner' string='Propietario'/>
+	                	<field name='product_owner' string='Propietario' domain="[('owner','=',True)]"/>
 	                </field>
 	                
                 </data>

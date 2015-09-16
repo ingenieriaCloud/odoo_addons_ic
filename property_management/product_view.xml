@@ -57,8 +57,11 @@
 	                           <field string="Contratos" name="accounts_count" widget="statinfo"/>
 	                    	</button>
 						</div>-->
-	                <field name="type" position="before">
-	                	<field name='owner' string='Propietario'/>
+	                <field name="active" position="before">
+	                	<field name='owner' string='Propietario' domain="[('supplier','=',True)]" attrs="{'invisible': [('property', '=', False)]}"/>
+	                </field>
+                    <field name="type" position="before">
+	                	<field name='property'/>
 	                </field>
                 </data>
             </field>

@@ -26,7 +26,7 @@ class product_template(models.Model):
     owner = fields.Many2one('res.partner', string='Propietario')
     account_ids = fields.One2many('account.analytic.account', 'product', string='Contratos')
     accounts_count = fields.Integer(string='Total contratos', store=False, compute='_get_accounts_count')
-    
+    property = fields.Boolean(string='Es una propiedad', default=False)
     
     @api.one
     @api.depends('account_ids')

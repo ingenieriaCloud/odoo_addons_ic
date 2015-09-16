@@ -24,12 +24,12 @@ class crm_lead(models.Model):
     _inherit = 'crm.lead'
     
     product = fields.Many2one('product.template', string='Producto')
-    product_owner = fields.Char(string='Propiertario', store=False, compute='_get_product_owner')
+    product_owner = fields.Many2one('res.partner', string='Propietario')
     
-    @api.one
-    @api.depends('product')
-    def _get_product_owner(self):
-       self.product_owner = self.product.owner.name
+    @api.onchange('product')
+    def _onchange_product(self):
+       if not self.product_owner:
+           self.product_owner = self.product.owner
     
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 
