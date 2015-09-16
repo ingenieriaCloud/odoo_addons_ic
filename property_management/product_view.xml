@@ -2,6 +2,7 @@
 <openerp>
     <data>
 
+        <!-- INICIO: CONTRATOS -->
         <record id="view_account_analytic_account_search_product" model="ir.ui.view">
             <field name="name">product_account.analytic.account.search</field>
             <field name="model">account.analytic.account</field>
@@ -35,7 +36,71 @@
             <field name="view_id" ref="account.view_account_analytic_account_tree"/>
             <field name="search_view_id" ref="view_account_analytic_account_search_product"/>
         </record>
+        <!-- FIN: CONTRATOS -->
 
+        <!-- INICIO: OPORTUNIDADES -->
+        <record id="view_crm_case_opportunities_filter_product" model="ir.ui.view">
+            <field name="name">CRM - Opportunities Search</field>
+            <field name="model">crm.lead</field>
+            <field name="arch" type="xml">
+                <search string="Search Opportunities">
+                    <field name="name" string="Opportunity" filter_domain="['|','|','|',('partner_id','ilike',self),('partner_name','ilike',self),('email_from','ilike',self),('name', 'ilike', self)]"/>
+                    <field name="categ_ids" string="Tag" filter_domain="[('categ_ids', 'ilike', self)]"/>
+                    <field name="section_id" groups="base.group_multi_salesteams"/>
+                    <field name="user_id"/>
+                    <field name="partner_id" operator="child_of"/>
+                    <field name="stage_id" domain="[]"/>
+                    <field name="probability"/>
+                    <field name="product"/>
+                    <separator/>
+                    <filter string="New" name="new"
+                            domain="['&amp;', ('stage_id.probability', '=', 0), ('stage_id.sequence', '&lt;=', 1)]"/>
+                    <filter string="Won" name="won"
+                            domain="['&amp;', ('stage_id.probability', '=', 100), ('stage_id.fold', '=', True)]"/>
+                    <filter string="Lost" name="lost"
+                            domain="['&amp;', ('stage_id.probability', '=', 0), ('stage_id.fold', '=', True)]"/>
+                    <separator/>
+                    <filter string="My Opportunities" name="assigned_to_me"
+                            domain="[('user_id', '=', uid)]"
+                            help="Opportunities that are assigned to me"/>
+                    <filter string="Unassigned" name="unassigned"
+                            domain="[('user_id','=', False)]" help="No salesperson"/>
+                    <separator/>
+                    <filter string="New Mail" name="message_unread" domain="[('message_unread','=',True)]"/>
+                    <group expand="0" string="Group By" colspan="16">
+                        <filter string="Salesperson" context="{'group_by':'user_id'}"/>
+                        <filter string="Sales Team" context="{'group_by':'section_id'}" groups="base.group_multi_salesteams"/>
+                        <filter string="Country" context="{'group_by':'country_id'}" />
+                        <filter string="Company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                        <filter string="Stage" context="{'group_by':'stage_id'}"/>
+                        <filter string="Campaign" domain="[]" context="{'group_by':'campaign_id'}"/>
+                        <filter string="Channel" domain="[]" context="{'group_by':'medium_id'}"/>
+                        <filter string="Source" domain="[]" context="{'group_by':'source_id'}"/>
+                        <separator orientation="vertical" />
+                        <filter string="Creation Month" context="{'group_by':'create_date:month'}" name="month"/>
+                        <filter string="Expected Closing" context="{'group_by':'date_deadline'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_open_product_leads" model="ir.actions.act_window">
+            <field name="name">Oportunidades</field>
+            <field name="res_model">crm.lead</field>
+            <field name="domain">[('type','=','opportunity')]</field>
+            <field name="context">{
+                'stage_type': 'opportunity',
+                'default_type': 'opportunity',
+                'default_user_id': uid,
+                'search_default_product': [active_id],
+                'default_product': active_id
+            }
+            </field>
+            <field name="view_id" eval="False"/>
+            <field name="search_view_id" ref="view_crm_case_opportunities_filter_product"/>
+        </record>
+
+        <!-- FIN: OPORTUNIDADES -->
 
         <record id="product_template_form_view_property" model="ir.ui.view">
             <field name="name">product.template.form.property</field>
@@ -46,6 +111,10 @@
 	                <xpath expr="//div[@name='buttons']" position="inside">
                         <button class="oe_inline oe_stat_button" type="action" name="%(action_open_product_analytic_accounts)d" icon="fa-book">
                             <field string="Contratos" name="accounts_count" widget="statinfo"/>
+                        </button>
+
+                        <button class="oe_inline oe_stat_button" type="action" name="%(action_open_product_leads)d" icon="fa-star">
+                            <field string="Oportunidades" name="leads_count" widget="statinfo"/>
                         </button>
                     </xpath>
 

@@ -27,14 +27,24 @@ class product_template(models.Model):
     account_ids = fields.One2many('account.analytic.account', 'product', string='Contratos')
     accounts_count = fields.Integer(string='Total contratos', store=False, compute='_get_accounts_count')
     property = fields.Boolean(string='Es una propiedad', default=False)
-    
+
+    leads_ids = fields.One2many('crm.lead', 'product', string='Oportunidades')
+    leads_count = fields.Integer(string='Total Oportunidades', store=False, compute='_get_leads_count')
+
     @api.one
     @api.depends('account_ids')
     def _get_accounts_count(self):
         domain = [('product', '=', self.id)]
         count = self.env['account.analytic.account'].search_count(domain)
         self.accounts_count = count
-    
+
+    @api.one
+    @api.depends('leads_ids')
+    def _get_leads_count(self):
+        domain = [('product', '=', self.id)]
+        count = self.env['crm.lead'].search_count(domain)
+        self.leads_count = count
+
     #def action_view_account(self, cr, uid, ids, context=None):
     #    result = self.pool['ir.model.data'].xmlid_to_res_id(cr, uid, 'account.view_account_analytic_account_list', raise_if_not_found=True)
     #    result = self.pool['ir.actions.act_window'].read(cr, uid, [result], context=context)[0]
