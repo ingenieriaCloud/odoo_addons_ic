@@ -25,9 +25,10 @@
                             <field string="Contratos Propietario" name="accounts_owner_count" widget="statinfo"/>
                         </button>
                     </xpath>
-                    <field name="website" position="after">
-                        <field name="owner"/>
-                    </field>
+
+                    <xpath expr="//notebook/page[@name='sales_purchases']/group/group/field[@name='supplier']" position="after">
+                        <field name="owner" string="Es Propietario"/>
+                    </xpath>
                 </data>
             </field>
         </record>
