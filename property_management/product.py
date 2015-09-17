@@ -45,6 +45,11 @@ class product_template(models.Model):
         count = self.env['crm.lead'].search_count(domain)
         self.leads_count = count
 
+    @api.onchange('property')
+    def _onchange_property(self):
+       if self.property:
+           self.type = 'service'
+
     #def action_view_account(self, cr, uid, ids, context=None):
     #    result = self.pool['ir.model.data'].xmlid_to_res_id(cr, uid, 'account.view_account_analytic_account_list', raise_if_not_found=True)
     #    result = self.pool['ir.actions.act_window'].read(cr, uid, [result], context=context)[0]
