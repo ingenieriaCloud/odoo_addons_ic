@@ -127,7 +127,7 @@
 	                    	</button>
 						</div>-->
 	                <field name="active" position="before">
-	                	<field name='owner' string='Propietario' domain="[('supplier','=',True)]" attrs="{'invisible': [('property', '=', False)]}"/>
+	                	<field name='owner' string='Propietario' domain="[('owner','=',True)]" attrs="{'invisible': [('property', '=', False)]}"/>
 	                </field>
                     <field name="type" position="before">
 	                	<field name='property'/>

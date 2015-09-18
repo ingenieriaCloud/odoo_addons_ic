@@ -28,6 +28,7 @@ No debe hacerse como factura ya que la inmobiliaria no vende estos consumibles n
         'crm_lead_view.xml',
         'data/recibos_data.xml',
         'partner_view.xml',
+        'menu/recibos_menu.xml'
     ],
     'auto_install': False,
     'installable': True,

@@ -8,8 +8,8 @@
             <field name="arch" type="xml">
                 <data>
 	                <field name="user_id" position="before">
-	                	<field name='product' string='Producto'/>
-	                	<field name='product_owner' string='Propietario'/>
+	                	<field name='product' string='Producto' domain="[('property','=',True)]"/>
+	                	<field name='product_owner' string='Propietario' domain="[('owner','=',True)]"/>
 	                </field>
 	               
                 </data>
@@ -24,7 +24,7 @@
             <field name="arch" type="xml">
                 <data>
 	                <field name="user_id" position="before">
-	                	<field name='product' string='Producto'/>
+	                	<field name='product' string='Producto' domain="[('property','=',True)]"/>
 	                	<field name='product_owner' string='Propietario' domain="[('owner','=',True)]"/>
 	                </field>
 	                

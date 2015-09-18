@@ -103,14 +103,6 @@
 			<field name="tag">mail.all_feeds</field>
 		</record>
 
-        <!-- Ejemplo de creacion de menus -->
-		<menuitem name="Inmobiliaria" id="menu_recibos_main" sequence="25" />
-			<menuitem name="Gestion Inmobiliaria" id="menu_recibos_sub" sequence="1" parent="menu_recibos_main" />
-				<menuitem id="menu_recibos_recibos" sequence="1" parent="menu_recibos_sub" action="action_recibos" />
-                <menuitem id="menu_recibos_viviendas" sequence="2" parent="menu_recibos_sub" action="product.product_template_action" />
-                <!--<menuitem id="menu_recibos_clientes" sequence="3" parent="menu_recibos_sub" action="product.product_template_action" />-->
-
-
 		<!-- Ejemplo de accion de servidor
         <record id="action_server_mark_as_seen" model="ir.actions.server">
             <field name="name">Marcar como vistas</field>
