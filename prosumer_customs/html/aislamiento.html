@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="iso8859-1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Prosumer - Calculadora</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <!--COPIAR DESDE AQUI -->
+	<div class="container">
+		<h1 style="background: #1ABC9C;color: white;padding: 20px;">
+        <!--<input type="button" class="btn btn-primary btn-xs" style="background-color: #1ABC9C" value=" + Ver" onclick="toggleData()" id="btn_toggle"/>-->
+        	Calcula tus metros de aislamiento:
+        </h1>
+		<div class="col-md-12" id="data">
+			<div class="col-md-12"></div>
+		
+			<div class="row" style="padding-bottom:10px;">
+				<div class="col-md-3 col-xs-2"></div>			
+				<div class="col-md-7 col-xs-8">
+					<b>Altura Vivienda (m):&#160;</b><input type="text" style="max-width: 100px;" id="alto" onchange="recalculeDataAislamiento(this);">
+				</div>
+				<div class="col-md-1 col-xs-1">
+					<input type="button" class="btn btn-primary btn-xs pull-right" value=" + A&ntilde;adir Pared" onclick="addElementAislamiento();"/>
+				</div>
+				<div class="col-md-1 col-xs-1">&#160;</div>
+			</div>
+		
+			<!--Cabecera-->
+			<div class="row">
+				<div class="col-md-3 col-xs-2"></div>
+				<div class="col-md-4 col-xs-6">Largo(m)</div>
+			</div>
+		
+			<!--Fila-->
+			<div class="row" style="padding-top:10px;" id="zona_f_1">
+				<div class="col-md-3 col-xs-2" style="text-align: right;">Pared</div>
+				<div class="col-md-2 col-xs-3"><input type="text" style="max-width: 100px;" id="largo_f1" onchange="recalculeDataAislamiento(this);"/></div>
+			</div>
+		
+			<div id="elementsAislamiento"></div>
+		
+			<div class="row" id="totals" style="padding-top:20px;">
+				<div class="col-md-5 col-xs-6" style="text-align:right"><b>Total(m<sup>2</sup>):</b></div>
+				<div class="col-md-7 col-xs-6" id="totalAislamiento" style="font-weight:bold">--</div>
+			</div>
+
+		</div>
+	</div>
+    <!--COPIAR HASTA AQUI -->
+
+
+	
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed 
+    <script src="js/bootstrap.min.js"></script>-->
+    <script src="js/bootstrap.js"></script>
+    <script src="js/calculators.js"></script>
+  </body>
+</html>
