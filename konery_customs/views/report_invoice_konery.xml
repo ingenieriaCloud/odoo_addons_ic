@@ -127,8 +127,8 @@
             <table class="table table-bordered">
                 <thead>
                     <tr style="background-color:#EEEEEE;">
-                        <th>Code</th>
-                        <th>Name</th>
+                        <th>Código</th>
+                        <th>Descripción</th>
                         <th>Quantity</th>
                         <th class="text-right">Unit Price</th>
                         <th class="text-right" groups="sale.group_discount_per_so_line">Discount (%)</th>
@@ -149,7 +149,7 @@
                         </td>
                         <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount"/></td>
                         <td class="text-right">
-                            <span t-esc="', '.join(map(lambda x: x.description, l.invoice_line_tax_id))"/>
+                           <span t-esc="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/>
                         </td>
                         <td class="text-right">
                             <span t-field="l.price_subtotal"
@@ -158,59 +158,6 @@
                     </tr>
                 </tbody>
             </table>
-
-            <!--<div class="row">
-                <div class="col-xs-4 pull-right">
-                    <table class="table table-bordered">
-                        <tr>
-                            <td><strong>Total Without Taxes</strong></td>
-                            <td class="text-right">
-                                <span t-field="o.amount_untaxed" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Taxes</td>
-                            <td class="text-right">
-                                <span t-field="o.amount_tax" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
-                            </td>
-                        </tr>
-                        <tr class="border-black">
-                            <td><strong>Total</strong></td>
-                            <td class="text-right">
-                                 <span t-field="o.amount_total" t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>-->
-
-            <div class="row" t-if="o.tax_line">
-                adf
-                <div class="col-xs-6">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Tax</th>
-                                <th class="text-right">Base</th>
-                                <th class="text-right">Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr t-foreach="o.tax_line" t-as="t">
-                                <td><span t-field="t.name"/></td>
-                                <td class="text-right">
-                                    <span t-field="t.base"
-                                        t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
-                                </td>
-                                <td class="text-right">
-                                    <span t-field="t.amount"
-                                        t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>-->
 
             <div class="row">
                 <div class="col-xs-6 pull-right">
@@ -239,7 +186,34 @@
                 </div>
             </div>
 
-            <!--<p t-if="o.comment">
+            <div class="row" t-if="o.tax_line">
+                <div class="col-xs-6 pull-right">
+                    <table class="table table-bordered"  width="60%" align="right">
+                        <thead>
+                            <tr>
+                                <th style="background-color: #EEEEEE; font-weight:bold;">Tax</th>
+                                <th class="text-right" style="background-color: #EEEEEE; font-weight:bold;">Base</th>
+                                <th class="text-right" style="background-color: #EEEEEE; font-weight:bold;">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="o.tax_line" t-as="t">
+                                <td><span t-field="t.name"/></td>
+                                <td class="text-right">
+                                    <span t-field="t.base"
+                                        t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                </td>
+                                <td class="text-right">
+                                    <span t-field="t.amount"
+                                        t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <p t-if="o.comment">
                 <strong>Comment:</strong>
                 <span t-field="o.comment"/>
             </p>
@@ -250,7 +224,7 @@
             <p t-if="o.fiscal_position.note">
                 <strong>Fiscal Position Remark:</strong>
                 <span t-field="o.fiscal_position.note"/>
-            </p>-->
+            </p>
 
              <div class="row" style="margin-top:30px">
                  <div class="col-xs-6 pull-right">
@@ -261,11 +235,11 @@
                            </tr>
                            <tr>
                              <td style="padding-left: 10px; background-color: #EEEEEE; font-weight:bold;">IBAN</td>
-                             <td style="padding-left: 10px;">2100 5815 42 0200061608-
-                                 <t t-set="i" t-value="1"/>
-                                 <t t-foreach="o.company_id.bank_ids" t-as="j">
-                                     <span t-field="j.acc_number" t-if="i==1"/>
-                                     <t t-set="i" t-value="i+1"/>
+                             <td style="padding-left: 10px;">
+                                 <t t-foreach="o.company_id.bank_ids" t-as="bank">
+                                     <t t-if="bank_first">
+                                        <span t-field="bank.acc_number"/>
+                                     </t>
                                  </t>
                              </td>
                            </tr>
