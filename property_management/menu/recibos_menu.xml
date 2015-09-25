@@ -33,4 +33,5 @@
                 <menuitem name="Propietarios" id="menu_recibos_propietarios" sequence="3" parent="menu_recibos_sub" action="action_partner_owner_form" />
 
 	</data>
+
 </openerp>

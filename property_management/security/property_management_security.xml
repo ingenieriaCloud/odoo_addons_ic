@@ -13,6 +13,7 @@
         <field name="category_id" ref="module_category_group_recibos"/>
         <field name="users" eval="[(4, ref('base.user_root'))]"/>
     </record>
+
 </data>
 
 </openerp>

@@ -34,4 +34,5 @@ No debe hacerse como factura ya que la inmobiliaria no vende estos consumibles n
     ],
     'auto_install': False,
     'installable': True,
+
 }
