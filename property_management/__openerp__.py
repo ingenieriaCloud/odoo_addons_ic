@@ -22,6 +22,8 @@ No debe hacerse como factura ya que la inmobiliaria no vende estos consumibles n
     """,
     'website': '',
     'data': [
+        'security/property_management_security.xml',
+        'security/ir.model.access.csv',
         'recibos_view.xml',
         'product_view.xml',
         'analytic_view.xml',

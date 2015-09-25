@@ -67,6 +67,9 @@ class recibos(models.Model):
     account_product_owner = fields.Char(string='Propietario', store=False, compute='_get_account_product_owner')
     account_product_tenant = fields.Char(string='Inquilino', store=False, compute='_get_account_product_tenant')
 
+    is_pendiente_cobrar = fields.Boolean(string='¿Esta Pendiente de cobrar?', store=False, compute='_is_pendiente_cobro')
+    is_pendiente_pagar = fields.Boolean(string='¿Esta Pendiente de pagar a propiertario?', store=False, compute='_is_pendiente_pago')
+
     @api.one
     @api.depends('importe', 'cobrado')
     def _get_importe_pendiente(self):
@@ -89,6 +92,26 @@ class recibos(models.Model):
     @api.depends('account_id')
     def _get_account_product_tenant(self):
         self.account_product_tenant = self.account_id.partner_id.name
+
+
+    @api.one
+    @api.depends('importe', 'cobrado')
+    def _is_pendiente_cobro(self):
+        if self.pendiente > 0 :
+            self.is_pendiente_cobrar = True
+        else:
+            self.is_pendiente_cobrar = False
+
+
+    @api.one
+    @api.depends('importe', 'cobrado', 'pagado')
+    def _is_pendiente_pago(self):
+        if self.pendiente == 0 and self.pagado == False:
+            self.is_pendiente_pagar = True
+        else:
+            self._is_pendiente_cobro = False
+
+
 
     #def marcar_como_pagado(self, cr, uid, ids, context = None):
     #    osv.logging.log(100, "[Recibos] marcar_como_pagado:recibos:recibo (%s)" % (uid))

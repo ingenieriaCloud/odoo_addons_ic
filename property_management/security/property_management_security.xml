@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+
+    <record id="module_category_group_recibos" model="ir.module.category">
+        <field name="name">Recibos</field>
+        <field name="description">Gestión Inmobiliaria - Recibos</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="group_recibos" model="res.groups">
+        <field name="name">Recibos</field>
+        <field name="category_id" ref="module_category_group_recibos"/>
+        <field name="users" eval="[(4, ref('base.user_root'))]"/>
+    </record>
+</data>
+
+</openerp>
