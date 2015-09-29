@@ -1,0 +1,22 @@
+<openerp>
+    <data>
+
+        <template id="display_anoymous_prosumer_customs" inherit_id="website_anonymous_hide_prices_customs.display_anoymous">
+            <xpath expr="//div[@class='jumbotron mt16 mb16']" position="replace">
+                <div t-if="user_id.partner_id.name == 'Public user'" class="mt16 mb16" data-oe-model="ir.ui.view" data-oe-field="arch" data-oe-xpath="/t[1]/t[1]/div[1]/div[1]" style="background-color: #41b6ab;color: white;">
+                    <section class="mb0 mt4">
+                        <div class="container">
+                            <h2>Bienvenido al Comercio Electrónico de prosumer.es</h2>
+                            <p>Desde aquí podrás ver los productos y configuradores que hemos diseñado para tí.</p>
+                            <p>Para poder ofrecerte este servicio, guardar tus presupuestos de forma que los puedas recuperar en cualquier momento y mantenerte informado necesitamos que te registres.</p>
+                            <p>Si decides no hacerlo en este momento, no verás los precios y otra información de interés.</p>
+                            <p>
+                                <a class="btn btn-primary btn-lg" data-cke-saved-href="/web/login" href="/web/login">Acceder como usuario</a>
+                            </p>
+                        </div>
+                    </section>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</openerp>
