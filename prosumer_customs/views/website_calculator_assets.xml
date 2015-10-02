@@ -6,5 +6,11 @@
                 <script type="text/javascript" src="/prosumer_customs/static/src/js/calculators.js"></script>
             </xpath>
         </template>
+
+         <template id="assets_frontend" name="website_calculator_assets" inherit_id="website.assets_frontend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/prosumer_customs/static/src/js/website_sale.js"></script>
+            </xpath>
+        </template>
     </data>
 </openerp>
