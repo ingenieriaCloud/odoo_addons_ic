@@ -6,7 +6,7 @@
 {
     'name' : 'Prosumer Customs',
     'version': '1.0',
-    'depends': ['website_anonymous_hide_prices_customs'],
+    'depends': ['website_anonymous_hide_prices_customs', 'product_attribute_value_image', 'website_multi_image_zoom'],
     'author': 'Ingeniería Cloud',
     'website':'http://ingenieriacloud.com',
     'category': 'Ingeniería Cloud',

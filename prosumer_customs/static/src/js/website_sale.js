@@ -50,6 +50,7 @@ $('.oe_website_sale').each(function () {
                 var $img = $(this).closest('tr.js_product, .oe_website_sale').find('span[data-oe-model^="product."][data-oe-type="image"] img:first, img.product_detail_img');
                 if(showAlerts) alert("antigua imagen:" + $img.attr("src"));
                 $img.attr("src", "/web/binary/image?model=product.attribute.value&field=image&id="+ $(this).val());
+                $img.attr("style", "");
                 $img.parent().attr('data-oe-model', 'product.attribute.value').attr('data-oe-id', $(this).val())
                     .data('oe-model', 'product.attribute.value').data('oe-id', $(this).val());
             }
