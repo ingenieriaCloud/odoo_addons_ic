@@ -1,7 +1,7 @@
 $(document).ready(function () {
 $('.oe_website_sale').each(function () {
     var oe_website_sale = this;
-    var showAlerts = true;
+    var showAlerts = false;
 
     function price_to_str(price) {
         price = Math.round(price * 100) / 100;
