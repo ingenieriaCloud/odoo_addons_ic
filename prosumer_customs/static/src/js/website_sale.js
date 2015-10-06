@@ -48,9 +48,13 @@ $('.oe_website_sale').each(function () {
             if(showAlerts) alert("$this ID: " + $(this).val());
             if (product_id) {
                 var $img = $(this).closest('tr.js_product, .oe_website_sale').find('span[data-oe-model^="product."][data-oe-type="image"] img:first, img.product_detail_img');
+                if(!$img || $img.length == 0){
+                    $img = $(".img.img-responsive.img_set");
+                }
                 if(showAlerts) alert("antigua imagen:" + $img.attr("src"));
                 $img.attr("src", "/website/image/product.attribute.value/"+ $(this).val()+"/image");
-                $img.attr("style", "hola");
+                //$img.attr("src", "/web/binary/image?model=product.attribute.value&field=image&id="+ $(this).val());
+                $img.attr("style", "");
                 $img.parent().attr('data-oe-model', 'product.attribute.value').attr('data-oe-id', $(this).val())
                     .data('oe-model', 'product.attribute.value').data('oe-id', $(this).val());
             }
