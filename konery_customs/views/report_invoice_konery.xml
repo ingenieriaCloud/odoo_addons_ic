@@ -36,7 +36,7 @@
                                     <b>Número:</b>
                                 </td>
                                 <td>
-                                    <p t-field="o.reference"/>
+                                    <p t-field="o.number"/>
                                 </td>
                             </tr>
                             <tr>
