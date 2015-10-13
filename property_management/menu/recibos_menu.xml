@@ -24,13 +24,33 @@
 
         <!-- Ejemplo de creacion de menus -->
 		<menuitem name="Inmobiliaria" id="menu_recibos_main" sequence="25" />
-			<menuitem name="Gestion Inmobiliaria" id="menu_recibos_sub" sequence="1" parent="menu_recibos_main" />
-				<menuitem name="Recibos" id="menu_recibos_recibos" sequence="1" parent="menu_recibos_sub" action="property_management.action_recibos" />
+			<menuitem name="Recibos" id="menu_recibos_sub" sequence="1" parent="menu_recibos_main" />
+				<menuitem name="Todos" id="menu_recibos_recibos" sequence="1" parent="menu_recibos_sub" action="property_management.action_recibos" />
+                <menuitem name="Cobros a clientes" id="menu_recibos_recibos_cobros" sequence="1" parent="menu_recibos_sub" action="property_management.action_recibos" />
+                <menuitem name="Pagos a propietarios" id="menu_recibos_recibos_pagos" sequence="2" parent="menu_recibos_sub" action="property_management.action_recibos" />
 
-                <menuitem name="Inmuebles" id="menu_recibos_inmuebles" sequence="2" parent="menu_recibos_sub" action="product_template_properties_action" />
-                <!--<menuitem id="menu_recibos_clientes" sequence="3" parent="menu_recibos_sub" action="product.product_template_action" />-->
+            <menuitem name="Contactos" id="menu_contactos_sub" sequence="2" parent="menu_recibos_main" />
+                <menuitem name="Inquilinos" id="menu_recibos_contactos_inquilinos" sequence="1" parent="menu_contactos_sub" action="action_partner_owner_form" />
+                <menuitem name="Propietarios" id="menu_recibos_contactos_propietarios" sequence="2" parent="menu_contactos_sub" action="action_partner_owner_form" />
 
-                <menuitem name="Propietarios" id="menu_recibos_propietarios" sequence="3" parent="menu_recibos_sub" action="action_partner_owner_form" />
+            <menuitem name="Inmuebles" id="menu_inmuebles_sub" sequence="3" parent="menu_recibos_main" />
+                <menuitem name="Para alquiler" id="menu_recibos_inmuebles_alquiler" sequence="1" parent="menu_inmuebles_sub" action="product_template_properties_action" />
+                <menuitem name="Para venta" id="menu_recibos_inmuebles_venta" sequence="2" parent="menu_inmuebles_sub" action="product_template_properties_action" />
+
+
+            <menuitem name="Gestión" id="menu_gestion_sub" sequence="4" parent="menu_recibos_main" />
+                <menuitem name="Captación de Inmuebles" id="menu_recibos_gestion_captacion" sequence="1" parent="menu_gestion_sub" action="project.action_view_task" />
+                <menuitem name="Gestión de alquileres" id="menu_recibos_gestion_alquiler" sequence="2" parent="menu_gestion_sub" action="project.action_view_task" />
+
+
+            <menuitem name="Contratos" id="menu_contratos_sub" sequence="5" parent="menu_recibos_main" />
+                <menuitem name="Todos" id="menu_recibos_contratos_todos" sequence="1" parent="menu_contratos_sub" action="account_analytic_analysis.action_account_analytic_overdue_all" />
+                <menuitem name="Próximo vencimiento" id="menu_recibos_contratos_vencimiento" sequence="2" parent="menu_contratos_sub" action="account_analytic_analysis.action_account_analytic_overdue" />
+
+
+        <!--<menuitem id="menu_recibos_clientes" sequence="3" parent="menu_recibos_sub" action="product.product_template_action" />-->
+
+
 
 	</data>
 

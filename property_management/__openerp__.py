@@ -7,7 +7,7 @@
     'name' : 'Gestión Inmobiliaria Odoo',
     'version': '1.0',
     'depends': [
-        'base', 'mail', 'product', 'crm'
+        'base', 'mail', 'product', 'crm', 'project'
     ],
     'author': 'Ingeniería Cloud',
     'website':'http://ingenieriacloud.com',
