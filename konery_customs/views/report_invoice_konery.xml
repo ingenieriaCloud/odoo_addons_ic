@@ -10,7 +10,7 @@
                     <address t-field="o.partner_id"
                         t-field-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}' />-->
                     <h2 style="margin-top: 0px;">Konery Eficiencia Energética S.L.</h2>
-                    Konery Eficiencia Energética S.L.<br/>
+                    <!--Konery Eficiencia Energética S.L.<br/>-->
                     Avenida Teniento Montesinos 10, 8o B (Torre Godoy)<br/>
                     30100 Murcia, Murcia<br/>
                     B73704405
