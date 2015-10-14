@@ -57,6 +57,7 @@ $('.oe_website_sale').each(function () {
                 $img.attr("style", "");
                 $img.parent().attr('data-oe-model', 'product.attribute.value').attr('data-oe-id', $(this).val())
                     .data('oe-model', 'product.attribute.value').data('oe-id', $(this).val());
+
             }
 
             $parent.find("input.js_variant_change_ic:radio, select.js_variant_change_ic").each(function () {
