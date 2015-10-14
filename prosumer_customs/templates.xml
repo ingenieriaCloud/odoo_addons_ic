@@ -130,7 +130,7 @@
                 <div class="container mt16 mb8" style="background-color: #41b6ab; color: white;width: 100%;padding:10px">
                     <div class="row">
                         <div class="pull-left text-muted">
-                            Copyright <span t-field="res_company.name">Company name</span>
+                            Copyright &#169; <span t-field="res_company.name">Company name</span>
                         </div>
                     </div>
                     <div class="row">
