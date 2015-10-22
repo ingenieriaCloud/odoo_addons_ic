@@ -74,13 +74,16 @@
 			<field name='name'>view.recibos.search</field>
 			<field name='model'>recibos</field>
 			<field name='arch' type='xml'>
-				<search string='Busqueda de Recibos' version='7.0'>
+				<search string='Busqueda de Recibos'>
 					<field name='concepto' />
 					<field name='importe' />
 					
-					<filter string='Pagado' name='pay' domain="[('pagado', '=', True)]" />
-					<filter string='No Pagado' name='unpay' domain="[('pagado', '=', False)]" />
-					
+					<!--<filter string='Pagado' name='pay' domain="[('pagado', '=', True)]" />
+					<filter string='No Pagado' name='unpay' domain="[('pagado', '=', False)]" />-->
+
+                    <filter string="Pendiente de Cobro" name="pendiente_cobrar" domain="[('is_pendiente_cobrar','=',True)]"/>
+                    <filter string="Pendiente de Pago" name="pendiente_pagar" domain="[('is_pendiente_cobrar','=',False), ('is_pendiente_pagar','=',True)]"/>
+
 					<group expand="1" string="Group by">
 						<filter name='group_by_contract' string='Contrato' context="{'group_by':'account_id'}" />
                         <filter name='group_by_product' string='Product' context="{'group_by':'account_product'}" />
