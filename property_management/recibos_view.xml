@@ -52,6 +52,7 @@
 			</field>
 		</record>
 
+
 		<!-- Ejemplo de vista arbol -->
 		<record id='view_recibos_tree' model='ir.ui.view'>
 			<field name='name'>view.recibos.tree</field>

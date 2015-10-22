@@ -36,6 +36,7 @@ class recibos(models.Model):
         },
     }
 
+
     _mail_post_access = 'read'
     
     #API VIEJA

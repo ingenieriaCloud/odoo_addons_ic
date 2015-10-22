@@ -11,6 +11,7 @@
             <field name="context">{"search_default_pendiente_cobrar": 1}</field>
             <field name="search_view_id" ref="view_recibos_search"/>
         </record>
+
         <record id="action_recibos_pagos" model="ir.actions.act_window">
             <field name="name">Recibos Pagos</field>
             <field name="type">ir.actions.act_window</field>
