@@ -99,18 +99,18 @@ class recibos(models.Model):
     @api.depends('importe', 'cobrado')
     def _is_pendiente_cobro(self):
         if ((self.importe - self.cobrado) > 0):
-            self.is_pendiente_cobrar = 1
+            self.is_pendiente_cobrar = True
         else:
-            self.is_pendiente_cobrar = 0
+            self.is_pendiente_cobrar = False
 
 
     @api.one
     @api.depends('importe', 'cobrado', 'pagado')
     def _is_pendiente_pago(self):
         if ((self.importe - self.cobrado) == 0 and self.pagado == 0) :
-            self.is_pendiente_pagar = 1
+            self.is_pendiente_pagar = True
         else:
-            self.is_pendiente_pagar = 0
+            self.is_pendiente_pagar = False
 
 
 

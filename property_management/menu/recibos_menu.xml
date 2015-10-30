@@ -18,41 +18,11 @@
             <field name="res_model">recibos</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field name="context">{"search_default_pendiente_pagar": 1}</field>
+            <field name="context">{"search_default_pendiente_pagar" : 1}</field>
             <field name="search_view_id" ref="view_recibos_search"/>
         </record>
 
-        <!--Contactos-->
-        <record id="view_res_partner_owner_filter" model="ir.ui.view">
-            <field name="name">res.partner.owner</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_res_partner_filter" />
-            <field name="arch" type="xml">
-                <filter name="customer" position="after">
-                    <filter string="Owner" name="owner"/>
-                </filter>
-            </field>
-        </record>
-        <record id="action_partner_owner_form" model="ir.actions.act_window">
-            <field name="name">Partners_owner</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">res.partner</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">kanban,tree,form</field>
-            <field name="context">{"search_default_owner": 1}</field>
-            <field name="search_view_id" ref="view_res_partner_owner_filter"/>
-        </record>
-        <record id="action_partner_customers_form" model="ir.actions.act_window">
-            <field name="name">Partners_customers</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">res.partner</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">kanban,tree,form</field>
-            <field name="context">{"search_default_customer": 1}</field>
-            <field name="search_view_id" ref="view_res_partner_owner_filter"/>
-        </record>
-
-        <!--Viviendas-->
+        <!--INMUEBLES-->
         <record id="product_template_search_property_view" model="ir.ui.view">
             <field name="name">product.template.search.property</field>
             <field name="model">product.template</field>
@@ -72,16 +42,24 @@
             <field name="context">{"search_default_property": 1}</field>
             <field name="search_view_id" ref="product_template_search_property_view"/>
         </record>
-         <record id="product_template_properties_sold_action" model="ir.actions.act_window">
-            <field name="name">Products Properties Sold</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">product.template</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">kanban,tree,form</field>
-            <field name="context">{"search_default_property": 1, "search_default_filter_to_sell":1}</field>
-            <field name="search_view_id" ref="product_template_search_property_view"/>
-        </record>
 
+        <!--PROJECT-->
+        <record id="project_task_gestion_alquileres" model="ir.actions.act_window">
+            <field name="name">Gestion Alquiler</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="context">{"search_default_project_id": 0}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+        </record>
+        <record id="project_task_captacion_inmuebles" model="ir.actions.act_window">
+            <field name="name">Captación Inmuebles</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="context">{"search_default_project_id": 1}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+        </record>
 
         <!-- Ejemplo de creacion de menus -->
 		<menuitem name="Inmobiliaria" id="menu_recibos_main" sequence="25" />
@@ -90,18 +68,11 @@
                 <menuitem name="Cobros a clientes" id="menu_recibos_recibos_cobros" sequence="1" parent="menu_recibos_sub" action="action_recibos_cobros" />
                 <menuitem name="Pagos a propietarios" id="menu_recibos_recibos_pagos" sequence="2" parent="menu_recibos_sub" action="action_recibos_pagos" />
 
-            <menuitem name="Contactos" id="menu_contactos_sub" sequence="2" parent="menu_recibos_main" />
-                <menuitem name="Inquilinos" id="menu_recibos_contactos_inquilinos" sequence="1" parent="menu_contactos_sub" action="action_partner_customers_form" />
-                <menuitem name="Propietarios" id="menu_recibos_contactos_propietarios" sequence="2" parent="menu_contactos_sub" action="action_partner_owner_form" />
-
-            <menuitem name="Inmuebles" id="menu_inmuebles_sub" sequence="3" parent="menu_recibos_main" />
-                <menuitem name="Para alquiler" id="menu_recibos_inmuebles_alquiler" sequence="1" parent="menu_inmuebles_sub" action="product_template_properties_action" />
-                <menuitem name="Para venta" id="menu_recibos_inmuebles_venta" sequence="2" parent="menu_inmuebles_sub" action="product_template_properties_sold_action" />
-
-
             <menuitem name="Gestión" id="menu_gestion_sub" sequence="4" parent="menu_recibos_main" />
-                <menuitem name="Captación de Inmuebles" id="menu_recibos_gestion_captacion" sequence="1" parent="menu_gestion_sub" action="project.action_view_task" />
-                <menuitem name="Gestión de alquileres" id="menu_recibos_gestion_alquiler" sequence="2" parent="menu_gestion_sub" action="project.action_view_task" />
+                <menuitem name="Clientes" id="menu_contactos_sub" sequence="1" parent="menu_gestion_sub" action="base.action_partner_form" />
+                <menuitem name="Inmuebles" id="menu_inmuebles_sub" sequence="2" parent="menu_gestion_sub" action="product_template_properties_action"/>
+                <menuitem name="Captación de Inmuebles" id="menu_recibos_gestion_captacion" sequence="3" parent="menu_gestion_sub" action="project_task_captacion_inmuebles" />
+                <menuitem name="Gestión de alquileres" id="menu_recibos_gestion_alquiler" sequence="4" parent="menu_gestion_sub" action="project_task_gestion_alquileres" />
 
 
             <menuitem name="Contratos" id="menu_contratos_sub" sequence="5" parent="menu_recibos_main" />
