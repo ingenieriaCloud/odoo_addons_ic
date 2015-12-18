@@ -63,13 +63,13 @@ class recibos(models.Model):
     
     account_id = fields.Many2one('account.analytic.account', string='Contrato')
 
-    pendiente = fields.Float(string='Importe Pendiente de Cobrar', store=False, compute='_get_importe_pendiente')
+    pendiente = fields.Float(string='Importe Pendiente de Cobrar', store=True, compute='_get_importe_pendiente')
     account_product = fields.Char(string='Vivienda', store=True, compute='_get_account_product')
     account_product_owner = fields.Char(string='Propietario', store=False, compute='_get_account_product_owner')
     account_product_tenant = fields.Char(string='Inquilino', store=False, compute='_get_account_product_tenant')
 
-    is_pendiente_cobrar = fields.Boolean(string='¿Esta Pendiente de cobrar?', store=False, compute='_is_pendiente_cobro')
-    is_pendiente_pagar = fields.Boolean(string='¿Esta Pendiente de pagar a propiertario?', store=False, compute='_is_pendiente_pago')
+    is_pendiente_cobrar = fields.Boolean(string='¿Esta Pendiente de cobrar?', store=True, compute='_is_pendiente_cobro')
+    is_pendiente_pagar = fields.Boolean(string='¿Esta Pendiente de pagar a propiertario?', store=True, compute='_is_pendiente_pago')
 
     @api.one
     @api.depends('importe', 'cobrado')
@@ -104,6 +104,8 @@ class recibos(models.Model):
             self.is_pendiente_cobrar = False
 
 
+    # Este método no se utiliza actualmente. Se mantiene para futuras
+    # revisiones.
     @api.one
     @api.depends('importe', 'cobrado', 'pagado')
     def _is_pendiente_pago(self):
@@ -111,25 +113,4 @@ class recibos(models.Model):
             self.is_pendiente_pagar = True
         else:
             self.is_pendiente_pagar = False
-
-
-
-    #def marcar_como_pagado(self, cr, uid, ids, context = None):
-    #    osv.logging.log(100, "[Recibos] marcar_como_pagado:recibos:recibo (%s)" % (uid))
-        
-        # Modelos
-    #    mMedia = self.pool.get('recibos')
-        
-        # Ejecucion
-    #    mMedia.write(cr, uid, ids, {'pagado': True}, context)
-    
-
-    # -------------------------------------------------------
-    # Mail gateway
-    # -------------------------------------------------------
-    #def message_get_suggested_recipients(self, cr, uid, ids, context=None):
-    #	return super(recibos, self).message_get_suggested_recipients(cr, uid, ids, context=context)
-
-
-
 

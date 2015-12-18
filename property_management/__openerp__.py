@@ -1,13 +1,20 @@
 # -*- coding: utf-8 -*-
 #################################################################
 # antonio.gonzalez                                  #
+#
+# Revisado: 18 diciembre 2015
+# Descripción:
+#   Se ha añadido dependecia con account_analytic_analysis
+#   Se han modificado los campos que necesitan se almacenados para
+#   las búsquedas.
+# Autor: Francisco M. García Claramonte.
 #################################################################
 
 {
     'name' : 'Gestión Inmobiliaria Odoo',
-    'version': '1.0',
+    'version': '1.1',
     'depends': [
-        'base', 'mail', 'product', 'crm', 'project'
+        'base', 'mail', 'product', 'crm', 'project', 'account_analytic_analysis'
     ],
     'author': 'Ingeniería Cloud',
     'website':'http://ingenieriacloud.com',
