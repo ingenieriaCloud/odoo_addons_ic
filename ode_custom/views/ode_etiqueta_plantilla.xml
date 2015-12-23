@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+  <template id="ode_etiqueta_plantilla_document">
+    <!-- <t t-set="company" t-value="res_company"/> -->
+    <div class="page">
+
+      <div class="row" style="font-size:8pt;">
+	Código: <span t-field="o.code"/><br/>
+	Nombre: <span t-field="o.partner_id.name"/><br/>
+	Teléfono: <span t-field="o.partner_id.phone"/><br/>
+	Observaciones: <span t-field="o.observaciones"/>
+      </div>
+            
+    </div> <!-- page -->
+  </template>
+
+  
+  <template id="ode_etiqueta_plantilla_informe">
+    <t t-call="report.html_container">
+      <t t-foreach="doc_ids" t-as="o">
+            <t t-raw="translate_doc(o, doc_model, 'partner_id.lang', 'ode_custom.ode_etiqueta_plantilla_document')"/>
+        </t>
+    </t>
+</template>
+  
+</data>
+</openerp>

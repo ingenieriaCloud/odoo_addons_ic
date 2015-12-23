@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report 
+            id="report_ode_parte"
+            string="Parte de entrega"
+            model="project.task" 
+            report_type="qweb-pdf"
+            file="ode_custom.ode_parte_plantilla" 
+            name="ode_custom.ode_parte_plantilla_informe" 
+        />
+    </data>
+</openerp>
+

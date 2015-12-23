@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+  <template id="ode_parte_plantilla_document">
+  <!--  <t t-call="report.external_layout">  -->
+      <t t-set="company" t-value="res_company"/>
+      <div class="page">
+	<div class="" style="float:left;">
+          <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 120px;"/>
+        </div>
+
+
+      <div class="row" style="display: inline-block; vertical-align: middle;">
+	<H4>PARTE DE RECEPCIÓN</H4>
+      </div>
+      
+      <div class="row" style="font-size:8pt;">
+	<table class="table table-condensed" style="border:1px solid #000000;">
+	  <tr>
+	    <td style="border:1px solid #000000; background-color: #EEEEEE"> <b>Nombre</b></td>
+	    <td  style="border:1px solid #000000;" colspan="3"><span style="margin-left:10px;" t-field="o.partner_id.name"/></td>
+	  </tr>
+	  <tr>
+	    <td style="border:1px solid #000000; background-color: #EEEEEE"> <b>Teléfono</b></td>
+	    <td style="border:1px solid #000000;" colspan="3"><span style="margin-left:10px;" t-field="o.partner_id.phone"/></td>
+	  </tr>
+	  <tr>
+	    <td style="border:1px solid #000000;background-color: #EEEEEE"> <b>Fecha</b></td>
+	    <td  style="border:1px solid #000000;"><span style="margin-left:10px;" t-field="o.create_date" t-field-options='{"format": "dd/MMM/yyyy"}' /></td>
+	    <td style="border:1px solid #000000; background-color: #EEEEEE"> <b>Clave</b></td>
+	    <td style="border:1px solid #000000;"><span style="margin-left:10px;" t-field="o.clave"/></td>
+	  </tr>
+	  <tr>
+	    <td style="border:1px solid #000000; background-color: #EEEEEE"> <b>Dispositivo</b></td>
+	    <td style="border:1px solid #000000;" colspan="3"><span style="margin-left:10px;" t-field="o.dispositivo"/></td>
+	  </tr>
+	  <tr>
+	    <td style="border:1px solid #000000; background-color: #EEEEEE"> <b>Marca</b></td>
+	    <td style="border:1px solid #000000;"><span style="margin-left:10px;" t-field="o.marca"/></td>
+	    <td style="border:1px solid #000000; background-color: #EEEEEE"> <b>Modelo</b></td>
+	    <td style="border:1px solid #000000;"><span style="margin-left:10px;" t-field="o.modelo"/></td>
+	  </tr>
+	</table>
+      </div>
+      <!--
+      <div class="row" style="font-size:9pt;">
+	<table class="table table-condensed" style="border:1px solid #000000;">
+	  <tr style="border:1px solid #000000;">
+	    <td style="border-right:1px solid #000000; background-color: #EEEEEE"> <b>Dispositivo</b></td>
+	    <td colspan="3"><span style="margin-left:10px;" t-field="o.dispositivo"/></td>
+	  </tr>
+	  <tr style="border:1px solid #000000;">
+	    <td style="border:1px solid #000000; background-color: #EEEEEE"> <b>Marca</b></td>
+	    <td><span style="margin-left:10px;" t-field="o.marca"/></td>
+	    <td style="border:1px solid #000000; background-color: #EEEEEE"> <b>Modelo</b></td>
+	    <td><span style="margin-left:10px;" t-field="o.modelo"/></td>
+	  </tr>
+	</table>
+      </div>
+      -->
+      
+      <div class="row">
+	<table class="table table-condensed" style="border:1px solid #000000; font-size:8pt;">
+	  <thead style="background-color:#EEEEEE;">
+	    <tr style="border:1px solid #000000;">
+	      <th>Descripción</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr>
+	      <td width="70%">
+		<span t-field="o.description"/><br/>
+	      </td>
+	    </tr>
+	  </tbody>
+	</table>
+      </div>
+
+      
+      <div class="row">
+	<table class="table table-condensed" style="border:1px solid #000000; font-size:8pt;">
+	  <thead style="background-color:#EEEEEE;">
+	    <tr style="border:1px solid #000000;">
+	      <th>Reparación</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr>
+	      <td width="70%">
+		<span t-field="o.reparacion"/><br/>
+	      </td>
+	    </tr>
+	  </tbody>
+	</table>
+      </div>
+
+      <div class="row">
+	<table class="table table-condensed" style="border:1px solid #000000; font-size:8pt;">
+	  <tr>
+	    <td style="border:1px solid #000000; background-color: #EEEEEE"> <b>Fecha entrada</b></td>
+	    <td style="border:1px solid #000000;"><span t-field="o.create_date" t-field-options='{"format": "dd/MMM/yyyy"}'/></td>
+	    <td style="border:1px solid #000000; background-color: #EEEEEE"> <b>Fecha estimada reparación</b></td>
+	    <td style="border:1px solid #000000;"><span t-field="o.date_deadline" t-field-options='{"format": "dd/MMM/yyyy"}'/></td>
+	  </tr>
+	  <tr>
+	    <td colspan="2" style="border:1px solid #000000; background-color: #EEEEEE"> <b>Precio final</b></td>
+	    <td colspan="2" style="border:1px solid #000000;"><span t-field="o.precio_venta"/></td>
+	  </tr>
+	</table>
+      </div>
+
+      <div class="row">
+	  <table class="table table-condensed">
+                <thead style="background-color:#dededc;">
+                    <tr>
+                        <th style="border: 1px solid #000000;  font-size:8pt;">Recepcionado</th>
+                        <th style="border: 1px solid #000000;  font-size:8pt;">Cliente</th>
+			<th style="border: 1px solid #000000;  font-size:8pt;">Recogido</th>
+			<th style="border: 1px solid #000000;  font-size:8pt;">Fecha Recogida</th>
+                    </tr>
+                </thead>
+		<tbody>
+		  <tr>
+		    <td style="border: 1px solid #000000"><br/><br/></td>
+		    <td style="border: 1px solid #000000"><br/><br/></td>
+		    <td style="border: 1px solid #000000"><br/><br/></td>
+		    <td style="border: 1px solid #000000"><br/><br/></td>
+		  </tr>
+		  <tr>
+		    <td colspan="4" style="border: 1px solid #000000; font-size:6pt;">
+		      <span t-field="o.condiciones.texto"/>
+		    </td>
+		  </tr>
+		</tbody>
+	  </table>
+      </div>
+      
+    </div> <!-- page -->
+<!--    </t> -->
+  </template>
+
+  
+  <template id="ode_parte_plantilla_informe">
+    <t t-call="report.html_container">
+      <t t-foreach="doc_ids" t-as="o">
+            <t t-raw="translate_doc(o, doc_model, 'partner_id.lang', 'ode_custom.ode_parte_plantilla_document')"/>
+        </t>
+    </t>
+</template>
+  
+</data>
+</openerp>

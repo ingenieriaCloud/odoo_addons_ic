@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<openerp>
+  <data>
+    <record id="view_task_form2_ode" model="ir.ui.view">
+      <field name="name">project.task.form.ode</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_form2"/>
+      <field name="arch" type="xml">
+      <xpath expr="//page[@string='Description']" position="before">
+	<page string="Reparación">
+	  <group>
+	    <group string="Detalles dispositivo">
+	      <field name="dispositivo" placeholder="Nombre de dispositivo"/>
+	      <field name="marca" placeholder="Marca del dispositivo"/>
+	      <field name="modelo" placeholder="Marca del dispositivo"/>
+	      <field name="clave" placeholder="Contraseña del dispositivo"/>
+	    </group>
+	    <group string="Precio">
+	      <field name="precio_aprox" placeholder="Precio aproximado..."/>
+	      <field name="precio_coste" placeholder=""/>
+	      <field name="precio_venta" placeholder=""/>
+	    </group>
+	  </group>
+	  <group>
+	    <group string="Detalles reparación">
+	      <field name="observaciones" placeholder="Comentario breve..."/>
+	      <field name="reparacion" placeholder="Texto descriptivo de la reparación..."/>
+	      <field name="condiciones" placeholder=""/>
+	    </group>
+	  </group>
+	</page>
+      </xpath>
+      </field>
+    </record>
+
+
+    <record id="ode_condiciones_form" model="ir.ui.view">
+      <field name="name">ode.condiciones.form</field>
+      <field name="model">ode.condiciones</field>
+      <field name="arch" type="xml">
+        <form string="Condiciones">
+	  <group>
+	    <field name='name' placeholder="Título de condiciones"/>
+	    <field name='texto' placeholder="Texto de condiciones"/>
+	  </group>
+	</form>
+      </field>
+    </record>
+    
+</data>
+</openerp>
