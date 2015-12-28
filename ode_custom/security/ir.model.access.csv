@@ -1,5 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_ode_dispositivos_group,access_dispositivos_user,model_ode_dispositivos,base.group_user,1,1,1,1
 access_ode_condiciones_group,access_condiciones_user,model_ode_condiciones,base.group_user,1,1,1,1
-access_ode_marcas_group,access_marcas_user,model_ode_marcas,base.group_user,1,1,1,1
-access_ode_task_group,access_ode_task_user,model_ode_task,base.group_user,1,1,1,1
+access_ode_modelos_group,access_modelos_user,model_ode_modelos,base.group_user,1,1,1,1
+

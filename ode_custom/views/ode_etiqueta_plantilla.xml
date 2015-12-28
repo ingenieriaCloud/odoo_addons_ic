@@ -9,7 +9,7 @@
 	Código: <span t-field="o.code"/><br/>
 	Nombre: <span t-field="o.partner_id.name"/><br/>
 	Teléfono: <span t-field="o.partner_id.phone"/><br/>
-	Observaciones: <span t-field="o.observaciones"/>
+	Descripción: <span t-field="o.description"/>
       </div>
             
     </div> <!-- page -->

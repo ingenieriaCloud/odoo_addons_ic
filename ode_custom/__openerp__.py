@@ -19,7 +19,7 @@
 ##############################################################################
 {
    'name': 'Personalización de tareas para gestión de Ode24',
-   'version': '1.0',
+   'version': '1.11',
    'author': 'Ingeniería Cloud',
    'category': 'Ingeniería Cloud',
    'depends': ['project','product_brand','project_task_code'],
@@ -34,7 +34,12 @@ El módulo añade el modelo de datos necesario para gestionar tareas de reparaci
 productos electrónicos.
 Imprime los informes de etiquetas y resguardos de entrega.
 
-Publicado bajo licencia AGPL-v3
+Publicado bajo licencia AGPL-v3.
+
+Copyright (c) 2015-2016 Ingeniería Cloud
+
+Copyright (c) 2015-2016 Francisco Manuel García Claramonte
+
     """,
    'data': [
        'views/ode_custom_view.xml',
@@ -43,6 +48,7 @@ Publicado bajo licencia AGPL-v3
        'views/ode_parte_plantilla.xml',
        'views/ode_etiqueta_report.xml',
        'views/ode_etiqueta_plantilla.xml',
+       'security/ir.model.access.csv',
         ]
 
 }

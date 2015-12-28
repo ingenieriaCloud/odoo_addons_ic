@@ -34,6 +34,14 @@ class modelos(models.Model):
     name = fields.Char(string='Modelo')
 
 
+class ode_project(models.Model):
+    _name = 'project.project'
+    _description = "Proyectos de reparaciones"
+    _inherit = ['project.project']
+
+    tipo_reparacion = fields.Boolean(string='Proyecto de reparación', default=True)
+
+
 class ode_task(models.Model):
     _name = 'project.task'
     _description = 'Tareas personalizadas para Ode24'
@@ -50,6 +58,9 @@ class ode_task(models.Model):
     precio_coste = fields.Float(string='Precio de coste')
     precio_venta = fields.Float(string='Precio de venta')
     condiciones = fields.Many2one('ode.condiciones', string='Condiciones')
+    description1 = fields.Text(string="Descripción", related='description')
+    partner_id1 = fields.Many2one('res.partner',string="Cliente", related='partner_id')
+    tipo_reparacion = fields.Boolean(string="Tarea de reparación", related='project_id.tipo_reparacion')
     
 ode_task()
-    
+ode_project()
