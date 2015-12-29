@@ -46,8 +46,7 @@ class ode_task(models.Model):
     _name = 'project.task'
     _description = 'Tareas personalizadas para Ode24'
     _inherit = ['project.task']
-    
-   
+
     clave = fields.Char(string='Clave acceso', help='Contraseña de acceso al dispositivo')
     dispositivo = fields.Many2one('ode.dispositivos', string='Dispositivo', ondelete='set null', required=False)
     marca = fields.Many2one('product.brand', string='Marca', ondelete='set null')
@@ -57,10 +56,12 @@ class ode_task(models.Model):
     precio_aprox = fields.Char(string='Precio aproximado')
     precio_coste = fields.Float(string='Precio de coste')
     precio_venta = fields.Float(string='Precio de venta')
-    condiciones = fields.Many2one('ode.condiciones', string='Condiciones')
-    description1 = fields.Text(string="Descripción", related='description')
-    partner_id1 = fields.Many2one('res.partner',string="Cliente", related='partner_id')
+    condiciones = fields.Many2one('ode.condiciones', string='Condiciones', default=1)
+    description1 = fields.Text(string="Descripción", related='description', required=True)
+    partner_id1 = fields.Many2one('res.partner',string="Cliente", related='partner_id', required=True)
     tipo_reparacion = fields.Boolean(string="Tarea de reparación", related='project_id.tipo_reparacion')
+
+
     
 ode_task()
 ode_project()

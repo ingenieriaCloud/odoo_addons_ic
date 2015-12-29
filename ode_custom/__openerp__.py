@@ -19,7 +19,7 @@
 ##############################################################################
 {
    'name': 'Personalización de tareas para gestión de Ode24',
-   'version': '1.11',
+   'version': '1.16',
    'author': 'Ingeniería Cloud',
    'category': 'Ingeniería Cloud',
    'depends': ['project','product_brand','project_task_code'],
