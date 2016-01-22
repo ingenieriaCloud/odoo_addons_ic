@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+      <template id="report_invoice_document">
+	<t t-set="company" t-value="res_company"/>
+	<!--
+	<div class="header" style="border: none">
+          <div class="row" style="border: none">
+	  <table class="table table-condensed">
+              <tr>
+		<td>
+		  <table class="table" style="font-size:11pt;">
+		    <tr>
+		      <td style="color:#027ebc">DESCRIPCIÓN</td>
+		    </tr>
+		    <tr>
+		      <td style="border: 1 solid #027ebc">
+			<p t-field="o.name"/>
+		      </td>
+		    </tr>
+		  </table>
+		</td>
+		<td style="width:50%;float:right;margin-left:20px">
+	     <div class="col-xs-12" style="display: inline-block; vertical-align: middle;">
+	       <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 70px;"/><br/>
+	     </div>
+	     <div class="col-xs-12" style="font-size:11pt;">
+	       <span t-field="company.name"/><br/>
+	       <span t-field="company.street"/><br/>
+	       <span t-field="company.zip"/> - <span t-field="company.city"/> - Murcia<br/>
+	       <span t-field="company.vat"/><br/>
+	     </div>
+		</td>
+	      </tr>
+	  </table>
+	</div>
+	</div>
+	-->
+      
+	<div class="page" style="margin-top:20px;">
+	  <div class="row" style="">
+	    
+	    <div class="col-xs-6" style="font-size:11pt;">
+	     <table class="table-condensed" style="font-size:11pt;float:left;width:100%">
+	       <tr>
+		 <td style="color:#027ebc">DESCRIPCIÓN</td>
+	       </tr>
+	       <tr>
+		 <td colspan="2" style="border: 1 solid #027ebc">
+		   <p t-field="o.name"/>
+		 </td>
+	       </tr>
+	       <tr>
+		 <td style="color:#027ebc">
+		   <span style="color:#027ebc;" t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">FACTURA</span>
+		   <span style="color:#027ebc;" t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>
+                   <span style="color:#027ebc;" t-if="o.type == 'out_invoice' and o.state == 'draft'">Factura Borrador</span>
+                   <span style="color:#027ebc;" t-if="o.type == 'out_invoice' and o.state == 'cancel'">Factura Cancelada</span>
+                   <span style="color:#027ebc;" t-if="o.type == 'out_refund'">Devolución</span>
+                   <span t-if="o.type == 'in_refund'">Supplier Refund</span>
+                   <span t-if="o.type == 'in_invoice'">Supplier Invoice</span>
+		 </td>
+	       </tr>
+	       <tr>
+		 <td style="border: 1 solid #027ebc">
+		   <span style="color:#4d4d4d;">Fecha:</span> <strong><span t-field="o.date_invoice"/></strong><br/>
+		   <span style="color:#4d4d4d;">Número:</span> <strong><span t-field="o.number"/></strong><br/>
+		   <span style="color:#4d4d4d;">Vencimiento:</span> <strong><span t-field="o.date_due"/></strong>
+		 </td>
+	       </tr>
+
+	       <tr>
+		 <td style="color:#027ebc">CLIENTE </td>
+	       </tr>
+	       <tr>
+		 <td colspan="2" style="border: 1 solid #027ebc">
+		   <span t-if="o.partner_id.name" style="color:#4d4d4d;">Razón social:</span> <strong><span t-field="o.partner_id.name"/></strong><br/>
+		   <span style="color:#4d4d4d;">Dirección:</span>
+		   <strong><address t-field="o.partner_id" t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />
+                   <span t-if="o.partner_id.vat" style="color:#4d4d4d;"> CIF:</span> <span t-field="o.partner_id.vat"/>
+		   </strong>
+		 </td>
+	       </tr>
+	     </table>
+	    </div>
+
+	    <div class="col-xs-5" style="float:right;font-size:12pt">
+	      <div style="display: inline-block; vertical-align: middle;">
+		<img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 70px;"/><br/>
+		<span t-field="company.name"/><br/>
+		<span t-field="company.street"/><br/>
+		<span t-field="company.zip"/> - <span t-field="company.city"/> - Murcia<br/>
+		<span t-field="company.vat"/><br/>
+	     </div>
+	    </div>
+	  </div> <!-- row -->
+
+	  <div class="row" style="margin-top:25px">
+	    <table class="table table-condensed" style="top:15px">
+              <thead>
+           <tr>
+             <th style="color:#027ebc">Descripción</th>
+             <th style="color:#027ebc">Cantidad</th>
+             <th style="color:#027ebc" class="text-right">Precio unitario</th>
+             <th style="color:#027ebc" class="text-right" groups="sale.group_discount_per_so_line">Descuento (%)</th>
+             <th style="color:#027ebc" class="text-right">IVA</th>
+             <th style="color:#027ebc" class="text-right">Importe</th>
+           </tr>
+         </thead>
+	 <tbody class="invoice_tbody">
+	    <t t-foreach="o.sale_layout_lines(invoice_id=o.id)" t-as="p">
+
+	    <!-- Name of the category -->
+            <span style="color:#027ebc">
+	       <t t-if="p['category']">
+		 <tr style="color: #027ebc;">
+		   <td colspan="100" style="font-weight: bold; border-top: 1px solid #027ebc; border-bottom: 1px solid #027ebc;"> 
+                     <t t-if="p['category'].name">
+                       <b><t t-esc="p['category'].name"></t></b>
+                     </t>
+                     <t t-if="not p['category'].name">
+                       --
+                     </t>
+		   </td>
+		 </tr>
+	       </t>
+    	     </span>
+
+	    
+            <!-- Lines associated -->
+            <t t-foreach="p['lines']" t-as="l">
+                <tr style="border-top: 1px solid #027ebc;">
+                    <td><span t-field="l.name"/></td>
+                    <td><span t-field="l.quantity"/>
+                        <span t-field="l.uos_id" groups="product.group_uom"/></td>
+                    <td class="text-right">
+                        <span t-field="l.price_unit"/>
+                    </td>
+                    <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount"/></td>
+                    <td class="text-right">
+                        <span t-esc="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/>
+                    </td>
+                    <td class="text-right">
+                        <span t-field="l.price_subtotal" 
+                            t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                    </td>
+                </tr>
+            </t>
+
+	    <!-- Subtotal -->
+	    <t t-if="'subtotal' in p['category'] and p['category'].subtotal is True">
+	      <tr class="text-right">
+		<td colspan="100">
+                  <strong>Total partida: </strong>
+                  <span t-esc="p['subtotal']" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+		</td>
+	      </tr>
+	    </t>
+
+	    
+            <!-- Separator -->
+            <t t-if="'separator' in p['category'] and p['category'].separator is True">
+	      <tr class="text-center">
+		<td colspan="100">
+                      
+		</td>
+	      </tr>
+	    </t>
+
+
+            <!-- Pagebreak -->
+            <t t-if="'pagebreak' in p['category'] and p['category'].pagebreak is True">
+              <t t-if="p_index &lt; p_size - 1">
+                <![CDATA[
+                         </tbody>
+			 </table>
+			 <p style="page-break-before:always;"> </p>
+			 <table class="table table-condensed">
+                ]]>
+                <thead>
+		  <tr>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th groups="product.group_uom">Unit of measure</th>
+                    <th class="text-right">Unit Price</th>
+                    <th class="text-right" groups="sale.group_discount_per_so_line">Discount (%)</th>
+                    <th class="text-right">Taxes</th>
+                    <th class="text-right">Amount</th>
+                        </tr>
+                </thead>
+                <![CDATA[
+                         <tbody>
+                ]]>
+              </t>
+            </t>
+            </t>
+	 </tbody>
+	    </table>
+
+     
+       <div class="row" t-if="o.tax_line" style="margin-top:2px;">
+         <div class="col-xs-8 pull-right" style="border-bottom: 1px solid #027ebc;">
+           <table class="table table-condensed" style="font-size:11pt">
+             <thead class="border-bottom: 1px solid #027ebc;">
+               <tr style="color: #027ebc;">
+		 <th class="text-right">Base imponible</th>
+                 <th>% IVA</th>
+                 <th class="text-right">IVA</th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr t-foreach="o.tax_line" t-as="t">
+                 <td class="text-right">
+                   <span t-field="t.base" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                 </td>
+		 <td class="text-right"><span t-field="t.name"/></td>
+                 <td class="text-right">
+                   <span t-field="t.amount" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                 </td>
+               </tr>
+             </tbody>
+           </table>
+         </div>
+       </div>
+
+     </div> <!-- row -->
+     
+       <div class="row">
+         <div class="col-xs-8 pull-right">
+           <table class="table table-condensed">
+             <!--
+		 <tr class="border-black">
+               <td><strong>Total Without Taxes</strong></td>
+               <td class="text-right">
+                 <span t-field="o.amount_untaxed" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+               </td>
+             </tr>
+             <tr>
+               <td>Taxes</td>
+               <td class="text-right">
+                 <span t-field="o.amount_tax" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o
+.currency_id&quot;}"/>
+               </td>
+               </tr>
+	       -->
+             <tr style="margin-bottom: 10px">
+               <td style="background-color: #027ebc; border: 1px solid #027ebc; color:#ffffff; "><strong>TOTAL</strong></td>
+               <td class="text-right">
+                 <b><span t-field="o.amount_total" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/></b>
+               </td>
+             </tr>
+	    
+	     <tr style="font-size:11pt">
+               <td style="background-color: #027ebc; border: 1px solid #027ebc; color:#ffffff; "><strong>Forma de pago</strong></td>
+               <td class="text-right">
+		 <span>Domiciliación Bancaria</span>
+               </td>
+             </tr>
+	     <tr style="font-size:11pt">
+               <td style="background-color: #027ebc; border: 1px solid #027ebc; color:#ffffff; "><strong>IBAN</strong></td>
+               <td class="text-right">
+		  <t t-foreach="o.company_id.bank_ids" t-as="bank">
+                    <t t-if="bank_first">
+                      <b><span t-field="bank.acc_number"/></b>
+                    </t>
+                  </t>
+              </td>
+             </tr>
+	     
+           </table>
+         </div>
+
+       <div class="col-xs-10">
+       <p t-if="o.origin" style="font-size:11pt">
+	 <span style="color:#027ebc;">Presupuesto de referencia:</span>
+         <span t-field="o.origin"/>
+       </p>
+
+       <p t-if="o.comment" style="font-size:11pt">
+	 <span style="color:#027ebc;">Condiciones de pago:</span>
+         <span t-field="o.comment"/>
+       </p>
+	 </div>
+     </div><!-- row -->
+     
+   </div> <!-- page -->
+
+     <div class="footer">
+       <div class="text-center" style="border-top: 1px solid black; font-size:11pt">
+	 <ul t-if="not company.custom_footer" class="list-inline">
+	   <li t-if="company.phone">Tlf.: <span t-field="company.phone"/></li>
+	   <li t-if="company.fax and company.phone">&amp;bull;</li>
+	   <li t-if="company.email">&amp;bull;</li>
+	   <li t-if="company.email">Email: <span t-field="company.email"/></li>
+	   <li t-if="company.website">&amp;bull;</li>
+	   <li t-if="company.website">Web: <span t-field="company.website"/></li>
+	      </ul>
+	      <t t-if="company.custom_footer"> <span t-raw="company.rml_footer"/> </t>
+	      <ul class="list-inline">
+		<li>Página:</li>
+		<li><span class="page"/></li>
+		<li>/</li>
+		<li><span class="topage"/>
+		</li>
+	      </ul>
+       </div>
+     </div> 
+
+   </template>
+
+      <template id="report_invoice">
+	<t t-call="report.html_container">
+	  <t t-foreach="doc_ids" t-as="doc_id">
+            <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'konery_custom_invoice.report_invoice_document')"/>
+          </t>
+	</t>
+      </template>
+
+      
+    </data>
+</openerp>
