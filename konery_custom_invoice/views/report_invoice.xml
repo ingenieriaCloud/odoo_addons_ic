@@ -63,9 +63,9 @@
 	       </tr>
 	       <tr>
 		 <td style="border: 1 solid #027ebc">
-		   <span style="color:#4d4d4d;">Fecha:</span> <strong><span t-field="o.date_invoice"/></strong><br/>
-		   <span style="color:#4d4d4d;">Número:</span> <strong><span t-field="o.number"/></strong><br/>
-		   <span style="color:#4d4d4d;">Vencimiento:</span> <strong><span t-field="o.date_due"/></strong>
+		   <span style="color:#4d4d4d;">Fecha:</span>&#160;&#160; <strong><span t-field="o.date_invoice" t-field-options='{"format": "dd/MMMM/yyyy"}'/></strong><br/>
+		   <span style="color:#4d4d4d;">Número:</span>&#160;&#160; <strong><span t-field="o.number"/></strong><br/>
+		   <span style="color:#4d4d4d;">Vencimiento:</span>&#160;&#160; <strong><span t-field="o.date_due" t-field-options='{"format": "dd/MMMM/yyyy"}'/></strong>
 		 </td>
 	       </tr>
 
@@ -75,10 +75,11 @@
 	       <tr>
 		 <td colspan="2" style="border: 1 solid #027ebc">
 		   <span t-if="o.partner_id.name" style="color:#4d4d4d;">Razón social:</span> <strong><span t-field="o.partner_id.name"/></strong><br/>
-		   <span style="color:#4d4d4d;">Dirección:</span>
-		   <strong><address t-field="o.partner_id" t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />
-                   <span t-if="o.partner_id.vat" style="color:#4d4d4d;"> CIF:</span> <span t-field="o.partner_id.vat"/>
-		   </strong>
+		   <span style="color:#4d4d4d;">Dirección:</span>&#160;&#160;<strong> <span t-field="o.partner_id.street"/></strong><br/>
+		   <t t-if="o.partner_id.street2"><strong> <span t-field="o.partner_id.street2"/></strong><br/></t>
+		   <strong> <span t-field="o.partner_id.zip"/>  <span t-field="o.partner_id.city"/>  <span t-field="o.partner_id.state_id"/></strong><br/>
+		   <t t-if="o.partner_id.country_id"> <strong> <span t-field="o.partner_id.country_id"/></strong><br/></t>
+		   <strong> <span t-if="o.partner_id.vat" style="color:#4d4d4d;"> CIF:</span>&#160;&#160;<span t-field="o.partner_id.vat"/></strong>
 		 </td>
 	       </tr>
 	     </table>
@@ -87,10 +88,11 @@
 	    <div class="col-xs-5" style="float:right;font-size:12pt">
 	      <div style="display: inline-block; vertical-align: middle;">
 		<img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 70px;"/><br/>
-		<span t-field="company.name"/><br/>
-		<span t-field="company.street"/><br/>
-		<span t-field="company.zip"/> - <span t-field="company.city"/> - Murcia<br/>
-		<span t-field="company.vat"/><br/>
+		<strong><span t-field="company.name"/></strong><br/>
+		<strong><span t-field="company.street"/></strong><br/>
+		<strong><span t-field="company.street2"/></strong><br/>
+		<strong><span t-field="company.zip"/> - <span t-field="company.city"/> - <span t-field="company.state_id"/><br/></strong>
+		<strong><span t-field="company.vat"/></strong><br/>
 	     </div>
 	    </div>
 	  </div> <!-- row -->
@@ -114,7 +116,7 @@
             <span style="color:#027ebc">
 	       <t t-if="p['category']">
 		 <tr style="color: #027ebc;">
-		   <td colspan="100" style="font-weight: bold; border-top: 1px solid #027ebc; border-bottom: 1px solid #027ebc;"> 
+		   <td colspan="100" style="font-weight: bold; border-top: none; border-bottom: 1px solid #027ebc;"> 
                      <t t-if="p['category'].name">
                        <b><t t-esc="p['category'].name"></t></b>
                      </t>
