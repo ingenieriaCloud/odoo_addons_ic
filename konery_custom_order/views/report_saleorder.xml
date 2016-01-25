@@ -112,7 +112,7 @@
 		<strong><span t-field="company.street"/></strong><br/>
 		<strong><span t-field="company.street2"/></strong><br/>
 		<strong><span t-field="company.zip"/> - <span t-field="company.city"/> - <span t-field="company.state_id"/><br/></strong>
-		<strong><span t-field="company.vat"/></strong><br/>
+		<strong><span t-esc="company.vat[2:]"/></strong><br/>
 	     </div>
 	    </div>
 	  </div> <!-- row -->
