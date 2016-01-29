@@ -6,65 +6,6 @@
 
   <div class="page" style="margin-top:20px;">
     <div class="row">
-
-      <!--
-       <table class="table table-condensed">
-         <tr>
-	   <td>
-	     <table class="table">
-	       <tr>
-		 <td style="color:#027ebc">DESCRIPCIÓN</td>
-	       </tr>
-	       <tr>
-		 <td colspan="2" style="border: 1 solid #027ebc">
-		   <p t-field="o.client_order_ref"/>
-		 </td>
-	       </tr>
-	       <tr>
-		 <td style="color:#027ebc">
-		   <span style="color:#027ebc;" t-if="o.state not in ['draft','sent']">PEDIDO</span>
-                   <span style="color:#027ebc;" t-if="o.state in ['draft','sent']">PRESUPUESTO</span>
-		 </td>
-	       </tr>
-	       <tr>
-		 <td style="border: 1 solid #027ebc">
-		   <span style="color:#4d4d4d;">Fecha:</span> <strong><span t-field="o.date_order"/></strong><br/>
-		   <span style="color:#4d4d4d;">Número:</span> <strong><span t-field="o.name"/></strong>
-		 </td>
-	       </tr>
-
-	       <tr>
-		 <td style="color:#027ebc">CLIENTE </td>
-	       </tr>
-	       <tr>
-		 <td  colspan="2" style="border: 1 solid #027ebc">
-		   <span t-if="o.partner_id.name" style="color:#4d4d4d;">Razón social:</span> <strong><span t-field="o.partner_id.name"/></strong><br/>
-		   <span style="color:#4d4d4d;">Dirección:</span>
-		   <strong><address t-field="o.partner_id" t-field-options='{"widget": "contact", "fields": ["address"], "no_marker": true}' />
-                   <span t-if="o.partner_id.vat" style="color:#4d4d4d;"> CIF:</span> <span t-field="o.partner_id.vat"/>
-		   </strong>
-		 </td>
-	       </tr>
-
-	     </table>
-	   </td>
-	   
-	   <td style="width:50%;float:right;margin-left:20px">
-	     <div class="col-xs-12" style="display: inline-block; vertical-align: middle;">
-	       <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 70px;"/><br/>
-	     </div>
-	     <div class="col-xs-12" style="font-size:12pt;">
-	       <span t-field="company.name"/><br/>
-	       <span t-field="company.street"/><br/>
-	       <span t-field="company.zip"/> - <span t-field="company.city"/> - Murcia<br/>
-	       <span t-field="company.vat"/><br/>
-	     </div>
-
-	   </td>
-	 </tr>
-       </table> 
-      -->
-
       	    
 	    <div class="col-xs-6" style="font-size:11pt;">
 	     <table class="table-condensed" style="font-size:11pt;float:left;width:100%">
@@ -76,7 +17,7 @@
 		   <p t-field="o.client_order_ref"/>
 		 </td>
 	       </tr>
-	       <tr>
+	       <tr style="margin-top:30px">
 		 <td style="color:#027ebc">
 		   <span style="color:#027ebc;" t-if="o.state not in ['draft','sent']">PEDIDO</span>
                    <span style="color:#027ebc;" t-if="o.state in ['draft','sent']">PRESUPUESTO</span>
@@ -84,22 +25,29 @@
 	       </tr>
 	       <tr>
 		 <td style="border: 1 solid #027ebc">
-		   <span style="color:#4d4d4d;">Fecha:</span>&#160;&#160; <strong><span t-field="o.date_order" t-field-options='{"format": "dd/MMMM/yyyy"}'/></strong><br/>
+		   <span style="color:#4d4d4d;">Fecha:</span>&#160;&#160;&#160;&#160; <strong><span t-field="o.date_order" t-field-options='{"format": "dd/MM/yyyy"}'/></strong><br/>
 		   <span style="color:#4d4d4d;">Número:</span>&#160;&#160;<strong><span t-field="o.name"/></strong><br/>
 		 </td>
 	       </tr>
 
-	       <tr>
+	       <tr style="margin-top:30px">
 		 <td style="color:#027ebc">CLIENTE </td>
 	       </tr>
 	       <tr>
 		 <td colspan="2" style="border: 1 solid #027ebc">
 		   <span t-if="o.partner_id.name" style="color:#4d4d4d;">Razón social:</span>&#160;&#160;<strong><span t-field="o.partner_id.name"/></strong><br/>
-		   <span style="color:#4d4d4d;">Dirección:</span>&#160;&#160;<strong> <span t-field="o.partner_id.street"/></strong><br/>
-		   <t t-if="o.partner_id.street2"><strong> <span t-field="o.partner_id.street2"/></strong><br/></t>
+		   <span style="color:#4d4d4d;">Dirección:</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;<strong> <span t-field="o.partner_id.street"/></strong><br/>
+		   <t t-if="o.partner_id.street2">
+ 	       &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+		   <strong><span t-field="o.partner_id.street2"/></strong><br/></t>
+		   <span style="color:#4d4d4d;">C.P. y Ciudad</span>&#160;
 		   <strong> <span t-field="o.partner_id.zip"/>  <span t-field="o.partner_id.city"/>  <span t-field="o.partner_id.state_id"/></strong><br/>
-		   <t t-if="o.partner_id.country_id"> <strong> <span t-field="o.partner_id.country_id"/></strong><br/></t>
-		   <strong> <span t-if="o.partner_id.vat" style="color:#4d4d4d;"> CIF:</span>&#160;&#160;<span t-field="o.partner_id.vat"/></strong>
+		   <t t-if="o.partner_id.country_id">
+		   &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+		   <strong> <span t-field="o.partner_id.country_id"/></strong><br/></t>
+		   <span t-if="o.partner_id.vat" style="color:#4d4d4d;"> CIF:
+		   &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+		   </span>&#160;&#160;<strong><span t-field="o.partner_id.vat"/></strong>
 		 </td>
 	       </tr>
 	     </table>
@@ -107,12 +55,12 @@
 
 	    <div class="col-xs-5" style="float:right;font-size:12pt">
 	      <div style="display: inline-block; vertical-align: middle;">
-		<img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 70px;"/><br/>
-		<strong><span t-field="company.name"/></strong><br/>
-		<strong><span t-field="company.street"/></strong><br/>
-		<strong><span t-field="company.street2"/></strong><br/>
-		<strong><span t-field="company.zip"/> - <span t-field="company.city"/> - <span t-field="company.state_id"/><br/></strong>
-		<strong><span t-esc="company.vat[2:]"/></strong><br/>
+		<img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 70px;margin-bottom:15px"/><br/>
+		<span t-field="company.name"/><br/>
+		<span t-field="company.street"/><br/>
+		<span t-field="company.street2"/><br/>
+		<span t-field="company.zip"/> - <span t-field="company.city"/> - <span t-field="company.state_id"/><br/>
+		<span t-esc="company.vat[2:]"/><br/>
 	     </div>
 	    </div>
 	  </div> <!-- row -->
@@ -120,16 +68,16 @@
 
 	  <div class="row" style="margin-top:25px">
 		 
-	    <table class="table table-condensed">
+	    <table class="table table-condensed" style="top:15px">
      
               <thead>
 		<tr style="color:#027ebc; border-bottom: 1px solid #027ebc;">
-		  <th>Descripción</th>
+		  <th>DESCRIPCIÓN</th>
 		  <!--  <th>Impuestos</th> -->
-		  <th class="text-right">Cantidad</th>
-		  <th class="text-right">Precio unidad</th>
-		  <th groups="sale.group_discount_per_so_line">Descuento (%)</th>
-		  <th class="text-right">Importe</th>
+		  <th class="text-right">CANTIDAD</th>
+		  <th class="text-right">PRECIO UNIDAD</th>
+		  <th groups="sale.group_discount_per_so_line">DESCUENTO (%)</th>
+		  <th class="text-right">IMPORTE</th>
 		</tr>
               </thead>
 	      
@@ -229,25 +177,8 @@
 	 </div>
 	 
          <div class="row" >
-                <div class="col-xs-4 pull-right">
+                <div class="col-xs-4 pull-right" style="margin-right:-10px">
                   <table class="table table-condensed">
-		    <!--
-                        <tr class="" style="border-top: 1px solid #027ebc;">
-                            <td><strong>Subtotal</strong></td>
-                            <td class="text-right">
-                                <span t-field="o.amount_untaxed"
-                                    t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/>
-                            </td>
-                            </tr>
-		    -->
-		<!--	<tr>
-                            <td>Impuestos</td>
-                            <td class="text-right">
-                                <span t-field="o.amount_tax"
-                                    t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/>
-                            </td>
-                            </tr>
-		-->
                         <tr class="" style="border-top: 1px solid #027ebc;">
                             <td style="background-color: #027ebc; border: 1px solid #027ebc; color:#ffffff; "><strong>TOTAL</strong></td>
                             <td class="text-right" style="border: 1px solid #027ebc;">
@@ -266,10 +197,10 @@
             <div class="row">
 	      <div class="col-xs-10">
 		<div class="oe_structure"/>
-		<span style="color:#027ebc;">Impuestos:</span> El presente presupuesto no incluye IVA ni otros impuestos.<br/>
-		<span style="color:#027ebc;">Observaciones:</span> Dicha oferta tiene una validez de 30 días.<br/>
 		<span style="color:#027ebc;" t-if="o.note">Condiciones de pago:</span>
 		<p t-field="o.note" />
+		<span style="color:#027ebc;">Observaciones:</span>
+		<p t-field="o.observaciones" />
 	      </div>
 	    </div>
 	    

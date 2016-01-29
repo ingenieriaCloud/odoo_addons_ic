@@ -19,7 +19,7 @@
 ##############################################################################
 {
    'name': 'Personalización de informe de Presupuestos de Konery',
-   'version': '8.0.1.0.10',
+   'version': '8.0.1.1.4',
    'author': 'Ingeniería Cloud',
    'category': 'Ingeniería Cloud',
    'depends': [
@@ -42,6 +42,7 @@ Módulo para personalizar el informe de Pedido/Presupuesto
     """,
    'data': [
        'views/report_saleorder.xml',
+       'views/sale_view.xml',
    ]
 
 }
