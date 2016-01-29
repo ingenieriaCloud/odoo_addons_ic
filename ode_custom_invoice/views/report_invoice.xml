@@ -28,12 +28,13 @@
 
 
 	<t t-name="account.report_invoice_document">
-        <div class="page">
-                <div class="col-xs-4 col-xs-offset-7"  style="margin-top:90px; font-size:10px">
+          <div class="page">
+	  <div class="row">
+                <div class="col-xs-4 col-xs-offset-7"  style="font-size:10px">
                     <address t-field="o.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}"/>
                     <span t-if="o.partner_id.vat">NIF: <span t-field="o.partner_id.vat"/></span>
                 </div>
-
+	  </div>
             <b>
                 <span t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">Factura</span>
                 <span t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>
@@ -99,7 +100,7 @@
                     </tr>
                 </tbody>
             </table>
-
+	  
             <div class="row"  style="font-size:11px">
                 <div class="col-xs-4 pull-right">
                     <table class="table table-condensed">
@@ -150,22 +151,32 @@
                 </div>
             </div>
 
-            <p t-if="o.comment">
+            <p t-if="o.comment" style="font-size:11px">
                 <strong>Comentario:</strong>
                 <span t-field="o.comment"/>
             </p>
-            <p t-if="o.payment_term.note">
+            <p t-if="o.payment_term.note" style="font-size:11px">
                 <strong>Condiciones de pago:</strong>
                 <span t-field="o.payment_term.note"/>
             </p>
-            <p t-if="o.fiscal_position.note">
+            <p t-if="o.fiscal_position.note" style="font-size:11px">
                 <strong>Fiscal Position Remark:</strong>
                 <span t-field="o.fiscal_position.note"/>
             </p>
-        </div>
+	    
+	    <p t-foreach="o.company_id.bank_ids" t-as="bank" style="font-size:11px">
+	      <strong>Número de cuenta:</strong>
+              <t t-if="bank_first">
+		<span t-field="bank.bank_name"/>
+                      <b><span t-field="bank.acc_number"/></b>
+                    </t>
+	   <span> Indicar nombre y número de factura</span>
+            </p>
+
+	</div>
       </t>
 	    
-	<div class="footer">
+      <div class="footer">
 	  <div class="text-center" style="border-top: 1px solid black; font-size:7px">
 	    <ul t-if="not company.custom_footer" class="list-inline">
 	      <li t-if="company.phone">Tlf.: <span t-field="company.phone"/></li>

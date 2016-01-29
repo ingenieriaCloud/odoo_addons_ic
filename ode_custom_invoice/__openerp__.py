@@ -19,7 +19,7 @@
 ##############################################################################
 {
    'name': 'Personalización de informe de Factura de ODE24',
-   'version': '8.0.1.0.5',
+   'version': '8.0.1.0.18',
    'author': 'Ingeniería Cloud',
    'category': 'Ingeniería Cloud',
    'depends': ['account'],
@@ -38,6 +38,7 @@ Módulo para personalizar el informe de factura ODE24
     """,
    'data': [
        'views/report_invoice.xml',
+       'views/report_paperformat.xml',
    ]
 
 }
