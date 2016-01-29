@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data noupdate="0">
+<record id="crm_lead_followers.group_sale_salesman" model="ir.rule">
+  <field name="name">Access to own and following Leads</field>
+  <field name="category_id" ref="base.module_category_sales_management"/>
+  <field name="model_id" ref="crm.model_crm_lead"/>
+  <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+  <field name="perm_read" eval="1"/>
+  <field name="perm_write" eval="1"/>
+  <field name="perm_create" eval="1"/>
+  <field name="perm_unlink" eval="0" />
+  <field name="domain_force">[('user_id','not in',[user.id]),('message_follower_ids','in', [user.partner_id.id])] 
+  </field>
+  <field name="comment">the user will have access to all following records of everyone Leads.</field>
+</record>
+</data>
+</openerp>
