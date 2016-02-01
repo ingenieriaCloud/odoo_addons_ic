@@ -30,9 +30,21 @@
 	       </tr>
 	       <tr>
 		 <td style="border: 1 solid #027ebc;">
-		   <span style="color:#4d4d4d;">Fecha</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<strong><span t-field="o.date_invoice" t-field-options='{"format": "dd/MM/yyyy"}'/></strong><br/>
-		   <span style="color:#4d4d4d;">Número</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<strong><span t-field="o.number"/></strong><br/>
-		   <span style="color:#4d4d4d;">Vencimiento</span>&#160;&#160;<strong><span t-field="o.date_due" t-field-options='{"format": "dd/MM/yyyy"}'/></strong>
+		   <table>
+		     <tr>
+		       <td width="52%"> <span style="color:#4d4d4d;">Fecha</span></td>
+		       <td> <strong><span t-field="o.date_invoice" t-field-options='{"format": "dd/MM/yyyy"}'/></strong></td>
+		     </tr>
+		     <tr>
+		       <td> <span style="color:#4d4d4d;">Número</span></td>
+		       <td><strong><span t-field="o.number"/></strong></td>
+		     </tr>  
+		     <tr>
+		       <td><span style="color:#4d4d4d;">Vencimiento</span> </td>
+		       <td> <strong><span t-field="o.date_due" t-field-options='{"format": "dd/MM/yyyy"}'/></strong></td>
+		     </tr>  
+		   </table>
+		   
 		 </td>
 	       </tr>
 
@@ -40,22 +52,37 @@
 		 <td style="color:#027ebc;">CLIENTE </td>
 	       </tr>
 	       <tr>
-		 <td colspan="2" style="border: 1 solid #027ebc">
-		   <span t-if="o.partner_id.name" style="color:#4d4d4d;">Razón social</span>&#160;&#160;&#160;<strong><span t-field="o.partner_id.name"/></strong><br/>
-		   <span style="color:#4d4d4d;">Dirección</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<strong> <span t-field="o.partner_id.street"/></strong><br/>
-		   <t t-if="o.partner_id.street2"><strong>
- 	       &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-		   <span t-field="o.partner_id.street2"/></strong><br/></t>
-		   <span style="color:#4d4d4d;">C.P. y Ciudad</span>&#160;
-		   <strong>
-		     <span t-field="o.partner_id.zip"/>  <span t-field="o.partner_id.city"/>  <span t-field="o.partner_id.state_id"/></strong><br/>
-		     <t t-if="o.partner_id.country_id">
-		       <span style="color:#4d4d4d;">Pais</span>
-		       &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-		       <strong> <span t-field="o.partner_id.country_id"/></strong><br/>
+		 <td style="border: 1 solid #027ebc;">
+		 <table>
+		     <tr>
+		       <td width="35%"> <span style="color:#4d4d4d;">Razón social</span></td>
+		       <td> <strong><span t-field="o.partner_id.name"/></strong></td>
+		     </tr>
+		     <tr>
+		       <td> <span style="color:#4d4d4d;">Dirección</span></td>
+		       <td> <strong> <span t-field="o.partner_id.street"/></strong></td>
+		     </tr>
+		     <t t-if="o.partner_id.street2">
+		       <tr>
+			 <td><span></span></td>
+			 <td> <strong> <span t-field="o.partner_id.street2"/></strong></td>
+		       </tr>
 		     </t>
-		     <span t-if="o.partner_id.vat" style="color:#4d4d4d;"> CIF:</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
-		    <strong><span t-field="o.partner_id.vat"/></strong>
+		     <tr>
+		       <td> <span style="color:#4d4d4d;">C.P. y Ciudad</span></td>
+		       <td>
+			 <strong><span t-field="o.partner_id.zip"/> <span t-field="o.partner_id.city"/>  <span t-field="o.partner_id.state_id"/></strong>
+		       </td>
+		     </tr>
+		     <tr>
+		       <td> <span style="color:#4d4d4d;">Pais</span></td>
+		       <td> <strong> <span t-field="o.partner_id.country_id"/></strong></td>
+		     </tr>
+		     <tr>
+		       <td> <span style="color:#4d4d4d;">CIF</span></td>
+		       <td> <strong><span t-field="o.partner_id.vat"/></strong></td>
+		     </tr>
+		 </table>
 		 </td>
 	       </tr>
 	     </table>
@@ -217,7 +244,7 @@
 	     <tr style="font-size:11pt;">
                <td style="background-color: #027ebc; color:#ffffff; "><strong>Forma de pago</strong></td>
                <td class="text-right">
-		 <span>Domiciliación Bancaria</span>
+		 <span t-if="o.payment_mode_id" t-field="o.payment_mode_id" />
                </td>
              </tr>
 	     <tr style="font-size:11pt;">

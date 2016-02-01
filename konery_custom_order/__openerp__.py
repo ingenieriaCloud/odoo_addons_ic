@@ -19,7 +19,7 @@
 ##############################################################################
 {
    'name': 'Personalización de informe de Presupuestos de Konery',
-   'version': '8.0.1.1.4',
+   'version': '8.0.1.1.5',
    'author': 'Ingeniería Cloud',
    'category': 'Ingeniería Cloud',
    'depends': [
