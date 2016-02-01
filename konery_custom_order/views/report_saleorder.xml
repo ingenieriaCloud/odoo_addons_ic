@@ -46,7 +46,7 @@
 	       <tr>
 		 <td colspan="2" style="border: 1 solid #027ebc">
 
-		   		 <table>
+		   <table width="100%"> 
 		     <tr>
 		       <td width="35%"> <span style="color:#4d4d4d;">Razón social</span></td>
 		       <td> <strong><span t-field="o.partner_id.name"/></strong></td>
