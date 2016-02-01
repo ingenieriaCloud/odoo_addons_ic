@@ -232,7 +232,7 @@
      </div> <!-- row -->
      
      <div class="row">
-         <div class="col-xs-8 pull-right" style="margin-right:-14px;">
+         <div class="col-xs-9 pull-right" style="margin-right:-14px;">
            <table class="table-condensed" style="float:right; border: 1px solid #027ebc;">
              <tr style="font-size:11pt;">
                <td style="background-color: #027ebc; border-bottom: 1px solid #027ebc; color:#ffffff; "><strong>TOTAL</strong></td>
