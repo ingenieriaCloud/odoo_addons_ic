@@ -83,7 +83,7 @@
 	    </div>
 
 	    <div class="col-xs-5" style="float:right;font-size:12pt">
-	      <div style="display: inline-block; vertical-align: middle;">
+	      <div style="display: inline-block; vertical-align: right;">
 		<img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 70px;margin-bottom:15px"/><br/>
 		<span t-field="company.name"/><br/>
 		<span t-field="company.street"/><br/>
@@ -105,7 +105,7 @@
 		  <!--  <th>Impuestos</th> -->
 		  <th class="text-right">CANTIDAD</th>
 		  <th class="text-right">PRECIO UNIDAD</th>
-		  <th groups="sale.group_discount_per_so_line">DESCUENTO (%)</th>
+		  <th class="text-right"> DESCUENTO (%)</th>
 		  <th class="text-right">IMPORTE</th>
 		</tr>
               </thead>
@@ -145,14 +145,16 @@
                             <span groups="product.group_uom" t-field="l.product_uom"/>
                           </td>
                           <td class="text-right">
-                            <span t-field="l.price_unit"/>
+                            <!--<span t-field="l.price_unit"/>-->
+			    <span t-esc="'{:0,.2f}'.format(l.price_unit).replace(',', '-').replace('.',',').replace('-','.')"/> €
                           </td>
-                            <td groups="sale.group_discount_per_so_line">
+                            <td class="text-right">
                               <span t-field="l.discount"/>
                             </td>
                             <td class="text-right">
-                              <span t-field="l.price_subtotal"
-                                    t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/>
+                              <!--<span t-field="l.price_subtotal"
+                                    t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/> -->
+			      <span t-esc="'{:0,.2f}'.format(l.price_subtotal).replace(',', '-').replace('.',',').replace('-','.')"/> €
                             </td>
                         </tr>
                </t>
@@ -162,7 +164,8 @@
 		  <tr class="text-right">
 		    <td colspan="100">
                       <strong>Total partida: </strong>
-                      <span t-esc="p['subtotal']" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                      <!-- <span t-esc="p['subtotal']" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>-->
+		      <span t-esc="'{:0,.2f}'.format(p['subtotal']).replace(',', '-').replace('.',',').replace('-','.')"/> €
 		    </td>
 		  </tr>
 		</t>
@@ -191,7 +194,7 @@
                       <!-- <th>Taxes</th> -->
                        <th class="text-right">Quantity</th>
                        <th class="text-right">Unit Price</th>
-                       <th groups="sale.group_discount_per_so_line">Disc.(%)</th>
+                       <th groups="sale.group_discount_per_so_line" class="text-right">Disc.(%)</th>
                        <th class="text-right">Price</th>
                      </tr>
                    </thead>
@@ -212,10 +215,9 @@
                             <td style="background-color: #027ebc; border: 1px solid #027ebc; color:#ffffff; "><strong>TOTAL</strong></td>
                             <td class="text-right" style="border: 1px solid #027ebc;">
                               <strong>
-				<!--<span t-field="o.amount_total"
-                                    t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/>-->
-				<span t-field="o.amount_untaxed"
-                                t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/>
+				<!-- <span t-field="o.amount_untaxed"
+                                      t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/> -->
+				<span t-esc="'{:0,.2f}'.format(o.amount_untaxed).replace(',', '-').replace('.',',').replace('-','.')"/> €
 			      </strong>
                             </td>
                         </tr>

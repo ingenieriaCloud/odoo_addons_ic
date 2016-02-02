@@ -89,7 +89,7 @@
 	    </div>
 
 	    <div class="col-xs-5" style="float:right;font-size:12pt">
-	      <div style="display: inline-block; vertical-align: middle;">
+	      <div style="display: inline-block; vertical-align: right;">
 		<img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 70px;margin-bottom:15px"/><br/>
 		<span t-field="company.name"/><br/>
 		<span t-field="company.street"/><br/>
@@ -139,15 +139,17 @@
                     <td><span t-field="l.quantity"/>
                         <span t-field="l.uos_id" groups="product.group_uom"/></td>
                     <td class="text-right">
-                        <span t-field="l.price_unit"/>
+                      <!-- <span t-field="l.price_unit"/>-->
+		      <span t-esc="'{:0,.2f}'.format(l.price_unit).replace(',', '-').replace('.',',').replace('-','.')"/> €
                     </td>
                     <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount"/></td>
                     <td class="text-right">
                         <span t-esc="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/>
                     </td>
                     <td class="text-right">
-                        <span t-field="l.price_subtotal" 
-                            t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                       <!--<span t-field="l.price_subtotal" 
+                              t-field-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/> -->
+		       <span t-esc="'{:0,.2f}'.format(l.price_subtotal).replace(',', '-').replace('.',',').replace('-','.')"/> €
                     </td>
                 </tr>
             </t>
@@ -157,7 +159,8 @@
 	      <tr class="text-right">
 		<td colspan="50" style="border-top: none; border-bottom: 1px solid #027ebc; margin-top:10px">
                   <strong>Total partida: </strong>
-                  <span t-esc="p['subtotal']" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>
+                  <!--<span t-esc="p['subtotal']" t-esc-options='{"widget": "monetary", "display_currency": "o.currency_id"}'/>-->
+		  <span t-esc="'{:0,.2f}'.format(p['subtotal']).replace(',', '-').replace('.',',').replace('-','.')"/> €
 		</td>
 	      </tr>
 	    </t>
@@ -216,11 +219,14 @@
              <tbody>
                <tr t-foreach="o.tax_line" t-as="t">
                  <td class="text-right">
-                   <span t-field="t.base" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                 <!--  <span t-field="t.base" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>-->
+		   <span t-esc="'{:0,.2f}'.format(t.base).replace(',', '-').replace('.',',').replace('-','.')"/> €
                  </td>
 		 <td class="text-right"><span t-field="t.name"/></td>
                  <td class="text-right">
-                   <span t-field="t.amount" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>
+                 <!-- <span t-field="t.amount" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>-->
+		  <span t-esc="'{:0,.2f}'.format(t.amount).replace(',', '-').replace('.',',').replace('-','.')"/> €
+
                  </td>
                </tr>
              </tbody>
@@ -237,7 +243,10 @@
              <tr style="font-size:11pt;">
                <td style="background-color: #027ebc; border-bottom: 1px solid #027ebc; color:#ffffff; "><strong>TOTAL</strong></td>
                <td class="text-right">
-                 <b><span t-field="o.amount_total" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/></b>
+                 <b>
+		<!--   <span t-field="o.amount_total" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>-->
+		   <span t-esc="'{:0,.2f}'.format(o.amount_total).replace(',', '-').replace('.',',').replace('-','.')" /> €
+		 </b>
                </td>
              </tr>
 	    
