@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data noupdate="0">
+
+    <record model="ceeic.formacion" id="ce_formacion_1">
+      <field name="name">Primaria</field>
+    </record>
+    <record model="ceeic.formacion" id="ce_formacion_2">
+      <field name="name">F.P.</field>
+    </record>
+    <record model="ceeic.formacion" id="ce_formacion_3">
+      <field name="name">Bachiller</field>
+    </record>
+    <record model="ceeic.formacion" id="ce_formacion_4">
+      <field name="name">Universitaria</field>
+    </record>
+    <record model="ceeic.formacion" id="ce_formacion_5">
+      <field name="name">Otra</field>
+    </record>
+
+    <record model="ceeic.experiencia" id="ce_experiencia_1">
+      <field name="name">Ninguna</field>
+    </record>
+    <record model="ceeic.experiencia" id="ce_experiencia_2">
+      <field name="name">Académica</field>
+    </record>
+    <record model="ceeic.experiencia" id="ce_experiencia_3">
+      <field name="name">Baja</field>
+    </record>
+    <record model="ceeic.experiencia" id="ce_experiencia_4">
+      <field name="name">Media</field>
+    </record>
+    <record model="ceeic.experiencia" id="ce_experiencia_5">
+      <field name="name">Alta</field>
+    </record>
+
+    
+    <record model="ceeic.procedencia" id="ce_procedencia_1">
+      <field name="name">Desempleo</field>
+    </record>
+    <record model="ceeic.procedencia" id="ce_procedencia_2">
+      <field name="name">Primera Actividad</field>
+    </record>
+    <record model="ceeic.procedencia" id="ce_procedencia_3">
+      <field name="name">Independencia</field>
+    </record>
+    <record model="ceeic.procedencia" id="ce_procedencia_4">
+      <field name="name">Desarrollo Pyme</field>
+    </record>
+    <record model="ceeic.procedencia" id="ce_procedencia_5">
+      <field name="name">Otros</field>
+    </record>
+
+    <record model="ceeic.edad" id="ce_edad_1">
+      <field name="name">Menor de 35</field>
+    </record>
+    <record model="ceeic.edad" id="ce_edad_2">
+      <field name="name">Mayor de 35</field>
+    </record>
+
+
+    
+    
+  </data>
+</openerp>

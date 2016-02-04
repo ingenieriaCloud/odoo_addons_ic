@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+      <record id="view_partner_form_ceeic" model="ir.ui.view">
+        <field name="name">ceeic.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+          <xpath expr="//page[@string='Internal Notes']" position="before">
+	     <page name='ceeic_custom' string="Promotor" attrs="{'invisible': [('is_company','=',True)]}" autofocus="autofocus">
+	       <group>
+	      <group>
+		<field name="formacion" placeholder="Formación del contacto"/>
+		<field name="experiencia" placeholder="Experiencia del contacto"/>
+	      </group>
+	      <group>
+		<field name="procedencia" placeholder="Procedencia del contacto"/>
+	      </group>
+	      <group>
+		<field name="sexo"/>
+		<field name="edad"/>
+	      </group>
+	      
+	    </group>
+	     </page>
+          </xpath>
+        </field>
+      </record>
+
+    </data>
+</openerp> 

@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ceeic_formacion_group,access_formacion_user,model_ceeic_formacion,base.group_user,1,1,1,1
+access_ceeic_experiencia_group,access_experiencia_user,model_ceeic_experiencia,base.group_user,1,1,1,1
+access_ceeic_procedencia_group,access_procedencia_user,model_ceeic_procedencia,base.group_user,1,1,1,1
+access_ceeic_edad_group,access_edad_user,model_ceeic_edad,base.group_user,1,1,1,1
+
+
