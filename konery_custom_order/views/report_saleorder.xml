@@ -105,7 +105,7 @@
 		  <!--  <th>Impuestos</th> -->
 		  <th class="text-right">CANTIDAD</th>
 		  <th class="text-right">PRECIO UNIDAD</th>
-		  <th class="text-right"> DESCUENTO (%)</th>
+		<!--  <th class="text-right"> DESCUENTO (%)</th> -->
 		  <th class="text-right">IMPORTE</th>
 		</tr>
               </thead>
@@ -148,9 +148,11 @@
                             <!--<span t-field="l.price_unit"/>-->
 			    <span t-esc="'{:0,.2f}'.format(l.price_unit).replace(',', '-').replace('.',',').replace('-','.')"/> €
                           </td>
-                            <td class="text-right">
-                              <span t-field="l.discount"/>
+			  <!--
+			  <td class="text-right">
+                            <span t-field="l.discount"/>
                             </td>
+			  -->
                             <td class="text-right">
                               <!--<span t-field="l.price_subtotal"
                                     t-field-options='{"widget": "monetary", "display_currency": "o.pricelist_id.currency_id"}'/> -->
