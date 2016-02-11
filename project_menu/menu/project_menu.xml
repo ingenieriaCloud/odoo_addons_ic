@@ -54,7 +54,7 @@
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">project.task</field>
             <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
-            <field name="context">{"search_default_project_id": "ImplantarSistemas"}</field>
+            <field name="context">{"search_default_project_id": 21}</field>
             <field name="search_view_id" ref="project.view_task_search_form"/>
            </record>
 
