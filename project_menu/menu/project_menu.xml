@@ -1,0 +1,129 @@
+<openerp>
+	<data>
+
+	   <record id="project_task_implantaciones" model="ir.actions.act_window">
+            <field name="name">Implantaciones</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="context">{"search_default_project_id": 20}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+           </record>
+
+	   <record id="project_task_desarrollos" model="ir.actions.act_window">
+            <field name="name">Desarrollos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="context">{"search_default_project_id": 19}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+           </record>
+
+	   <record id="project_task_soporte" model="ir.actions.act_window">
+            <field name="name">Soporte</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="context">{"search_default_project_id": 16}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+           </record>
+
+	   <record id="project_task_preventivos" model="ir.actions.act_window">
+            <field name="name">Preventivos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="context">{"search_default_project_id": 24}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+           </record>
+
+	   
+	   <record id="project_task_innovacion" model="ir.actions.act_window">
+            <field name="name">I+D</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="context">{"search_default_project_id": 9}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+           </record>
+	   
+
+
+	   <record id="project_task_implantaciones_sis" model="ir.actions.act_window">
+            <field name="name">Implantaciones</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="context">{"search_default_project_id": "ImplantarSistemas"}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+           </record>
+
+	   <record id="project_task_soporte_sis" model="ir.actions.act_window">
+            <field name="name">Soporte</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="context">{"search_default_project_id": 17}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+           </record>
+
+	   <record id="project_task_preventivos_sis" model="ir.actions.act_window">
+            <field name="name">Preventivos</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="context">{"search_default_project_id": 25}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+           </record>
+	   
+	   <record id="project_task_innovacion_sis" model="ir.actions.act_window">
+            <field name="name">I+D</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="context">{"search_default_project_id": 26}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+           </record>
+	   
+
+	   <record id="project_task_administrativa" model="ir.actions.act_window">
+            <field name="name">Administrativa</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="context">{"search_default_project_id": 3}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+           </record>
+	   <record id="project_task_corporativa" model="ir.actions.act_window">
+            <field name="name">Corporativa</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+            <field name="context">{"search_default_project_id": 2}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+           </record>
+
+
+	   <menuitem name="Ingeniería" id="menu_ingenieria" sequence="25" />
+	   <menuitem name="Odoo" id="menu_odoo" sequence="1" parent="menu_ingenieria" />
+	   <menuitem name="Implantaciones" id="menu_odoo_implantaciones" sequence="1" parent="menu_odoo" action="project_task_implantaciones" />
+	   <menuitem name="Desarrollos" id="menu_odoo_desarrollos" sequence="1" parent="menu_odoo" action="project_task_desarrollos" />	   
+	   <menuitem name="Soporte" id="menu_odoo_soporte" sequence="1" parent="menu_odoo" action="project_task_soporte" />
+	   <menuitem name="Preventivos" id="menu_odoo_preventivos" sequence="1" parent="menu_odoo" action="project_task_preventivos" />
+	   <menuitem name="I+D" id="menu_odoo_innovacion" sequence="1" parent="menu_odoo" action="project_task_innovacion" />
+
+	   <menuitem name="Sistemas" id="menu_sistemas" sequence="2" parent="menu_ingenieria" />
+	   <menuitem name="Implantaciones" id="menu_sistemas_implantaciones" sequence="1" parent="menu_sistemas" action="project_task_implantaciones_sis" />
+	   <menuitem name="Soporte" id="menu_sistemas_soporte" sequence="1" parent="menu_sistemas" action="project_task_soporte_sis" />
+	   <menuitem name="Preventivos" id="menu_sistemas_preventivos" sequence="1" parent="menu_sistemas" action="project_task_preventivos_sis" />
+	   <menuitem name="I+D" id="menu_sistemas_innovacion" sequence="1" parent="menu_sistemas" action="project_task_innovacion_sis" />
+
+	   <menuitem name="Gestión" id="menu_gestion" sequence="2" parent="menu_ingenieria" />
+	   <menuitem name="Administrativa" id="menu_sistemas_administrativa" sequence="1" parent="menu_gestion" action="project_task_administrativa" />
+	   <menuitem name="Corporativa" id="menu_sistemas_corporativa" sequence="1" parent="menu_gestion" action="project_task_corporativa" />
+
+	   
+	</data>
+
+</openerp>
+	  
