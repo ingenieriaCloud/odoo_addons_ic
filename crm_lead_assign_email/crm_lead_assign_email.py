@@ -37,7 +37,13 @@ class crm_lead(osv.osv):
         if custom_values is None:
             custom_values = {}
 
-        defaults = {}
+        defaults = {
+            'name': _("No Subject"),
+            'email_from': False,
+            'partner_id': False,
+            'user_id': False,
+        }
+
 
         if msg.get('from'):
             from_mail = msg.get('from').split('<', 1)[1][:-1]
@@ -45,7 +51,7 @@ class crm_lead(osv.osv):
             defaults['user_id'] = self.pool.get('res.users').browse(cr, uid, user_ids, context=context).id or False
         else:
             defaults['user_id'] = False
-            
+        
         defaults.update(custom_values)
         return super(crm_lead, self).message_new(cr, uid, msg, custom_values=defaults, context=context)
 

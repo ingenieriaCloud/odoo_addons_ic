@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#    crm_lead_mail
+#    crm_lead_assign_email
 #    Copyright (c) 2016 Francisco Manuel García Claramonte <francisco@garciac.es>
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -18,16 +18,16 @@
 #
 ##############################################################################
 {
-    'name': 'Asignación automática de Iniciativas',
-    'version': '8.0.0.1.0',
+    'name': 'Asignación automática de comercial para correos enviados por él mismo al buzón para este efecto en Odoo',
+    'version': '8.0.0.2.0',
     'author': 'SerInCloud',
     'category': 'SerInCloud',
     'website': 'http://serincloud.org',
     'license': 'AGPL-3',
     'depends': ['crm','mail'],
     'description': """
-Módulo para asignar las iniciativas que se reciben por correo
-=============================================================
+Módulo para asignar automáticamente las iniciativas que se reciben por correo
+=============================================================================
 
     Este módulo permite asignar Iniciativas recibidas por correo al empleado remitente. 
     Si la dirección de remite se corresponde con un comercial se le asígna automáticamente si no se deja sin asignar. 
