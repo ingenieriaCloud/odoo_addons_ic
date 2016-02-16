@@ -19,12 +19,13 @@
 ##############################################################################
 {
    'name': 'Personalización de informe de Factura',
-   'version': '8.0.1.1.15',
+   'version': '8.0.1.2.2',
    'author': 'Ingeniería Cloud',
    'category': 'Ingeniería Cloud',
    'depends': [
        'account',
        'sale_layout',
+       'account_payment_partner',
    ],
     'website': 'https://www.serincloud.org',
    'description': """

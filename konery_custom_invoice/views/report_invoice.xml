@@ -8,7 +8,8 @@
 	  <div class="row" style="">
 	    
 	    <div class="col-xs-6" style="font-size:11pt;">
-	     <table class="table-condensed" style="font-size:11pt;float:left;width:100%">
+	      <table class="table-condensed" style="font-size:11pt;float:left;width:100%">
+		<!--
 	       <tr>
 		 <td style="color:#027ebc">DESCRIPCIÓN</td>
 	       </tr>
@@ -16,8 +17,10 @@
 		 <td colspan="2" style="border: 1 solid #027ebc">
 		   <p t-field="o.name"/>
 		 </td>
-	       </tr>
-	       <tr style="margin-top:30px">
+		 </tr>
+		 <tr style="margin-top:30px">
+		-->
+		<tr>
 		 <td style="color:#027ebc">
 		   <span style="color:#027ebc;" t-if="o.type == 'out_invoice' and (o.state == 'open' or o.state == 'paid')">FACTURA</span>
 		   <span style="color:#027ebc;" t-if="o.type == 'out_invoice' and o.state == 'proforma2'">PRO-FORMA</span>
@@ -282,7 +285,7 @@
 
        <p t-if="o.comment" style="font-size:11pt">
 	 <span style="color:#027ebc;">Condiciones de pago:</span>
-         <span t-field="o.comment"/>
+         <div><span t-field="o.comment"/></div>
        </p>
 	 </div>
      </div><!-- row -->
@@ -292,16 +295,14 @@
      <div class="footer">
        <div class="text-center" style="border-top: 1px solid black; font-size:11pt">
 	 <ul t-if="not company.custom_footer" class="list-inline">
-	   <li t-if="company.phone">Tlf.: <span t-field="company.phone"/></li>
-	   <li t-if="company.fax and company.phone">&amp;bull;</li>
+	   <li t-if="company.phone">t. <span t-field="company.phone"/></li>
 	   <li t-if="company.email">&amp;bull;</li>
-	   <li t-if="company.email">Email: <span t-field="company.email"/></li>
+	   <li t-if="company.email"> <span t-field="company.email"/></li>
 	   <li t-if="company.website">&amp;bull;</li>
-	   <li t-if="company.website">Web: <span t-field="company.website"/></li>
+	   <li t-if="company.website"> <span t-field="company.website"/></li>
 	      </ul>
 	      <t t-if="company.custom_footer"> <span t-raw="company.rml_footer"/> </t>
 	      <ul class="list-inline">
-		<li>Página:</li>
 		<li><span class="page"/></li>
 		<li>/</li>
 		<li><span class="topage"/>

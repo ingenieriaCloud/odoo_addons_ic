@@ -19,12 +19,13 @@
 ##############################################################################
 {
    'name': 'Personalización de informe de Presupuestos de Konery',
-   'version': '8.0.1.1.12',
+   'version': '8.0.1.2.1',
    'author': 'Ingeniería Cloud',
    'category': 'Ingeniería Cloud',
    'depends': [
        'sale',
        'sale_layout',
+       'account_payment_partner'
    ],
    'website': 'https://www.serincloud.org',
    'description': """

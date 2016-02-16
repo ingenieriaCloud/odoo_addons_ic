@@ -242,16 +242,14 @@
 	<div class="footer">
             <div class="text-center" style="border-top: 1px solid #027ebc;">
               <ul t-if="not company.custom_footer" class="list-inline">
-                <li t-if="company.phone">Teléfono: <span t-field="company.phone"/></li>
-                <li t-if="company.fax and company.phone">&amp;bull;</li>
+                <li t-if="company.phone">t. <span t-field="company.phone"/></li>
                 <li t-if="company.email">&amp;bull;</li>
-                <li t-if="company.email">Email: <span t-field="company.email"/></li>
+                <li t-if="company.email"> <span t-field="company.email"/></li>
                 <li t-if="company.website">&amp;bull;</li>
-                <li t-if="company.website">Web: <span t-field="company.website"/></li>
+                <li t-if="company.website"> <span t-field="company.website"/></li>
               </ul>
               <t t-if="company.custom_footer"> <span t-raw="company.rml_footer"/> </t>
               <ul class="list-inline">
-                <li>Página:</li>
                 <li><span class="page"/></li>
                 <li>/</li>
                 <li><span class="topage"/>
