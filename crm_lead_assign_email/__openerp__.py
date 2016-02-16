@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Asignación automática de comercial para correos enviados por él mismo al buzón para este efecto en Odoo',
-    'version': '8.0.0.2.0',
+    'version': '8.0.0.2.4',
     'author': 'SerInCloud',
     'category': 'SerInCloud',
     'website': 'http://serincloud.org',
@@ -29,8 +29,8 @@
 Módulo para asignar automáticamente las iniciativas que se reciben por correo
 =============================================================================
 
-    Este módulo permite asignar Iniciativas recibidas por correo al empleado remitente. 
-    Si la dirección de remite se corresponde con un comercial se le asígna automáticamente si no se deja sin asignar. 
+    Este módulo permite asignar Iniciativas recibidas por correo al empleado remitente del correo. 
+    Si la dirección de remite se corresponde con un comercial, se le asigna automáticamente, si no, se deja sin asignar. 
 
     Publicado bajo licencia AGPL-v3
    

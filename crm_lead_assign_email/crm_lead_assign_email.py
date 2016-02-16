@@ -19,7 +19,7 @@
 ##############################################################################
 
 from openerp.osv import fields, osv
-
+from openerp.tools.translate import _
 
 class crm_lead(osv.osv):
     _name ='crm.lead'
@@ -38,12 +38,11 @@ class crm_lead(osv.osv):
             custom_values = {}
 
         defaults = {
-            'name': _("No Subject"),
             'email_from': False,
             'partner_id': False,
-            'user_id': False,
+            'contact_name': False,
         }
-
+      
 
         if msg.get('from'):
             from_mail = msg.get('from').split('<', 1)[1][:-1]
