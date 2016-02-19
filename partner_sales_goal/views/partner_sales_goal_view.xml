@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+      <record id="view_partner_form_sales_goal" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+          <xpath expr="//page[@string='Contacts']" position="after">
+	    <page string="Objetivos comerciales">
+              <field name="goals" widget="one2many_list" nolabel="1" class="oe_inline oe_no_button" context="{'partner_id': active_id}">
+		
+		<tree editable="bottom">
+		  <field name="year" placeholder="Año"/>
+		  <field name="amount_goal" placeholder="Cantidad objetivo" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+		  <field name="amount_sold" placeholder="Cantidad conseguida" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+		</tree>
+
+	      </field>
+
+	    </page>
+          </xpath>
+        </field>
+      </record>
+
+
+    </data>
+</openerp>
