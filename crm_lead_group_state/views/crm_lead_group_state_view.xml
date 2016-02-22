@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+      <record id="view_crm_case_leads_filter_state" model="ir.ui.view">
+        <field name="name">CRM - Leads Search</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_case_leads_filter"/>
+        <field name="arch" type="xml">
+	  <xpath expr="//group[@string='Group By']" position="inside">
+	    <filter string="Country" context="{'group_by':'country_id'}"/>
+	    <filter string="State" context="{'group_by':'state_id'}"/>
+          </xpath>
+        </field>
+      </record>
+
+
+      <record id="view_crm_case_opportunities_filter_state" model="ir.ui.view">
+         <field name="name">CRM - Opportunities Search</field>
+         <field name="model">crm.lead</field>
+         <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
+        <field name="arch" type="xml">
+          <xpath expr="//group[@string='Group By']" position="inside">
+	    <filter string="State" context="{'group_by':'state_id'}"/>
+
+          </xpath>
+          </field>
+       </record>
+
+
+      
+
+    </data>
+</openerp>
