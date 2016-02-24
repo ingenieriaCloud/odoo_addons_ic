@@ -1,12 +1,12 @@
-# -*- coding: utf-8 -*-
+# -*- encoding: utf-8 -*-
 ##############################################################################
-#    Ode-custom.
+#    custom_invoice
 #    Copyright (c) 2015-2016 Francisco Manuel García Claramonte <francisco@garciac.es>
 #
 #    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
+#    it under the terms of the GNU Affero General Public License as published
+#    by the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
 #
 #    This program is distributed in the hope that it will be useful,
 #    but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -18,13 +18,11 @@
 #
 ##############################################################################
 {
-   'name': 'Personalización genérico de informe de Factura',
-   'version': '8.0.1.1.2',
-   'author': 'Ingeniería Cloud',
-   'category': 'Ingeniería Cloud',
-   'depends': ['account'],
-   'website': 'https://serincloud.org',
-   'description': """
+    'name': 'Personalización genérico de informe de Factura',
+    'version': '8.0.0.2.3',
+    'author': 'Ingeniería Cloud',
+    'category': 'Ingeniería Cloud',
+    'description': """
 Módulo para personalizar el informe de factura
 ==============================================
 
@@ -35,9 +33,16 @@ Módulo para personalizar el informe de factura
     Copyright (c) 2015-2016 Ingeniería Cloud
 
     Copyright (c) 2015-2016 Francisco Manuel García Claramonte
-    """,
-   'data': [
-       'views/report_invoice.xml',
-   ]
-
+""",
+    'author': 'Ingeniería Cloud',
+    'website':'http://serincloud.org',
+    'depends': [
+        'account',
+    ],
+    'data': [
+        'views/report_invoice.xml',
+        'views/external_layout_header.xml',
+        'views/external_layout_footer.xml',
+    ],
+    "installable": True,
 }
