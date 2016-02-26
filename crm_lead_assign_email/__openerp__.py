@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Asignación automática de comercial para correos enviados por él mismo al buzón para este efecto en Odoo',
-    'version': '8.0.0.2.4',
+    'version': '8.0.0.2.5',
     'author': 'SerInCloud',
     'category': 'SerInCloud',
     'website': 'http://serincloud.org',

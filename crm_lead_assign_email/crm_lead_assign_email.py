@@ -41,6 +41,7 @@ class crm_lead(osv.osv):
             'email_from': False,
             'partner_id': False,
             'contact_name': False,
+            'author_id' : False,
         }
       
 
