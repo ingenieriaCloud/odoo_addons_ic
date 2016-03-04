@@ -201,10 +201,11 @@
 	     <span style="color:#027ebc;">Observaciones:</span>
              <div><span t-field="o.comment"/></div>
 	   </p>
-	   
-	    <p t-if="o.payment_term.note" style="visibility: hidden;">
+
+	   <div style="visibility: hidden;">
+	    <p t-if="o.payment_term.note" style="color: #ffffff">
             </p>
-	   
+	   </div>
 	   
 	   <p t-if="o.origin" style="font-size:11pt">
 	     <span style="color:#027ebc;">Presupuesto de referencia:</span>
