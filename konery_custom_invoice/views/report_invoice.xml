@@ -201,8 +201,10 @@
 	     <span style="color:#027ebc;">Observaciones:</span>
              <div><span t-field="o.comment"/></div>
 	   </p>
-	    <p t-if="o.payment_term.note" attrs="{'invisible': [(1,'=',1)]}">
+	   <!--
+	    <p t-if="o.payment_term.note">
             </p>
+	    -->
 	   
 	   <p t-if="o.origin" style="font-size:11pt">
 	     <span style="color:#027ebc;">Presupuesto de referencia:</span>
