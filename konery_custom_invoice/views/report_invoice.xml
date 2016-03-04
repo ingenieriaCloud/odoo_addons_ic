@@ -207,7 +207,7 @@
             </p>
 	   </div>
 	   
-	   <p t-if="o.origin" style="font-size:11pt">
+	   <p t-if="o.origin" style="font-size:11pt; margin-top:8px;">
 	     <span style="color:#027ebc;">Presupuesto de referencia:</span>
              <span t-field="o.origin"/>
 	   </p>
