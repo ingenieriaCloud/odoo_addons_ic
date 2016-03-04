@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
 <data>
-<template id="report_saleorder_document">
-  <t t-set="company" t-value="res_company"/>
+  <template id="report_saleorder_document"  inherit_id="sale.report_saleorder_document">
 
-  <div class="page" style="margin-top:20px;">
-    <div class="row">
+ <xpath expr="//div[@class='page']" position="replace">
+   <div class="page" style="margin-top:20px;">
+     <t t-set="company" t-value="res_company"/>
+     <div class="row">
       	    
 	    <div class="col-xs-6" style="font-size:11pt;">
 	     <table class="table-condensed" style="font-size:11pt;float:left;width:100%">
@@ -132,7 +133,7 @@
                <!-- Lines associated -->
                <t t-foreach="p['lines']" t-as="l">
                         <tr style="border-top: 1px solid #027ebc;">
-                          <td>
+                          <td style="width:50%">
                             <span  t-field="l.name"/>
                           </td>
 			  <!--
@@ -238,30 +239,11 @@
 	    </div>
 	    
           </div>
-	  
-	<div class="footer">
-            <div class="text-center" style="border-top: 1px solid #027ebc;">
-              <ul t-if="not company.custom_footer" class="list-inline">
-                <li t-if="company.phone">t. <span t-field="company.phone"/></li>
-                <li t-if="company.email">&amp;bull;</li>
-                <li t-if="company.email"> <span t-field="company.email"/></li>
-                <li t-if="company.website">&amp;bull;</li>
-                <li t-if="company.website"> <span t-field="company.website"/></li>
-              </ul>
-              <t t-if="company.custom_footer"> <span t-raw="company.rml_footer"/> </t>
-              <ul class="list-inline">
-                <li><span class="page"/></li>
-                <li>/</li>
-                <li><span class="topage"/>
-                </li>
-              </ul>
-            </div>
-          </div> 
 
-	
-	
+
+ </xpath>
 </template>
-
+<!--
 <template id="report_saleorder">
     <t t-call="report.html_container">
         <t t-foreach="doc_ids" t-as="doc_id">
@@ -269,6 +251,7 @@
         </t>
     </t>
 </template>
-      
+-->
+
 </data>
 </openerp>

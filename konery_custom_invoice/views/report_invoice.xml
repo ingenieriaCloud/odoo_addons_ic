@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <openerp>
     <data>
-      <template id="report_invoice_document">
-	<t t-set="company" t-value="res_company"/>
-      
-	<div class="page" style="margin-top:20px;">
-	  <div class="row" style="">
+      <template id="report_invoice_document_konery" inherit_id="account.report_invoice_document">
+	<xpath expr="//div[@class='page']" position="replace">
+	  <div class="page" style="margin-top:20px;">
+	    <t t-set="company" t-value="res_company"/>
+	    <div class="row" style="">
 	    
 	    <div class="col-xs-6" style="font-size:11pt;">
 	      <table class="table-condensed" style="font-size:11pt;float:left;width:100%">
@@ -111,12 +111,118 @@
              <th style="color:#027ebc">CANTIDAD</th>
              <th style="color:#027ebc" class="text-right">PRECIO UNITARIO</th>
              <th style="color:#027ebc" class="text-right" groups="sale.group_discount_per_so_line">DESCUENTO (%)</th>
-             <th style="color:#027ebc" class="text-right">IVA</th>
+             <th style="color:#027ebc" >IVA</th>
              <th style="color:#027ebc" class="text-right">IMPORTE</th>
            </tr>
          </thead>
 	 <tbody class="invoice_tbody">
-	    <t t-foreach="o.sale_layout_lines(invoice_id=o.id)" t-as="p">
+
+
+	 </tbody>
+	    </table>
+
+     <br/><br/>
+       <div class="row" t-if="o.tax_line" >
+         <div class="col-xs-8 pull-right" >
+           <table class="table table-condensed" style="font-size:11pt">
+             <thead class="border-bottom: 1px solid #027ebc;">
+               <tr style="color: #027ebc;">
+		 <th class="text-right">Base imponible</th>
+                 <th class="text-right">% IVA</th>
+                 <th class="text-right">IVA</th>
+		 <th class="text-right">TOTAL</th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr t-foreach="o.tax_line" t-as="t">
+                 <td class="text-right">
+                 <!--  <span t-field="t.base" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>-->
+		   <span t-esc="'{:0,.2f}'.format(t.base).replace(',', '-').replace('.',',').replace('-','.')"/> €
+                 </td>
+		 <td class="text-right"><span t-field="t.name"/></td>
+                 <td class="text-right">
+                 <!-- <span t-field="t.amount" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>-->
+		  <span t-esc="'{:0,.2f}'.format(t.amount).replace(',', '-').replace('.',',').replace('-','.')"/> €
+
+                 </td>
+		 <td class="text-right">
+		  <span t-esc="'{:0,.2f}'.format(t.amount+t.base).replace(',', '-').replace('.',',').replace('-','.')"/> €
+                 </td>
+		 
+               </tr>
+             </tbody>
+           </table>
+   
+         </div>
+       </div>
+      
+     </div> <!-- row -->
+     
+     <div class="row">
+       <!--   <div class="pull-right" style="width:80%"> -->
+       <div style="width:300px; float:right">
+           <table style="width:400px; float:right; border: 1px solid #027ebc;">
+             <tr style="font-size:11pt;">
+               <td style="background-color: #027ebc; border-bottom: 1px solid #027ebc; color:#ffffff; width:150px "><strong>TOTAL</strong></td>
+               <td class="text-right">
+                 <b>
+		<!--   <span t-field="o.amount_total" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>-->
+		   <span t-esc="'{:0,.2f}'.format(o.amount_total).replace(',', '-').replace('.',',').replace('-','.')" style="padding-right:3px" /><span style="padding-right:3px">€ </span>
+		 </b>
+               </td>
+             </tr>
+	   </table>
+	   <table style="width:400px; float:right; border: 1px solid #027ebc; margin-top:10px;">
+	       
+	     <tr style="font-size:11pt;">
+               <td style="background-color: #027ebc; color:#ffffff; width:150px"><strong>Forma de pago</strong></td>
+               <td class="text-left" style="padding-left:3px">
+		 <span t-if="o.payment_mode_id" t-field="o.payment_mode_id" />
+               </td>
+             </tr>
+	     <tr style="font-size:11pt;">
+               <td style="background-color: #027ebc; border-top: 1px solid #027ebc; color:#ffffff; "><strong>IBAN</strong></td>
+               <td class="text-left" style="padding-left:3px">
+		  <t t-foreach="o.company_id.bank_ids" t-as="bank">
+                    <t t-if="bank_first">
+                      <b><span t-field="bank.acc_number"/></b>
+                    </t>
+                  </t>
+              </td>
+             </tr>
+
+           </table>
+         </div>
+
+       
+
+	 <div class="col-xs-10">
+	   <p t-if="o.comment" style="font-size:11pt">
+	     <span style="color:#027ebc;">Observaciones:</span>
+             <div><span t-field="o.comment"/></div>
+	   </p>
+	    <p t-if="o.payment_term.note" attrs="{'invisible': [(1,'=',1)]}">
+            </p>
+	   
+	   <p t-if="o.origin" style="font-size:11pt">
+	     <span style="color:#027ebc;">Presupuesto de referencia:</span>
+             <span t-field="o.origin"/>
+	   </p>
+
+	 </div>
+     </div><!-- row -->
+     
+   </div> <!-- page -->
+
+
+ </xpath>
+ 
+</template>
+
+<template id="report_invoice_layouted" inherit_id="sale_layout.report_invoice_layouted">
+  <xpath expr="//t[@t-as='p']" position="replace">
+
+	   <t t-foreach="o.sale_layout_lines(invoice_id=o.id)" t-as="p">
 
 	    <!-- Name of the category -->
             <span style="color:#027ebc">
@@ -138,7 +244,7 @@
             <!-- Lines associated -->
             <t t-foreach="p['lines']" t-as="l">
                 <tr style="border-top: 1px solid #027ebc;">
-                    <td><span t-field="l.name"/></td>
+                    <td style="width:50%"><span t-field="l.name"/></td>
                     <td><span t-field="l.quantity"/>
                         <span t-field="l.uos_id" groups="product.group_uom"/></td>
                     <td class="text-right">
@@ -146,7 +252,7 @@
 		      <span t-esc="'{:0,.2f}'.format(l.price_unit).replace(',', '-').replace('.',',').replace('-','.')"/> €
                     </td>
                     <td class="text-right" groups="sale.group_discount_per_so_line"><span t-field="l.discount"/></td>
-                    <td class="text-right">
+                    <td>
                         <span t-esc="', '.join(map(lambda x: x.name, l.invoice_line_tax_id))"/>
                     </td>
                     <td class="text-right">
@@ -205,122 +311,10 @@
               </t>
             </t>
             </t>
-	 </tbody>
-	    </table>
-
-     
-       <div class="row" t-if="o.tax_line" style="margin-top:2px;">
-         <div class="col-xs-8 pull-right" >
-           <table class="table table-condensed" style="font-size:11pt">
-             <thead class="border-bottom: 1px solid #027ebc;">
-               <tr style="color: #027ebc;">
-		 <th class="text-right">Base imponible</th>
-                 <th>% IVA</th>
-                 <th class="text-right">IVA</th>
-               </tr>
-             </thead>
-             <tbody>
-               <tr t-foreach="o.tax_line" t-as="t">
-                 <td class="text-right">
-                 <!--  <span t-field="t.base" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>-->
-		   <span t-esc="'{:0,.2f}'.format(t.base).replace(',', '-').replace('.',',').replace('-','.')"/> €
-                 </td>
-		 <td class="text-right"><span t-field="t.name"/></td>
-                 <td class="text-right">
-                 <!-- <span t-field="t.amount" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>-->
-		  <span t-esc="'{:0,.2f}'.format(t.amount).replace(',', '-').replace('.',',').replace('-','.')"/> €
-
-                 </td>
-               </tr>
-             </tbody>
-           </table>
    
-         </div>
-       </div>
-      
-     </div> <!-- row -->
-     
-     <div class="row">
-         <div class="col-xs-9 pull-right" style="margin-right:-14px;">
-           <table class="table-condensed" style="float:right; border: 1px solid #027ebc;">
-             <tr style="font-size:11pt;">
-               <td style="background-color: #027ebc; border-bottom: 1px solid #027ebc; color:#ffffff; "><strong>TOTAL</strong></td>
-               <td class="text-right">
-                 <b>
-		<!--   <span t-field="o.amount_total" t-field-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: &quot;o.currency_id&quot;}"/>-->
-		   <span t-esc="'{:0,.2f}'.format(o.amount_total).replace(',', '-').replace('.',',').replace('-','.')" /> €
-		 </b>
-               </td>
-             </tr>
-	    
-	     <tr style="font-size:11pt;">
-               <td style="background-color: #027ebc; color:#ffffff; "><strong>Forma de pago</strong></td>
-               <td class="text-right">
-		 <span t-if="o.payment_mode_id" t-field="o.payment_mode_id" />
-               </td>
-             </tr>
-	     <tr style="font-size:11pt;">
-               <td style="background-color: #027ebc; border-top: 1px solid #027ebc; color:#ffffff; "><strong>IBAN</strong></td>
-               <td class="text-right">
-		  <t t-foreach="o.company_id.bank_ids" t-as="bank">
-                    <t t-if="bank_first">
-                      <b><span t-field="bank.acc_number"/></b>
-                    </t>
-                  </t>
-              </td>
-             </tr>
+    
+    </xpath>
+</template>
 
-           </table>
-         </div>
-
-
-
-       
-
-       <div class="col-xs-10">
-       <p t-if="o.origin" style="font-size:11pt">
-	 <span style="color:#027ebc;">Presupuesto de referencia:</span>
-         <span t-field="o.origin"/>
-       </p>
-
-       <p t-if="o.comment" style="font-size:11pt">
-	 <span style="color:#027ebc;">Condiciones de pago:</span>
-         <div><span t-field="o.comment"/></div>
-       </p>
-	 </div>
-     </div><!-- row -->
-     
-   </div> <!-- page -->
-
-     <div class="footer">
-       <div class="text-center" style="border-top: 1px solid black; font-size:11pt">
-	 <ul t-if="not company.custom_footer" class="list-inline">
-	   <li t-if="company.phone">t. <span t-field="company.phone"/></li>
-	   <li t-if="company.email">&amp;bull;</li>
-	   <li t-if="company.email"> <span t-field="company.email"/></li>
-	   <li t-if="company.website">&amp;bull;</li>
-	   <li t-if="company.website"> <span t-field="company.website"/></li>
-	      </ul>
-	      <t t-if="company.custom_footer"> <span t-raw="company.rml_footer"/> </t>
-	      <ul class="list-inline">
-		<li><span class="page"/></li>
-		<li>/</li>
-		<li><span class="topage"/>
-		</li>
-	      </ul>
-       </div>
-     </div> 
-
-   </template>
-
-      <template id="report_invoice">
-	<t t-call="report.html_container">
-	  <t t-foreach="doc_ids" t-as="doc_id">
-            <t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'konery_custom_invoice.report_invoice_document')"/>
-          </t>
-	</t>
-      </template>
-
-      
     </data>
 </openerp>

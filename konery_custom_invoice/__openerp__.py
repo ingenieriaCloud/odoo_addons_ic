@@ -19,7 +19,7 @@
 ##############################################################################
 {
    'name': 'Personalización de informe de Factura',
-   'version': '8.0.1.2.2',
+   'version': '8.0.2.0.14',
    'author': 'Ingeniería Cloud',
    'category': 'Ingeniería Cloud',
    'depends': [
@@ -44,6 +44,8 @@ Módulo para personalizar el informe de factura
    'data': [
        'views/report_invoice.xml',
        'views/report_paperformat.xml',
+       'views/external_layout_header.xml',
+       'views/external_layout_footer.xml',
    ]
 
 }
