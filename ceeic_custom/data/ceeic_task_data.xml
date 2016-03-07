@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data noupdate="0">
+
+    <record model="ceeic.origen_idea" id="ce_origen_ide_1">
+      <field name="name">Oportunidad</field>
+    </record>
+    <record model="ceeic.origen_idea" id="ce_origen_ide_2">
+      <field name="name">Spin-Off</field>
+    </record>
+    <record model="ceeic.origen_idea" id="ce_origen_ide_3">
+      <field name="name">Franquicia</field>
+    </record>
+    <record model="ceeic.origen_idea" id="ce_origen_ide_4">
+      <field name="name">Delegación</field>
+    </record>
+    <record model="ceeic.origen_idea" id="ce_origen_ide_5">
+      <field name="name">Traspaso</field>
+    </record>
+    <record model="ceeic.origen_idea" id="ce_origen_ide_6">
+      <field name="name">Otros</field>
+    </record>
+
+
+    <record model="ceeic.via" id="ce_via_1">
+      <field name="name">Actuaciones CEEIC</field>
+    </record>
+    <record model="ceeic.via" id="ce_via_2">
+      <field name="name">INFO</field>
+    </record>
+    <record model="ceeic.via" id="ce_via_3">
+      <field name="name">ADLE</field>
+    </record>
+    <record model="ceeic.via" id="ce_via_4">
+      <field name="name">COEC</field>
+    </record>
+    <record model="ceeic.via" id="ce_via_5">
+      <field name="name">UPCT</field>
+    </record>
+    <record model="ceeic.via" id="ce_via_6">
+      <field name="name">COCIN</field>
+    </record>
+    <record model="ceeic.via" id="ce_via_7">
+      <field name="name">Cursos CEEIC</field>
+    </record>
+    <record model="ceeic.via" id="ce_via_8">
+      <field name="name">Web</field>
+    </record>
+    <record model="ceeic.via" id="ce_via_9">
+      <field name="name">Otros</field>
+    </record>
+
+    <record model="ceeic.sector_proyecto" id="ce_sec_pr_1">
+      <field name="name">Industria</field>
+    </record>
+    <record model="ceeic.sector_proyecto" id="ce_sec_pr_2">
+      <field name="name">Servicios</field>
+    </record>
+
+    <record model="ceeic.origen_proyecto" id="ce_orig_pr_1">
+      <field name="name">Nueva creación</field>
+    </record>
+    <record model="ceeic.origen_proyecto" id="ce_orig_pr_2">
+      <field name="name">Desarrollo PYME</field>
+    </record>
+
+    
+    <record model="ceeic.perfil" id="ce_perf_1">
+      <field name="name">EBT</field>
+    </record>
+    <record model="ceeic.perfil" id="ce_perf_2">
+      <field name="name">Innovadora no EBT</field>
+    </record>
+    <record model="ceeic.perfil" id="ce_perf_3">
+      <field name="name">No innovadora</field>
+    </record>
+
+    <record model="ceeic.ambito" id="ce_amb_1">
+      <field name="name">Local</field>
+    </record>
+    <record model="ceeic.ambito" id="ce_amb_2">
+      <field name="name">Comarcal</field>
+    </record>
+    <record model="ceeic.ambito" id="ce_amb_3">
+      <field name="name">Regional</field>
+    </record>
+    <record model="ceeic.ambito" id="ce_amb_4">
+      <field name="name">Nacional</field>
+    </record>
+    <record model="ceeic.ambito" id="ce_amb_5">
+      <field name="name">Internacional</field>
+    </record>
+    <record model="ceeic.ambito" id="ce_amb_6">
+      <field name="name">Otros</field>
+    </record>
+
+    <record model="ceeic.grado_inno" id="ce_grad_1">
+      <field name="name">Ninguno</field>
+    </record>
+    <record model="ceeic.grado_inno" id="ce_grad_2">
+      <field name="name">Bajo</field>
+    </record>
+    <record model="ceeic.grado_inno" id="ce_grad_3">
+      <field name="name">Medio</field>
+    </record>
+    <record model="ceeic.grado_inno" id="ce_grad_4">
+      <field name="name">Alto</field>
+    </record>
+
+    <record model="ceeic.origen_inno" id="ce_orig_in_1">
+      <field name="name">Ninguno</field>
+    </record>
+    <record model="ceeic.origen_inno" id="ce_orig_in_2">
+      <field name="name">Invención</field>
+    </record>
+    <record model="ceeic.origen_inno" id="ce_orig_in_3">
+      <field name="name">Mejora</field>
+    </record>
+    <record model="ceeic.origen_inno" id="ce_orig_in_4">
+      <field name="name">Novedad</field>
+    </record>
+    <record model="ceeic.origen_inno" id="ce_orig_in_5">
+      <field name="name">Especialización</field>
+    </record>
+
+    <record model="ceeic.area_inno" id="ce_area_in_1">
+      <field name="name">Ninguno</field>
+    </record>
+    <record model="ceeic.area_inno" id="ce_area_in_2">
+      <field name="name">Producto</field>
+    </record>
+    <record model="ceeic.area_inno" id="ce_area_in_3">
+      <field name="name">Servicio</field>
+    </record>
+    <record model="ceeic.area_inno" id="ce_area_in_4">
+      <field name="name">Proceso</field>
+    </record>
+    <record model="ceeic.area_inno" id="ce_area_in_5">
+      <field name="name">Marketing</field>
+    </record>
+    <record model="ceeic.area_inno" id="ce_area_in_6">
+      <field name="name">Organización</field>
+    </record>
+
+    <record model="ceeic.proteccion" id="ce_protec_1">
+      <field name="name">Ninguno</field>
+    </record>
+    <record model="ceeic.proteccion" id="ce_protec_2">
+      <field name="name">Patente</field>
+    </record>
+    <record model="ceeic.proteccion" id="ce_protec_3">
+      <field name="name">Modelo de utilidad</field>
+    </record>
+    <record model="ceeic.proteccion" id="ce_protec_4">
+      <field name="name">Diseño</field>
+    </record>
+    <record model="ceeic.proteccion" id="ce_protec_5">
+      <field name="name">Propiedad intelectual</field>
+    </record>
+
+    <record model="ceeic.consultas" id="ce_consul_1">
+      <field name="name">Financiación</field>
+    </record>
+    <record model="ceeic.consultas" id="ce_consul_2">
+      <field name="name">Constitución</field>
+    </record>
+    <record model="ceeic.consultas" id="ce_consul_3">
+      <field name="name">Viavilidad</field>
+    </record>
+    <record model="ceeic.consultas" id="ce_consul_4">
+      <field name="name">Ubicación</field>
+    </record>
+    <record model="ceeic.consultas" id="ce_consul_5">
+      <field name="name">Gestión</field>
+    </record>
+    <record model="ceeic.consultas" id="ce_consul_6">
+      <field name="name">I+D+i</field>
+    </record>
+    <record model="ceeic.consultas" id="ce_consul_7">
+      <field name="name">Formación</field>
+    </record>
+
+    <record model="ceeic.intermediacion" id="ce_interm_1">
+      <field name="name">I+D+i</field>
+    </record>
+    <record model="ceeic.intermediacion" id="ce_interm_2">
+      <field name="name">Socios</field>
+    </record>
+    <record model="ceeic.intermediacion" id="ce_interm_3">
+      <field name="name">Proveedores</field>
+    </record>
+    <record model="ceeic.intermediacion" id="ce_interm_4">
+      <field name="name">Financiación</field>
+    </record>
+    <record model="ceeic.intermediacion" id="ce_interm_5">
+      <field name="name">Propiedad industrial</field>
+    </record>
+
+    <record model="ceeic.ubicacion" id="ce_ubic_1">
+      <field name="name">Coworking</field>
+    </record>
+    <record model="ceeic.ubicacion" id="ce_ubic_2">
+      <field name="name">20m2</field>
+    </record>
+    <record model="ceeic.ubicacion" id="ce_ubic_3">
+      <field name="name">50m2</field>
+    </record>
+    <record model="ceeic.ubicacion" id="ce_ubic_4">
+      <field name="name">100m2</field>
+    </record>
+
+
+    <record model="ceeic.consultoria" id="ce_consu_1">
+      <field name="name">Plan de empresa</field>
+    </record>
+    <record model="ceeic.consultoria" id="ce_consu_2">
+      <field name="name">Plan económico financiero</field>
+    </record>
+    <record model="ceeic.consultoria" id="ce_consu_3">
+      <field name="name">Financiación</field>
+    </record>
+    <record model="ceeic.consultoria" id="ce_consu_4">
+      <field name="name">SGI</field>
+    </record>
+
+    <record model="ceeic.formacion_empre" id="ce_form_emp_1">
+      <field name="name">Motivación empresarial</field>
+    </record>
+    <record model="ceeic.formacion_empre" id="ce_form_emp_2">
+      <field name="name">Creación de empresa</field>
+    </record>
+    <record model="ceeic.formacion_empre" id="ce_form_emp_3">
+      <field name="name">Gestión de empresa</field>
+    </record>
+
+    
+
+  </data>
+</openerp>

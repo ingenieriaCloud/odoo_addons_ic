@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+      <record id="view_task_form2_ceeic" model="ir.ui.view">
+      <field name="name">task.form.ceeic</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_form2"/>
+      <field name="arch" type="xml">
+      <xpath expr="//page[@string='Description']" position="before">
+        <page string="Emprendimiento" attrs="{'invisible': [('tipo_emprendimiento', '=', False)]}">
+	  <field name="tipo_emprendimiento" invisible='1'/>
+	    
+	  <group>
+            <group string="Tipo de proyecto">
+	      <field name="origen_idea" placeholder="Origen de la idea..."/>
+	      <field name="via" placeholder="Via..."/>
+	      <field name="perfil" placeholder="Perfil innovador..."/>
+	      <field name="sector_proyecto" placeholder="Sector del proyecto..."/>
+	      <field name="origen_proyecto" placeholder="Origen del proyecto..."/>
+	      <field name="ambito" placeholder="Ámbito del proyecto..."/>
+            </group>
+
+            <group string="Datos de empresa">
+	      <field name="anyo" placeholder="Año de creación..."/>
+	      <field name="mes" placeholder="Mes de creación..."/>
+	      <field name="inversion" placeholder="Importe de inversión..."/>
+	      <field name="puestos" placeholder="Puestos de trabajon..."/>
+	      <field name="sector_empresa" placeholder="Sector..."/>
+            </group>
+
+            <group string="Innovación">
+	      <field name="grado_inno" placeholder="Grado de innovación..."/>
+	      <field name="origen_inno" placeholder="Origen de innovación..."/>
+	      <field name="area_inno" placeholder="Área de innovación..."/>
+	      <field name="proteccion" placeholder="Protección..."/>
+	    </group>
+
+	    <group string="Necesidades">
+	      <field name="consultas" widget="many2many_tags" placeholder="Consultas..."/>
+	      <field name="intermediacion" widget="many2many_tags" placeholder="Intermediación..."/>
+	      <field name="ubicacion" widget="many2many_tags" placeholder="Ubicación..."/>
+	      <field name="consultoria" widget="many2many_tags" placeholder="Consultoría..."/>
+	      <field name="formacion_empre" widget="many2many_tags" placeholder="Formación..."/>
+	    </group>
+
+	    <group string="Financiación">
+	      <field name="linea_financiera" placeholder="Linea financiera..."/>
+	      <field name="importe_solicitado" placeholder="Importe solicitado..."/>
+	      <field name="anyo_concesion" placeholder="Año concesión..."/>
+	    </group>
+	    
+          </group>
+        </page>
+
+      </xpath>
+      </field>
+      </record>
+
+
+  <record id="ceeic_edit_project" model="ir.ui.view">
+      <field name="name">ceeic_project.project.form</field>
+      <field name="model">project.project</field>
+      <field name="inherit_id" ref="project.edit_project"/>
+      <field name="arch" type="xml">
+        <xpath expr="//div[@name='options_active']" position="after">
+           <field name="tipo_emprendimiento" class="oe_inline"/>
+           <label for="tipo_emprendimienton" string="Proyecto de emprendimiento"/>
+        </xpath>
+      </field>
+    </record>
+
+     <record id="ceeic_view_project_project_filter" model="ir.ui.view">
+       <field name="name">ceeic_project.project.select</field>
+       <field name="model">project.project</field>
+       <field name="inherit_id" ref="project.view_project_project_filter" />
+       <field name="arch" type="xml">
+         <xpath expr="//filter[@name='Current']" position="after">
+           <filter string="Emprendimiento" name="tipo_emprendimiento" domain="[('tipo_emprendimiento', '=',True)]"/>
+         </xpath>
+       </field>
+     </record>
+
+     <record id="ceeic_view_task_search_form" model="ir.ui.view">
+            <field name="name">ceeic_project.task.search.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+              <xpath expr="//field[@name='stage_id']" position="after">
+		<field name="anyo"/>
+		<field name="mes"/>
+              </xpath>
+            </field>
+      </record>
+      
+    </data>
+</openerp>

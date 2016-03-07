@@ -19,7 +19,7 @@
 ##############################################################################
 {
    'name': 'Personalización de contactos y tareas para CEEIC',
-   'version': '8.0.0.0.9',
+   'version': '8.0.0.1.13',
    'author': 'Ingeniería Cloud',
    'category': 'Ingeniería Cloud',
    'depends': [
@@ -45,7 +45,9 @@ Copyright (c) 2015-2016 Francisco Manuel García Claramonte
     """,
    'data': [
        'views/res_partner_view.xml',
+       'views/project_view.xml',
        'security/ir.model.access.csv',
        'data/ceeic_custom_data.xml',
+       'data/ceeic_task_data.xml',
    ]
 }

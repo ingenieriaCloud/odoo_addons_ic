@@ -3,5 +3,21 @@ access_ceeic_formacion_group,access_formacion_user,model_ceeic_formacion,base.gr
 access_ceeic_experiencia_group,access_experiencia_user,model_ceeic_experiencia,base.group_user,1,1,1,1
 access_ceeic_procedencia_group,access_procedencia_user,model_ceeic_procedencia,base.group_user,1,1,1,1
 access_ceeic_edad_group,access_edad_user,model_ceeic_edad,base.group_user,1,1,1,1
-
+access_ceeic_origen_idea_group,access_origen_idea_user,model_ceeic_origen_idea,base.group_user,1,1,1,1
+access_ceeic_via_group,access_via_user,model_ceeic_via,base.group_user,1,1,1,1
+access_ceeic_perfil_group,access_perfil_user,model_ceeic_perfil,base.group_user,1,1,1,1
+access_ceeic_sector_proyecto_group,access_sector_proyecto_user,model_ceeic_sector_proyecto,base.group_user,1,1,1,1
+access_ceeic_origen_proyecto_group,access_origen_proyecto_user,model_ceeic_origen_proyecto,base.group_user,1,1,1,1
+access_ceeic_ambito_group,access_ambito_user,model_ceeic_ambito,base.group_user,1,1,1,1
+access_ceeic_sector_empresa_group,access_sector_empresa_user,model_ceeic_sector_empresa,base.group_user,1,1,1,1
+access_ceeic_grado_inno_group,access_grado_inno_user,model_ceeic_grado_inno,base.group_user,1,1,1,1
+access_ceeic_origen_inno_group,access_origen_inno_user,model_ceeic_origen_inno,base.group_user,1,1,1,1
+access_ceeic_area_inno_group,access_area_inno_user,model_ceeic_area_inno,base.group_user,1,1,1,1
+access_ceeic_proteccion_group,access_proteccion_user,model_ceeic_proteccion,base.group_user,1,1,1,1
+access_ceeic_consultas_group,access_consultas_user,model_ceeic_consultas,base.group_user,1,1,1,1
+access_ceeic_intermediacion_group,access_intermediacion_user,model_ceeic_intermediacion,base.group_user,1,1,1,1
+access_ceeic_ubicacion_group,access_ubicacion_user,model_ceeic_ubicacion,base.group_user,1,1,1,1
+access_ceeic_consultoria_group,access_consultoria_user,model_ceeic_consultoria,base.group_user,1,1,1,1
+access_ceeic_formacion_empre_group,access_formacion_empre_user,model_ceeic_formacion_empre,base.group_user,1,1,1,1
+access_ceeic_linea_financiera_group,access_linea_financiera,model_ceeic_linea_financiera,base.group_user,1,1,1,1
 
