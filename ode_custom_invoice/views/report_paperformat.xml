@@ -7,8 +7,8 @@
 	  model="account.invoice"
 	  string="Invoices"
 	  report_type="qweb-pdf"
-	  name="ode_custom_invoice.report_invoice"
-	  file="ode_custom_invoice.report_invoice"
+	  name="account.report_invoice"
+	  file="account.report_invoice"
 	  attachment_use="True"
 	  attachment="(object.state in ('open','paid')) and
 		      ('INV'+(object.number or '').replace('/','')+'.pdf')"

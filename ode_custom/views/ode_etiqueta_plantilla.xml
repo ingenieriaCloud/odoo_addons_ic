@@ -10,6 +10,7 @@
 	Nombre: <span t-field="o.partner_id.name"/><br/>
 	Teléfono: <span t-field="o.partner_id.phone"/><br/>
 	Descripción: <span t-field="o.description"/>
+	<span t-if="o.clave"><br/>-----<br/><p t-field="o.clave"/></span>
       </div>
             
     </div> <!-- page -->
