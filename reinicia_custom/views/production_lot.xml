@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+ <record id="view_production_lot_form_reinicia" model="ir.ui.view">
+            <field name="name">stock.production.lot.form</field>
+            <field name="model">stock.production.lot</field>
+	    <field name="inherit_id" ref="stock.view_production_lot_form"/>
+            <field name="arch" type="xml">
+
+	      <xpath expr="//page[@string='Products']" position="before">
+
+		<page string="Reciclado">
+		  <group>
+		    <group string="Recogida">
+                            <field name="dcs_entrada"/>
+                            <field name="transportista_ent"/>
+                            <field name="matricula_ent"/>
+		    </group>
+ 
+		  </group>
+		</page>
+
+              </xpath>
+
+	    </field>
+      </record>
+    </data>
+</openerp>

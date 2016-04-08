@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_new_sale_order_wizard" model="ir.ui.view">
+            <field name="name">Create a new sale order</field>
+            <field name="model">sale.order.new_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Crear un nuevo pedido de ventas" version="7.0">
+                  <group string="Productos y cliente">
+		    <field name='prods' options="{'no_create_edit': True}" string="Productos" />
+		    <field name="customer"/>
+		  </group>
+                    <footer>
+                        <button name="action_new" string="Nuevo" type="object" class="oe_highlight"/>
+                        or
+                        <button special="cancel" string="Cancelar" class="oe_link"/>
+                    </footer>
+               	</form>
+            </field>
+        </record>
+
+        <act_window name="Crear pedido de venta"
+            res_model="sale.order.new_wizard"
+            src_model="stock.quant"
+            view_mode="form"
+            target="new"
+            multi="True"
+            key2="client_action_multi"
+            id="action_sale_order_new_wizard"/>
+
+    </data>
+</openerp>
