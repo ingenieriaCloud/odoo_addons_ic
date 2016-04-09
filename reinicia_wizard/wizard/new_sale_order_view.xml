@@ -6,13 +6,13 @@
             <field name="name">Create a new sale order</field>
             <field name="model">sale.order.new_wizard</field>
             <field name="arch" type="xml">
-                <form string="Crear un nuevo pedido de ventas" version="7.0">
-                  <group string="Productos y cliente">
-		    <field name='prods' options="{'no_create_edit': True}" string="Productos" />
+                <form string="Crear un nuevo pedido de ventas sobre Quants" version="7.0">
+                  <group string="Selección de liente">
+		  <!--  <field name='prods' options="{'no_create_edit': True}" string="Quants"/> -->
 		    <field name="customer"/>
 		  </group>
                     <footer>
-                        <button name="action_new" string="Nuevo" type="object" class="oe_highlight"/>
+                        <button name="action_new" string="Crear pedido" type="object" class="oe_highlight"/>
                         or
                         <button special="cancel" string="Cancelar" class="oe_link"/>
                     </footer>
