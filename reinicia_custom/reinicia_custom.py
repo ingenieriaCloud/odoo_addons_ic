@@ -18,7 +18,8 @@
 #
 ##############################################################################
 from openerp import models, fields, api
-#from openerp.osv import osv, fields
+from openerp.tools.translate import _
+
 
 
 class product_template(models.Model):
@@ -33,21 +34,20 @@ class product_template(models.Model):
 class matricula_trans(models.Model):
     _name = 'reinicia_custom.matricula_trans'
     name = fields.Char(string='Matrícula')
+
+
     
 class stock_production_lot(models.Model):
     _name = 'stock.production.lot'
     _inherit = ['stock.production.lot']
     _description = 'Lot/Serial'
 
+    purchase_order = fields.Many2one('purchase.order', string="Pedido de compra")
     dcs_entrada = fields.Char(string='DCS Entrada')
-    transportista_ent = fields.Many2one('res.partner')
+    transportista_ent = fields.Many2one('res.partner', string="Transportista", domain=[('supplier','=',True)])
     matricula_ent = fields.Many2one('reinicia_custom.matricula_trans', string="Matrícula entrada", ondelete='set null', required=False)
+    purchase_date = fields.Datetime(string='Fecha', store=True, related="purchase_order.date_order")
     
-    _sql_constraints = [
-        ('check_transportista_proveedor',
-        'CHECK(transportista_ent.supplier == True)',
-        "El transportista debe ser un proveedor"),
-    ]
 
 
 
@@ -57,40 +57,55 @@ class stock_quant(models.Model):
     _description = 'Quants'
 
     dcs_entrada = fields.Char(string='DCS Entrada')
-    transportista_ent = fields.Many2one('res.partner', string='Transportista de entrada')
+    transportista_ent = fields.Many2one('res.partner', string='Transportista de entrada', domain=[('supplier','=',True)])
     matricula_ent = fields.Many2one('reinicia_custom.matricula_trans', string="Matrícula entrada", ondelete='set null', required=False)
+    purchase_order = fields.Many2one('purchase.order',  string="Pedido de compra")
+    purchase_date = fields.Datetime(string='Fecha', store=True, related="purchase_order.date_order")
 
     dcs_salida = fields.Char(string='DCS Salida')
-    transportista_sal = fields.Many2one('res.partner', string='Transportista de salida')
+    transportista_sal = fields.Many2one('res.partner', string='Transportista de salida', domain=[('supplier','=',True)])
     matricula_sal = fields.Many2one('reinicia_custom.matricula_trans', string="Matrícula salida", ondelete='set null', required=False)
-    
+    customer = fields.Many2one('res.partner',  string="Cliente")
+    sale_order = fields.Many2one('sale.order', string="Pedido de venta")
+    sale_date = fields.Datetime(string='Fecha', store=True, related="sale_order.date_order")
+
+    account_invoice = fields.Many2one('account.invoice', string="Factura")
+    invoice_date = fields.Date(string='Fecha', store=True, related="account_invoice.date_invoice")
     scrap = fields.Many2one('res.partner', string='SCRAP')
     gestionado = fields.Boolean(string='Gestionado')
-    factura = fields.Many2one('account.invoice', string='Factura')
+    
 
     empresa = fields.Many2one('res.partner', string='Empresa')
     certificado = fields.Char(string='Certificado')
+    date_quant = fields.Date(string="Fecha") 
     
-    _sql_constraints = [
-        ('check_transportista_proveedor',
-        'CHECK(transportista_sal.supplier == True)',
-        "El transportista debe ser un proveedor"),
-        ('check_transportista_proveedor',
-        'CHECK(transportista_ent.supplier == True)',
-        "El transportista debe ser un proveedor"),
-    ]
     
 
-'''
-class purchase_order(osv.Osv):
+
+class sale_order(models.Model):
+    _name = 'sale.order'
+    _description = 'Sale order'
+    _inherit = ['sale.order']
+
+    transportista_sal = fields.Many2one('res.partner',  string="Transportista", domain=[('supplier','=',True)])
+    matricula_sal = fields.Many2one('reinicia_custom.matricula_trans', string="Matrícula", ondelete='set null', required=False)
+
+    
+
+class purchase_order(models.Model):
     _name = 'purchase.order'
     _description = 'Purchase order'
     _inherit = ['purchase.order']
 
-    _columns = {
-        'lote' = fields.char('Lote de pedido')
-    }
 
+    #lote = fields.char('Lote de pedido')
+    transportista_ent = fields.Many2one('res.partner',  string="Transportista", domain=[('supplier','=',True)])
+    matricula_ent = fields.Many2one('reinicia_custom.matricula_trans', string="Matrícula", ondelete='set null', required=False)
+
+
+    
+   
+    '''
     def create(self, cr, uid, vals, context=None):
         partner = self.pool.get('purchase.order.partner_id')
         
@@ -111,9 +126,11 @@ class purchase_order(osv.Osv):
         order =  super(purchase_order, self).create(cr, uid, vals, context=context)
 
         return order
-'''
+    '''
+
     
 product_template()
 stock_production_lot()
 stock_quant()
-#purchase_order()
+sale_order()
+purchase_order()

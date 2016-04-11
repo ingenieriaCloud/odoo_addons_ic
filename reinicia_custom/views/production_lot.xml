@@ -13,9 +13,11 @@
 		<page string="Reciclado">
 		  <group>
 		    <group string="Recogida">
-                            <field name="dcs_entrada"/>
-                            <field name="transportista_ent"/>
-                            <field name="matricula_ent"/>
+		      <field name="purchase_order"/>
+		      <field name="purchase_date"/>
+                      <field name="dcs_entrada"/>
+                      <field name="transportista_ent"/>
+                      <field name="matricula_ent"/>
 		    </group>
  
 		  </group>

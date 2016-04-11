@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-       <record id="product_template_only_form_view_reinicia" model="ir.ui.view">
-            <field name="name">product.template.product.form</field>
-            <field name="model">product.template</field>
-            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+
+      <record id="purchase_order_form_reinicia" model="ir.ui.view">
+            <field name="name">purchase.order.form</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+
             <field name="arch" type="xml">
-	      <xpath expr="//field[@name='default_code']" position="after">
-		<field name="product_trazabilidad" />
+	      <xpath expr="//field[@name='journal_id']" position="after">
+		<field name="transportista_ent" />
+		<field name="matricula_ent" />
 	      </xpath>
 	    </field>
-       </record>
+
+	  </record>
       
     </data>
 </openerp>

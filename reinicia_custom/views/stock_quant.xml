@@ -8,26 +8,34 @@
 	    <field name="inherit_id" ref="stock.view_stock_quant_form"/>
             <field name="arch" type="xml">
 
-	      <xpath expr="//field[@name='inventory_value']" position="after">
+	      <xpath expr="/form/group[1]" position="after">
 		  <group>
 		    <group string="Recogida">
-                            <field name="dcs_entrada"/>
-                            <field name="transportista_ent"/>
-                            <field name="matricula_ent"/>
+		      <field name="purchase_order"/>
+		      <field name="purchase_date"/>
+                      <field name="dcs_entrada"/>
+                      <field name="transportista_ent"/>
+                      <field name="matricula_ent"/>
 		    </group>
 		    <group string="Reexpedición">
-                            <field name="dcs_salida"/>
-                            <field name="transportista_sal"/>
-                            <field name="matricula_sal"/>
+		      <field name="sale_order"/>
+		      <field name="sale_date" />
+		      <field name="customer"/>
+                      <field name="dcs_salida"/>
+                      <field name="transportista_sal"/>
+                      <field name="matricula_sal"/>
 		    </group>
 		    <group string="Trazabilidad">
                             <field name="scrap"/>
                             <field name="gestionado"/>
-                            <field name="factura"/>
+                            <field name="account_invoice"/>
+			    <field name="invoice_date"/>
+			    
 		    </group>
 		    <group string="Tratamiento">
                             <field name="empresa"/>
                             <field name="certificado"/>
+			    <field name="date_quant"/>
 		    </group>
 		  </group>
 

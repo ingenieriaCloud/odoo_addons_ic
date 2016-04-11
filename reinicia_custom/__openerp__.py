@@ -19,13 +19,15 @@
 ##############################################################################
 {
    'name': 'Personalización de gestión para Reinicia',
-   'version': '8.0.0.0.10',
+   'version': '8.0.0.1.7',
    'author': 'Ingeniería Cloud',
    'category': 'Ingeniería Cloud',
    'depends': [
        'product',
        'purchase',
+       'sale',
        'stock',
+       'account',
    ],
    'website': 'http://www.serincloud.org',
    'description': """
@@ -46,6 +48,8 @@ Copyright (c) 2015-2016 Francisco Manuel García Claramonte
        'views/product_view.xml',
        'views/stock_quant.xml',
        'views/production_lot.xml',
+       'views/purchase_order_view.xml',
+       'views/sale_order_view.xml',
        'security/ir.model.access.csv',
     ]
 }
