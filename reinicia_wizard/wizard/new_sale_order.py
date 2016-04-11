@@ -43,7 +43,8 @@ class NewSaleOrderWizard(orm.TransientModel):
         dom = [('id','in',context.get("active_ids", []))]
         quants = self.pool.get('stock.quant').search(cr, uid, dom, context=context)
         for quant in self.pool.get('stock.quant').browse(cr, uid, quants, context=context):
-            vals['product_id'] = quant.product_id.id #prods.id.id_producto
+            vals['product_id'] = quant.product_id.id
+            vals['product_uom_qty'] = quant.qty
             sale_order_line = sale_order_line_obj.create(cr, uid,
                                                          vals,
                                                          context=ctx)
@@ -55,4 +56,12 @@ class NewSaleOrderWizard(orm.TransientModel):
                                                          vals,
                                                          context=ctx)
         '''
-        return id_sale
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Sale Order',
+            'res_model': 'sale.order',
+            'res_id': id_sale ,
+            'view_type': 'form',
+            'view_mode': 'form',
+            #'target' : 'new',
+        }
