@@ -56,6 +56,7 @@ class stock_quant(models.Model):
     _inherit = ['stock.quant']
     _description = 'Quants'
 
+    supplier = fields.Many2one('res.partner',  string="Proveedor")
     dcs_entrada = fields.Char(string='DCS Entrada')
     transportista_ent = fields.Many2one('res.partner', string='Transportista de entrada', domain=[('supplier','=',True)])
     matricula_ent = fields.Many2one('reinicia_custom.matricula_trans', string="Matrícula entrada", ondelete='set null', required=False)

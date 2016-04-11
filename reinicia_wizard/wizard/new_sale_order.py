@@ -45,10 +45,12 @@ class NewSaleOrderWizard(orm.TransientModel):
         for quant in self.pool.get('stock.quant').browse(cr, uid, quants, context=context):
             vals['product_id'] = quant.product_id.id
             vals['product_uom_qty'] = quant.qty
+            vals['name'] = quant.product_id.description_sale or quant.product_id.name
             sale_order_line = sale_order_line_obj.create(cr, uid,
                                                          vals,
                                                          context=ctx)
         
+
         '''
         for prod in data.prods:
             vals['product_id'] = prod.id

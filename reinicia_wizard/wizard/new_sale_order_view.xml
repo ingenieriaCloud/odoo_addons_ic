@@ -7,7 +7,7 @@
             <field name="model">sale.order.new_wizard</field>
             <field name="arch" type="xml">
                 <form string="Crear un nuevo pedido de ventas sobre Quants" version="7.0">
-                  <group string="Selección de liente">
+                  <group string="Selección de cliente">
 		  <!--  <field name='prods' options="{'no_create_edit': True}" string="Quants"/> -->
 		    <field name="customer"/>
 		  </group>
@@ -20,7 +20,7 @@
             </field>
         </record>
 
-        <act_window name="Crear pedido de venta"
+        <act_window name="Crear pedido de venta o Reexpedición"
             res_model="sale.order.new_wizard"
             src_model="stock.quant"
             view_mode="form"
@@ -28,6 +28,16 @@
             multi="True"
             key2="client_action_multi"
             id="action_sale_order_new_wizard"/>
+
+	<!-- act_window provisional para la demo -->
+	<act_window name="Facturar desde Quants"
+            res_model="sale.order.new_wizard"
+            src_model="stock.quant"
+            view_mode="form"
+            target="new"
+            multi="True"
+            key2="client_action_multi"
+            id="action_invoice__new_wizard"/>
 
     </data>
 </openerp>
