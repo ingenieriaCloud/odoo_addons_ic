@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#    reinicia-custom
+#    reinicia_menu
 #    Copyright (c) 2016 Francisco Manuel García Claramonte <francisco@garciac.es>
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -18,8 +18,8 @@
 #
 ##############################################################################
 {
-   'name': 'Personalización de gestión para Reinicia',
-   'version': '8.0.0.1.9',
+   'name': 'Menú personalizado para Reinicia',
+   'version': '8.0.0.0.4',
    'author': 'Ingeniería Cloud',
    'category': 'Ingeniería Cloud',
    'depends': [
@@ -28,28 +28,21 @@
        'sale',
        'stock',
        'account',
+       'base',
    ],
-   'website': 'http://www.serincloud.org',
+   'website': 'https://www.serincloud.org',
    'description': """
-Módulo para personalización de modelo de trabajo de Reinicia
-============================================================
+Module to create direct menu access
+===================================   
+
+  
+  Copyright (c) 2015-2016 Ingeniería Cloud
+
+  Copyright (c) 2015-2016 Francisco Manuel García Claramonte
 
 
-Este módulo añade campos específicos y funcionalidades para la gestión de Reinicia.
-
-Publicado bajo licencia AGPL-v3.
-
-Copyright (c) 2015-2016 Ingeniería Cloud
-
-Copyright (c) 2015-2016 Francisco Manuel García Claramonte
-
-    """,
+   """,
    'data': [
-       'views/product_view.xml',
-       'views/stock_quant.xml',
-       'views/production_lot.xml',
-       'views/purchase_order_view.xml',
-       'views/sale_order_view.xml',
-       'security/ir.model.access.csv',
-    ]
+       'menu/reinicia_menu.xml',
+   ],
 }
