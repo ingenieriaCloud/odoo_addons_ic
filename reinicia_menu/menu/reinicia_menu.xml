@@ -99,8 +99,8 @@
 
 	   <menuitem name="Reinicia" id="menu_reinicia" sequence="25" />
 	   <menuitem name="Contactos" id="menu_contactos" sequence="1" parent="menu_reinicia" />
-	   <menuitem name="Clientes" id="menu_clientes" sequence="1" parent="menu_contactos" action="res_partner_supplier" />
-	   <menuitem name="Proveedores" id="menu_proveedores" sequence="2" parent="menu_contactos" action="res_partner_customer" />	   
+	   <menuitem name="Clientes" id="menu_clientes" sequence="1" parent="menu_contactos" action="res_partner_customer" />
+	   <menuitem name="Proveedores" id="menu_proveedores" sequence="2" parent="menu_contactos" action="res_partner_supplier" />	   
 
 	   <menuitem name="Almacén" id="menu_almacen" sequence="2" parent="menu_reinicia" />
 	   <menuitem name="Lotes" id="menu_lotes" sequence="1" parent="menu_almacen" action="stock_production_lot" />
