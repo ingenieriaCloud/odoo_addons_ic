@@ -30,7 +30,7 @@
             id="action_sale_order_new_wizard"/>
 
 	<!-- act_window provisional para la demo -->
-	<act_window name="Facturar desde Quants"
+	<act_window name="Asignación SCRAP"
             res_model="sale.order.new_wizard"
             src_model="stock.quant"
             view_mode="form"

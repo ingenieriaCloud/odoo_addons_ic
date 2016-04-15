@@ -46,19 +46,13 @@ class NewSaleOrderWizard(orm.TransientModel):
             vals['product_id'] = quant.product_id.id
             vals['product_uom_qty'] = quant.qty
             vals['quant_id'] = quant.id
+            vals['lot_id'] = quant.lot_id.id
             vals['name'] = quant.product_id.description_sale or quant.product_id.name
             sale_order_line = sale_order_line_obj.create(cr, uid,
                                                          vals,
                                                          context=ctx)
         
 
-        '''
-        for prod in data.prods:
-            vals['product_id'] = prod.id
-            sale_order_line = sale_order_line_obj.create(cr, uid,
-                                                         vals,
-                                                         context=ctx)
-        '''
         return {
             'type': 'ir.actions.act_window',
             'name': 'Sale Order',

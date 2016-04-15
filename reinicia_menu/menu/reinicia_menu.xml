@@ -1,109 +1,14 @@
 <openerp>
 	<data>
 
-	   <record id="res_partner_customer" model="ir.actions.act_window">
-            <field name="name">Clientes</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">res.partner</field>
-	    <field name="view_type">tree</field>
-            <field name="view_mode">kanban,tree,form</field>
-	    <field name="domain">[('customer','=', True)]</field>
-            <!-- <field name="context"></field> -->
-           </record>
-
-	   <record id="res_partner_supplier" model="ir.actions.act_window">
-            <field name="name">Proveedores</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">res.partner</field>
-	    <field name="view_type">tree</field>
-            <field name="view_mode">kanban,tree,form</field>
-	    <field name="domain">[('supplier','=', True)]</field>
-            <!-- <field name="context"></field> -->
-           </record>
-
-	   <record id="stock_production_lot" model="ir.actions.act_window">
-             <field name="name">Lotes</field>
-	     <field name="type">ir.actions.act_window</field>
-             <field name="res_model">stock.production.lot</field>
-             <field name="view_type">form</field>
-             <field name="view_id" ref="stock.view_production_lot_tree"/>
-             <field name="search_view_id" ref="stock.search_product_lot_filter"/>
-             <field name="context">{}</field>
-             <field name="help" type="html">
-               <p class="oe_view_nocontent_create">                                                                                                                                
-                 Click to add a serial number.                                                                                                                                     
-              </p><p>                                                                                                                                                             
-                This is the list of all the production lots you recorded. When                                                                                                    
-                you select a lot, you can get the traceability of the products contained in lot.                                                                                  
-              </p>
-            </field>
-           </record>
-
-	   <record id="stock_quants" model="ir.actions.act_window">
-             <field name="name">Quants</field>
-	     <field name="res_model">stock.quant</field>
-             <field name="view_type">form</field>
-             <field name="view_mode">tree,form,graph</field>
-             <field name="context">{'search_default_internal_loc': 1}</field>
-             <field name="help">This analysis gives you a fast overview on the current stock level of your products and their today's inventory value.</field>
-            </record>
-
-	   <record id="purchase_order" model="ir.actions.act_window">
-             <field name="name">Pedidos de compra</field>
-	     
-             <field name="type">ir.actions.act_window</field>
-	     <field name="res_model">purchase.order</field>
-             <field name="context">{}</field>
-             <field name="domain">[('state','in',('draft','sent','bid','cancel', 'confirmed'))]</field>
-             <field name="view_mode">tree,form,graph,calendar</field>
-             <field name="search_view_id" ref="purchase.view_purchase_order_filter"/>
-             <field name="help" type="html">
-               <p class="oe_view_nocontent_create">                                                                                                                                
-                 Click to create a request for quotation.                                                                                                                          
-              </p><p>                                                                                                                                                             
-                The quotation contains the history of the discussion/negotiation                                                                                                  
-                you had with your supplier. Once confirmed, a request for                                                                                                         
-                quotation is converted into a purchase order.                                                                                                                     
-              </p><p>                                                                                                                                                             
-                Most propositions of purchase orders are created automatically                                                                                                    
-                by Odoo based on inventory needs.                                                                                                                                 
-              </p>
-            </field>
-           </record>
-
-
-	   <record id="action_orders_" model="ir.actions.act_window">
-            <field name="name">Pedidos de venta</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">sale.order</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form,calendar,graph</field>
-            <field name="search_view_id" ref="sale.view_sales_order_filter"/>
-            <field name="context">{                                                                                                                                               
-                    'search_default_my_sale_orders_filter': 1                                                                                                                     
-                }                                                                                                                                                                 
-            </field>
-            <field name="domain">[('state', 'not in', ('draft', 'sent', 'cancel'))]</field>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">                                                                                                                              
-                    Click to create a quotation that can be converted into a sales                                                                                                
-                    order.                                                                                                                                                        
-                </p><p>                                                                                                                                                           
-                    Odoo will help you efficiently handle the complete sales flow:                                                                                                
-                    quotation, sales order, delivery, invoicing and payment.                                                                                                      
-                </p>
-            </field>
-        </record>
-
-
-
 	   <menuitem name="Reinicia" id="menu_reinicia" sequence="25" />
 	   <menuitem name="Contactos" id="menu_contactos" sequence="1" parent="menu_reinicia" />
-	   <menuitem name="Clientes" id="menu_clientes" sequence="1" parent="menu_contactos" action="res_partner_customer" />
-	   <menuitem name="Proveedores" id="menu_proveedores" sequence="2" parent="menu_contactos" action="res_partner_supplier" />	   
+
+	   <menuitem name="Clientes" id="menu_clientes" sequence="1" parent="menu_contactos" action="base.action_partner_customer_form" />
+	   <menuitem name="Proveedores" id="menu_proveedores" sequence="2" parent="menu_contactos" action="base.action_partner_supplier_form" />	   
 
 	   <menuitem name="Almacén" id="menu_almacen" sequence="2" parent="menu_reinicia" />
-	   <menuitem name="Lotes" id="menu_lotes" sequence="1" parent="menu_almacen" action="stock_production_lot" />
+	   <menuitem name="Lotes" id="menu_lotes" sequence="1" parent="menu_almacen" action="stock.action_production_lot_form" />
 	   <menuitem name="Quants" id="menu_quants" sequence="2" parent="menu_almacen" action="stock.quantsact" />
 	   
 	   <menuitem name="Gestión" id="menu_gestion" sequence="2" parent="menu_reinicia" />
