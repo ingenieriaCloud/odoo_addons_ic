@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_new_stock_quant_wizard" model="ir.ui.view">
+            <field name="name">Create sale lines from Quants</field>
+            <field name="model">stock.quant.new_wizard</field>
+            <field name="arch" type="xml">
+                <form string="Crear un nuevo pedido de ventas sobre Quants" version="7.0">
+                  <group string="Selección de Quants">
+		    <field name='prods' options="{'no_create_edit': True}" string="Quants" widget="many2many_list" />
+
+		  </group>
+                    <footer>
+                        <button name="action_new" string="Añadir lineas" type="object" class="oe_highlight"/>
+                        or
+                        <button special="cancel" string="Cancelar" class="oe_link"/>
+                    </footer>
+               	</form>
+            </field>
+        </record>
+
+
+      <act_window name="Crear pedido de venta sobre Quants"
+		  res_model="stock.quant.new_wizard" 
+		  src_model="stock.quant"
+		  view_mode="form"
+		  target="new"
+		  multi="True"
+		  key2="client_action_multi"
+		  id="action_sale_order_line_new_wizard"/>
+
+
+	
+    </data>
+
+</openerp>
