@@ -22,8 +22,7 @@
 
 
       <act_window name="Crear pedido de venta sobre Quants"
-		  res_model="stock.quant.new_wizard" 
-		  src_model="stock.quant"
+		  res_model="stock.quant.new_wizard"
 		  view_mode="form"
 		  target="new"
 		  multi="True"
