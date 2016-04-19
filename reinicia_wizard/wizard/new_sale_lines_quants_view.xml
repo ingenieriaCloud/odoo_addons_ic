@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <form string="Crear un nuevo pedido de ventas sobre Quants" version="7.0">
                   <group string="Selección de Quants">
-		    <field name='prods' options="{'no_create_edit': True}" string="Quants" widget="many2many_list" />
+		    <field name='prods' options="{'no_create': True}" string="Quants" widget="many2many_list" />
 
 		  </group>
                     <footer>

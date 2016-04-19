@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Wizard for new sale order from quants',
-    'version': '8.0.0.4.14',
+    'version': '8.0.0.5.5',
     'category': 'Stock',
     'description': """
 Wizard para generar pedido de ventas desde Quants
@@ -40,12 +40,15 @@ Copyright (c) 2015-2016 Francisco Manuel García Claramonte
         'sale',
         'stock',
         'account',
+        'reinicia_custom',
     ],
     'data': [
         'wizard/new_sale_order_view.xml',
         'wizard/new_sale_lines_quants_view.xml',
+        'wizard/new_scrap_view.xml',
         'views/stock_quant_view.xml',
         'views/sale_order_view.xml',
+        'views/sale_scrap_view.xml',
     ],
     "installable": True,
 }

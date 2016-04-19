@@ -29,15 +29,5 @@
             key2="client_action_multi"
             id="action_sale_order_new_wizard"/>
 
-	<!-- act_window provisional para la demo -->
-	<act_window name="Asignación SCRAP"
-            res_model="sale.order.new_wizard"
-            src_model="stock.quant"
-            view_mode="form"
-            target="new"
-            multi="True"
-            key2="client_action_multi"
-            id="action_invoice__new_wizard"/>
-
     </data>
 </openerp>

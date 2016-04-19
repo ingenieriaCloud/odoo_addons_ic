@@ -29,8 +29,8 @@
 		    <group string="Trazabilidad">
                             <field name="scrap"/>
                             <field name="gestionado"/>
-                            <field name="account_invoice"/>
-			    <field name="invoice_date"/>
+                            <field name="sale_order_trazabilidad"/>
+			    <field name="sale_date_trazabilidad"/>
 			    
 		    </group>
 		    <group string="Tratamiento">

@@ -70,8 +70,10 @@ class stock_quant(models.Model):
     sale_order = fields.Many2one('sale.order', string="Pedido de venta")
     sale_date = fields.Datetime(string='Fecha', store=True, related="sale_order.date_order")
 
-    account_invoice = fields.Many2one('account.invoice', string="Factura")
-    invoice_date = fields.Date(string='Fecha', store=True, related="account_invoice.date_invoice")
+    #account_invoice = fields.Many2one('account.invoice', string="Factura")
+    #invoice_date = fields.Date(string='Fecha', store=True, related="account_invoice.date_invoice")
+    sale_order_trazabilidad = fields.Many2one('sale.order', string="Pedido de venta")
+    sale_date_trazabilidad = fields.Datetime(string='Fecha', store=True, related="sale_order_trazabilidad.date_order")
     scrap = fields.Many2one('res.partner', string='SCRAP')
     gestionado = fields.Boolean(string='Gestionado')
     
