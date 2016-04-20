@@ -10,6 +10,7 @@
 	  <xpath expr="//field[@name='order_line']" position="before">
 	    
             <button name="%(action_sale_order_line_new_wizard)d" type="action" string="Crear desde quants" states="draft,sent" />
+	    <button name="%(action_sale_order_new_trazabilidad_wizard)d" type="action" string="Crear Trazabilidad" states="draft,sent" />
  	    
 	  </xpath>
         </field>

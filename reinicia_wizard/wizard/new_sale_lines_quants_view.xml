@@ -25,7 +25,7 @@
 		  res_model="stock.quant.new_wizard"
 		  view_mode="form"
 		  target="new"
-		  multi="True"
+		  multi="False"
 		  key2="client_action_multi"
 		  id="action_sale_order_line_new_wizard"/>
 
