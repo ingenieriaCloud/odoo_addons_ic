@@ -19,7 +19,7 @@
 ##############################################################################
 {
    'name': 'Personalización de gestión para Reinicia',
-   'version': '8.0.0.1.11',
+   'version': '8.0.0.1.14',
    'author': 'Ingeniería Cloud',
    'category': 'Ingeniería Cloud',
    'depends': [

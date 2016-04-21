@@ -11,26 +11,26 @@
 	      <xpath expr="/form/group[1]" position="after">
 		  <group>
 		    <group string="Recogida">
-		      <field name="supplier"/>
-		      <field name="dcs_entrada"/>
-		      <field name="purchase_order"/>
-		      <field name="purchase_date"/>
-                      <field name="transportista_ent"/>
-                      <field name="matricula_ent"/>
+		      <field name="supplier" readonly='1'/>
+		      <field name="dcs_entrada" readonly='1'/>
+		      <field name="purchase_order" readonly='1'/>
+		      <field name="purchase_date" readonly='1'/>
+                      <field name="transportista_ent" readonly='1'/>
+                      <field name="matricula_ent" readonly='1'/>
 		    </group>
 		    <group string="Reexpedición">
-		      <field name="customer"/>
+		      <field name="customer" readonly='1'/>
                       <field name="dcs_salida"/>
-		      <field name="sale_order"/>
-		      <field name="sale_date" />
-                      <field name="transportista_sal"/>
-                      <field name="matricula_sal"/>
+		      <field name="sale_order" readonly='1'/>
+		      <field name="sale_date" readonly='1'/>
+                      <field name="transportista_sal" readonly='1'/>
+                      <field name="matricula_sal" readonly='1'/>
 		    </group>
 		    <group string="Trazabilidad">
-                            <field name="scrap"/>
-                            <field name="gestionado"/>
-                            <field name="sale_order_trazabilidad"/>
-			    <field name="sale_date_trazabilidad"/>
+                            <field name="scrap" readonly='1'/>
+                            <field name="gestionado" readonly='1'/>
+                            <field name="sale_order_trazabilidad" readonly='1'/>
+			    <field name="sale_date_trazabilidad" readonly='1'/>
 			    
 		    </group>
 		    <group string="Tratamiento">
