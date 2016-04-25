@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Wizard for new sale order from quants',
-    'version': '8.0.0.5.12',
+    'version': '8.0.0.5.32',
     'category': 'Stock',
     'description': """
 Wizard para generar pedido de ventas desde Quants

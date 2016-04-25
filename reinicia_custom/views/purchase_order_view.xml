@@ -9,8 +9,8 @@
 
             <field name="arch" type="xml">
 	      <xpath expr="//field[@name='journal_id']" position="after">
-		<field name="transportista_ent" domain="[('supplier','=', True)]" context="{'search_default_supplier':1, 'default_supplier':1, 'default_customer':0}"/>
-		<field name="matricula_ent" />
+		<field name="transportista_ent" domain="[('supplier','=', True)]" context="{'search_default_supplier':1, 'default_supplier':1, 'default_customer':0}" attrs="{'readonly': [('state','not in',('draft'))]}"/>
+		<field name="matricula_ent" attrs="{'readonly': [('state','not in',('draft'))]}" />
 	      </xpath>
 	    </field>
 

@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
 	  <xpath expr="//button[@string='Quant History']" position="before">
 	    
-            <button name="%(action_sale_order_new_scrap_wizard)d" type="action" string="Nueva asignación SCRAP" />
+            <button name="%(action_sale_order_new_scrap_wizard)d" type="action" string="Nueva asignación SCRAP" attrs="{'invisible': [('sale_order_trazabilidad','>',0)]}"/>
  	    
 	  </xpath>
         </field>

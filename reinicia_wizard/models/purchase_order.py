@@ -51,4 +51,48 @@ class PurchaseOrder(orm.Model):
 
         return super(PurchaseOrder, self).wkf_confirm_order(cr, uid, ids, context=context)
 
+    
+    def onchange_transportista(self, cr, uid, ids, transportista_id, context=None):
+        # Se toma el nuevo valor del transportista (res.partner),
+        # Para todas las lineas de pedido se actualiza el lote
+        # Para cada lote, se actualizan los quant que existan.
+
+        if context is None:
+            context = {}
+
+        value = {}
+        stock_prod_lot_obj = self.pool.get('stock.production.lot')
+        res_partner_obj = self.pool.get('res.partner')
+
+        #value["transportista_ent"] = transportista_id
+        value.update({'transportista_ent': transportista_id})
+        
+        for this in self.browse(cr, uid, ids, context=context):
+            matric = this.matricula_ent.id
+            #supplier = this.partner_id.id
+            order = this.id
+            date = this.date_order
+
+            #value["id"] = order
+            #value["partner_id"] = this.partner_id.id
+
+            for linea in this.order_line:
+                prod_lot = linea.prodlot2_id.id
+                lote = stock_prod_lot_obj.search(cr,uid,[('id', '=', prod_lot)],context=context)
+                product = linea.product_id.id
+                val = {
+                    'name' : stock_prod_lot_obj.browse(cr,uid,lote,context=context).name,
+                    'product_id' : product,
+                    'transportista_ent': transportista_id,
+                    'matricula_ent': matric,
+                }
+                stock_prod_lot_obj.write(cr,uid, lote, val, context=context)
+        
+        return {'value': value}
+        
+    def onchange_matricula(self, cr, uid, ids, matricula_id, context=None):
+
+        return True
+
+    
 PurchaseOrder()

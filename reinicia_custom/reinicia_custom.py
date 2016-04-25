@@ -53,7 +53,7 @@ class stock_production_lot(models.Model):
 
 class stock_quant(models.Model):
     _name = 'stock.quant'
-    _inherit = ['stock.quant']
+    _inherit = ['mail.thread','stock.quant']
     _description = 'Quants'
 
     supplier = fields.Many2one('res.partner',  string="Proveedor")
@@ -61,26 +61,26 @@ class stock_quant(models.Model):
     transportista_ent = fields.Many2one('res.partner', string='Transportista de entrada', domain=[('supplier','=',True)])
     matricula_ent = fields.Many2one('reinicia_custom.matricula_trans', string="Matrícula entrada", ondelete='set null', required=False)
     purchase_order = fields.Many2one('purchase.order',  string="Pedido de compra")
-    purchase_date = fields.Datetime(string='Fecha', store=True, related="purchase_order.date_order")
+    purchase_date = fields.Datetime(string='Fecha de compra', store=True, related="purchase_order.date_order")
 
     dcs_salida = fields.Char(string='DCS Salida')
     transportista_sal = fields.Many2one('res.partner', string='Transportista de salida', domain=[('supplier','=',True)])
     matricula_sal = fields.Many2one('reinicia_custom.matricula_trans', string="Matrícula salida", ondelete='set null', required=False)
     customer = fields.Many2one('res.partner',  string="Cliente")
     sale_order = fields.Many2one('sale.order', string="Pedido de venta")
-    sale_date = fields.Datetime(string='Fecha', store=True, related="sale_order.date_order")
+    sale_date = fields.Datetime(string='Fecha de venta', store=True, related="sale_order.date_order")
 
     #account_invoice = fields.Many2one('account.invoice', string="Factura")
     #invoice_date = fields.Date(string='Fecha', store=True, related="account_invoice.date_invoice")
-    sale_order_trazabilidad = fields.Many2one('sale.order', string="Pedido de venta")
-    sale_date_trazabilidad = fields.Datetime(string='Fecha', store=True, related="sale_order_trazabilidad.date_order")
+    sale_order_trazabilidad = fields.Many2one('sale.order', string="Pedido de trazabilidad")
+    sale_date_trazabilidad = fields.Datetime(string='Fecha de venta trazabilidad', store=True, related="sale_order_trazabilidad.date_order")
     scrap = fields.Many2one('res.partner', string='SCRAP')
     gestionado = fields.Boolean(string='Gestionado')
     
 
-    empresa = fields.Many2one('res.partner', string='Empresa')
-    certificado = fields.Char(string='Certificado')
-    date_quant = fields.Date(string="Fecha") 
+    empresa = fields.Many2one('res.partner', string='Empresa de tratamiento')
+    certificado = fields.Char(string='Certificado de tratamiento')
+    date_quant = fields.Date(string="Fecha de tratamiento") 
     
     
 
