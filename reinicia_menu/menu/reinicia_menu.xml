@@ -29,7 +29,7 @@
 
 	   <menuitem name="Almacén" id="menu_almacen" sequence="2" parent="menu_reinicia" />
 	   <menuitem name="Lotes" id="menu_lotes" sequence="1" parent="menu_almacen" action="stock.action_production_lot_form" />
-	   <menuitem name="Quants" id="menu_quants" sequence="2" parent="menu_almacen" action="stock.quantsact" />
+	 <!--  <menuitem name="Quants" id="menu_quants" sequence="2" parent="menu_almacen" action="stock.quantsact" /> -->
 	   <menuitem name="Quants para Trazabilidad" id="menu_quants_trazab" sequence="3" parent="menu_almacen" action="quantsact_trazab" />
 	   <menuitem name="Quants para Reexpedición" id="menu_quants_reexp" sequence="4" parent="menu_almacen" action="quantsact_reexp" />
 	   

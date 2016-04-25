@@ -19,7 +19,7 @@
 ##############################################################################
 {
    'name': 'Menú personalizado para Reinicia',
-   'version': '8.0.0.0.7',
+   'version': '8.0.0.0.8',
    'author': 'Ingeniería Cloud',
    'category': 'Ingeniería Cloud',
    'depends': [
