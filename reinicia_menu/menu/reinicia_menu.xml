@@ -1,5 +1,25 @@
 <openerp>
-	<data>
+  <data>
+
+    <record model="ir.actions.act_window" id="quantsact_trazab">
+            <field name="name">Quants disponibles para Trazabilidad</field>
+            <field name="res_model">stock.quant</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="context">{'search_default_internal_loc': 1}</field>
+	    <field name="domain">[('gestionado','=', False)]</field>
+            <field name="help">This analysis gives you a fast overview on the current stock level of your products and their today's inventory value.</field>
+    </record>
+    <record model="ir.actions.act_window" id="quantsact_reexp">
+            <field name="name">Quants disponibles para Reexpedición</field>
+            <field name="res_model">stock.quant</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="context">{'search_default_internal_loc': 1}</field>
+	    <field name="domain">[('sale_order','=', None)]</field>
+            <field name="help">This analysis gives you a fast overview on the current stock level of your products and their today's inventory value.</field>
+    </record>
+
 
 	   <menuitem name="Reinicia" id="menu_reinicia" sequence="25" />
 	   <menuitem name="Contactos" id="menu_contactos" sequence="1" parent="menu_reinicia" />
@@ -10,6 +30,8 @@
 	   <menuitem name="Almacén" id="menu_almacen" sequence="2" parent="menu_reinicia" />
 	   <menuitem name="Lotes" id="menu_lotes" sequence="1" parent="menu_almacen" action="stock.action_production_lot_form" />
 	   <menuitem name="Quants" id="menu_quants" sequence="2" parent="menu_almacen" action="stock.quantsact" />
+	   <menuitem name="Quants para Trazabilidad" id="menu_quants_trazab" sequence="3" parent="menu_almacen" action="quantsact_trazab" />
+	   <menuitem name="Quants para Reexpedición" id="menu_quants_reexp" sequence="4" parent="menu_almacen" action="quantsact_reexp" />
 	   
 	   <menuitem name="Gestión" id="menu_gestion" sequence="2" parent="menu_reinicia" />
 	   <menuitem name="Pedidos de compra" id="menu_pedidos_compra" sequence="1" parent="menu_gestion" action="purchase.purchase_form_action" />
