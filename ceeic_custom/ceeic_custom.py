@@ -53,6 +53,8 @@ class ceeic_partner(models.Model):
         ('mujer', "Mujer"),
     ], default='hombre')
     edad = fields.Many2one('ceeic.edad', string='Edad', ondelete='set null', required=False)
+    actividad = fields.Char(string='Actividad')
+    
 
 
 ceeic_partner()

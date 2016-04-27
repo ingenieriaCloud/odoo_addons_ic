@@ -19,7 +19,7 @@
 ##############################################################################
 {
    'name': 'Personalización de contactos y tareas para CEEIC',
-   'version': '8.0.0.1.13',
+   'version': '8.0.0.1.14',
    'author': 'Ingeniería Cloud',
    'category': 'Ingeniería Cloud',
    'depends': [
