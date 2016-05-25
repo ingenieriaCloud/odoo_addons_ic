@@ -15,16 +15,17 @@
 		      <field name="dcs_entrada" readonly='1'/>
 		      <field name="purchase_order" readonly='1'/>
 		      <field name="purchase_date" readonly='1'/>
-                      <field name="transportista_ent" readonly='1'/>
-                      <field name="matricula_ent" readonly='1'/>
+                   <!--   <field name="transportista_ent" readonly='1'/>
+                      <field name="matricula_ent" readonly='1'/>-->
 		    </group>
 		    <group string="Reexpedición">
 		      <field name="customer" readonly='1'/>
                       <field name="dcs_salida"/>
 		      <field name="sale_order" readonly='1'/>
 		      <field name="sale_date" readonly='1'/>
-                      <field name="transportista_sal" readonly='1'/>
-                      <field name="matricula_sal" readonly='1'/>
+<!--                      <field name="transportista_sal" readonly='1'/>
+     <field name="matricula_sal" readonly='1'/>
+     -->
 		    </group>
 		    <group string="Trazabilidad">
                             <field name="scrap" readonly='1'/>
