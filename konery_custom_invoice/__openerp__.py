@@ -19,7 +19,7 @@
 ##############################################################################
 {
    'name': 'Personalización de informe de Factura',
-   'version': '8.0.2.0.18',
+   'version': '8.0.2.0.19',
    'author': 'Ingeniería Cloud',
    'category': 'Ingeniería Cloud',
    'depends': [
