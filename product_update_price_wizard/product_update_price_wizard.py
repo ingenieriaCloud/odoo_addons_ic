@@ -41,5 +41,8 @@ class ProductUpdatePriceWizard(models.TransientModel):
         for p in all_prods:
             precio = pricelist.price_get(prod_id=p.id, qty=1.0)
             #import pudb; pudb.set_trace()
-            p.write({'list_price': precio[1]})
+            if precio:
+                for k,v in precio.items():
+                    p.write({'list_price': v})
+
 
