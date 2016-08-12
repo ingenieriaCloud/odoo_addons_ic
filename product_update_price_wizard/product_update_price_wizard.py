@@ -40,10 +40,12 @@ class ProductUpdatePriceWizard(models.TransientModel):
         pricelist = self.env['product.pricelist'].browse(self.pricelist.id)
 
         for p in all_prods:
-            precio = pricelist.price_get(prod_id=p.id, qty=1.0)
-            #import pudb; pudb.set_trace()
-            if precio:
-                for k,v in precio.items():
-                    p.write({'list_price': v})
-
+            try:
+                precio = pricelist.price_get(prod_id=p.id, qty=1.0)
+                #import pudb; pudb.set_trace()
+                if precio:
+                    for k,v in precio.items():
+                        p.write({'list_price': v})
+            except MissingError:
+                pass
 
