@@ -34,7 +34,8 @@ class ProductUpdatePriceWizard(models.TransientModel):
             raise exceptions.ValidationError('Debe seleccionar una tarifa')
 
         prods_obj = self.env['product.template']
-        all_prods = prods_obj.browse(self.env.context['active_ids'])
+        active_ids = self.env.context['active_ids'] or []
+        all_prods = prods_obj.browse(active_ids)
         
         pricelist = self.env['product.pricelist'].browse(self.pricelist.id)
 
