@@ -46,6 +46,6 @@ class ProductUpdatePriceWizard(models.TransientModel):
                 if precio:
                     for k,v in precio.items():
                         p.write({'list_price': v})
-            except MissingError:
+            except exceptions.MissingError:
                 pass
 
