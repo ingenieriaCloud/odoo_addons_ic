@@ -24,7 +24,7 @@
       <!-- Botón de menú Más -->
       <act_window name="Actualizar precios para exportar"
             res_model="product.update_price_wizard"
-            src_model="product.template"
+            src_model="product.product"
             view_mode="form"
             target="new"
             multi="True"
