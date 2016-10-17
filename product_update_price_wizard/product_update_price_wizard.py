@@ -45,8 +45,8 @@ class ProductUpdatePriceWizard(models.TransientModel):
                 #import pudb; pudb.set_trace()
                 if precio:
                     for k,v in precio.items():
-                        #p.write({'lst_price': v})
-                        p.write({'fix_price': v})
+                        p.write({'lst_price': v})
+                        #p.write({'fix_price': v})
             except exceptions.MissingError:
                 pass
                 #raise exceptions.MissingError('Producto: %d' % p.id)
